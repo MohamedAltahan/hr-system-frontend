@@ -1,26 +1,14 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
-// 🔁 Dynamic base URL based on subdomain
-const getDynamicBaseUrl = (): string => {
-  const baseDomain = import.meta.env.VITE_API_BASE_DOMAIN; // e.g., "alkholoudhr.com/api/v1"
-  const hostname = window.location.hostname; // e.g., "admin.alkholoudhr.com"
+const baseUrl = import.meta.env.VITE_API_BASE_URL; // Vite
 
-  const parts = hostname.split('.');
-  let subdomain = 'admin'; // Default subdomain
-
-  if (parts.length > 2) {
-    subdomain = parts[0];
-  }
-
-  return `https://${subdomain}.${baseDomain}`;
-};
 
 const Self_ServicesApi = createApi({
   reducerPath: 'Self_ServicesApi',
   tagTypes: ['Self_Services', 'request', 'attendance'],
 
   baseQuery: fetchBaseQuery({
-    baseUrl: getDynamicBaseUrl(),
+    baseUrl: baseUrl,
     prepareHeaders: (headers) => {
       headers.set('Accept', 'application/json');
       headers.set('Lang', 'ar');

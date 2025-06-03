@@ -1,6 +1,6 @@
 // src/services/authApi.ts
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-  const baseUrl = import.meta.env.VITE_API_BASE_URL; // e.g., "alkholoudhr.com/api/v1"
+const baseUrl = import.meta.env.VITE_API_BASE_URL;
 
 
 const authApi = createApi({

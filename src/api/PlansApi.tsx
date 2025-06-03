@@ -1,24 +1,13 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
-// 🔁 Get base domain from environment
-const getDynamicBaseUrl = (): string => {
-  const baseDomain = import.meta.env.VITE_API_BASE_DOMAIN; // Example: "alkholoudhr.com/api/v1"
-  const hostname = window.location.hostname;
+const baseUrl = import.meta.env.VITE_API_BASE_URL; // Vite
 
-  const parts = hostname.split('.');
-  let subdomain = 'admin'; // fallback subdomain
-  if (parts.length > 2) {
-    subdomain = parts[0];
-  }
-
-  return `https://${subdomain}.${baseDomain}`;
-};
 
 const plansApi = createApi({
   reducerPath: 'PlansApi',
   tagTypes: ['plan'],
   baseQuery: fetchBaseQuery({
-    baseUrl: getDynamicBaseUrl(),
+    baseUrl: baseUrl,
     prepareHeaders: (headers) => {
       headers.set('Accept', 'application/json');
       headers.set('Lang', localStorage.getItem('lang') || 'ar');

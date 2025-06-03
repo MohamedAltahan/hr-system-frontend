@@ -1,21 +1,14 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
-const getDynamicBaseUrl = (): string => {
-  const baseDomain = import.meta.env.VITE_API_BASE_DOMAIN; // e.g., "alkholoudhr.com/api/v1"
-  const hostname = window.location.hostname;
+const baseUrl = import.meta.env.VITE_API_BASE_URL; // Vite
 
-  const parts = hostname.split('.');
-  const subdomain = parts.length > 2 ? parts[0] : 'admin';
-
-  return `https://${subdomain}.${baseDomain}`;
-};
 const branchesApi = createApi({
   reducerPath: 'BranchesApi',
 
   tagTypes: ['branch'],
 
   baseQuery: fetchBaseQuery({
-    baseUrl : getDynamicBaseUrl(),
+    baseUrl : baseUrl,
     prepareHeaders: (headers) => {
       const lang = localStorage.getItem('lang');
       const token = localStorage.getItem('HrSystem');
