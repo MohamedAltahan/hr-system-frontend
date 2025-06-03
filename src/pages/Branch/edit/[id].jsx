@@ -4,8 +4,8 @@ import { useGetBranchByIdQuery, useUpdateBranchMutation } from '../../../api/Bra
 import SectionBox from '../../../components/ui/containers/SectionBox';
 import AddingBtn from '../../../components/ui/buttons/AddingBtn';
 import CancelButton from '../../../components/ui/buttons/CancelBtn';
-import TextInput from '../../../components/Reusable Component/TextInput';
-import Toggle from '../../../components/Reusable Component/ToggleInput';
+import TextInput from '../../../components/reusable_components/TextInput';
+import Toggle from '../../../components/reusable_components/ToggleInput';
 import { toast } from 'react-toastify';
 
 

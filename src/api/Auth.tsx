@@ -1,6 +1,6 @@
 // src/services/authApi.ts
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-  const baseUrl = import.meta.env.VITE_API_BASE_URL; // e.g., "alkholoudhr.com/api/v1"
+const baseUrl = import.meta.env.VITE_API_BASE_URL;
 
 
 const authApi = createApi({
@@ -21,6 +21,8 @@ const authApi = createApi({
     // 👇 meta field to carry company name
     headers: {
       'X-Company': formData.company_name, // custom header from formData
+      'content-type': 'application/json',
+      'Accept': 'application/json',
     },
   }),
   transformResponse: (response, meta) => ({

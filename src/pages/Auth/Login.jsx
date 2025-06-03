@@ -3,8 +3,8 @@ import mainImage from '../../assets/auth_background.png';
 import { useAdminloginMutation } from "../../api/Auth";
 import { toast } from "react-toastify";
 import { Link, useNavigate } from "react-router-dom";
-import TextInput from "../../components/Reusable Component/TextInput";
-import PasswordInput from "../../components/Reusable Component/PasswordInput";
+import TextInput from "../../components/reusable_components/TextInput";
+import PasswordInput from "../../components/reusable_components/PasswordInput";
 import Button from "../../components/ui/buttons/Button";
 
 const Login = () => {
@@ -33,7 +33,7 @@ const Login = () => {
       localStorage.setItem("user", JSON.stringify(response.data.response.body.user))
       localStorage.setItem("roles", JSON.stringify(response.data.response.body.user.roles))
       localStorage.setItem("lang", "ar");
-      localStorage.setItem("X-Company", JSON.stringify(response.data.response.body.company))
+      localStorage.setItem("X-Company", company_name)
       navigate('/app/dashboard')
      }
      if(response?.error){

@@ -3,7 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { useGetDepartmentByIdQuery, useUpdateDepartmentMutation } from '../../../api/DepartmentsApi';
 import { useGetAllEmployeeQuery } from '../../../api/Employee';
 import SectionBox from '../../../components/ui/containers/SectionBox';
-import TextInput from '../../../components/Reusable Component/TextInput';
+import TextInput from '../../../components/reusable_components/TextInput';
 import AddingButton from '../../../components/ui/buttons/AddingBtn';
 import CancelButton from '../../../components/ui/buttons/CancelBtn';
 import Select from 'react-select';

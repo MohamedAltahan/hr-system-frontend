@@ -1,30 +1,19 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
-// 👇 Dynamic base URL logic
-const getDynamicBaseUrl = (): string => {
-  const baseDomain = import.meta.env.VITE_API_BASE_DOMAIN; // e.g., "alkholoudhr.com/api/v1"
-  const hostname = window.location.hostname; // e.g., "admin.alkholoudhr.com"
 
-  const parts = hostname.split('.');
-  let subdomain = 'admin'; // default if no subdomain
-
-  if (parts.length > 2) {
-    subdomain = parts[0];
-  }
-
-  return `https://${subdomain}.${baseDomain}`;
-};
+const baseUrl = import.meta.env.VITE_API_BASE_URL; // Vite
 
 const tenantApi = createApi({
   reducerPath: 'tenantApi',
   tagTypes: ['tenant'],
 
   baseQuery: fetchBaseQuery({
-    baseUrl: getDynamicBaseUrl(),
+    baseUrl: baseUrl,
     prepareHeaders: (headers) => {
       headers.set('Accept', 'application/json');
       headers.set('Lang', localStorage.getItem('lang') || 'en');
       headers.set('Authorization', `Bearer ${localStorage.getItem('HrSystem') || ''}`);
+            headers.set('X-Company',localStorage.getItem('X-Company') || 'default_company');
       return headers;
     },
   }),

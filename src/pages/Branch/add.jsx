@@ -2,13 +2,13 @@ import React, { useState } from 'react';
 import { useCreateBranchMutation } from '../../api/Branches';
 import SectionBox from '../../components/ui/containers/SectionBox';
 import AddingButton from '../../components/ui/buttons/AddingBtn';
-import TextInput from '../../components/Reusable Component/TextInput';
-import ToggleInput from '../../components/Reusable Component/ToggleInput';
+import TextInput from '../../components/reusable_components/TextInput';
+import ToggleInput from '../../components/reusable_components/ToggleInput';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
-import TextAreaInput from '../../components/Reusable Component/TextAreaInput';
+import TextAreaInput from '../../components/reusable_components/TextAreaInput';
 import CancelButton from '../../components/ui/buttons/CancelBtn';
-import NewPhoneInput from '../../components/Reusable Component/NewPhoneInput';
+import NewPhoneInput from '../../components/reusable_components/NewPhoneInput';
 
 const AddBranch = () => {
   const [formData, setFormData] = useState({

@@ -1,7 +1,7 @@
 import Card from "../../components/Card/Card";
 import { useEffect } from "react";
 import { useGetInitailSystemQuery } from "../../api/InitialSystem";
-import ProductTable from "../../components/Reusable Component/DataTable";
+import ProductTable from "../../components/reusable_components/DataTable";
 
 const Holidays = () => {
 const products = [

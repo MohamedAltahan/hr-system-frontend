@@ -4,6 +4,7 @@ import Logo from "../../assets/newLogo.jpg";
 import { FiLogOut, FiChevronDown, FiChevronUp } from "react-icons/fi";
 import { useGetSidebarServicesQuery } from "../../api/SidebarApi";
 import DefaultIcon from "../Icons/DotIcon";
+import { BsBuilding } from "react-icons/bs";
 
 // Icon imports
 import Setting from "../Icons/Setting";
@@ -19,6 +20,7 @@ import Others from "../Icons/Others";
 
 // Icon mapping
 const iconMap = {
+  companies_and_plans: BsBuilding ,
   settings: Setting,
   self_service: SelfService,
   staff: Staff,

@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import SectionBox from "../../../components/ui/containers/SectionBox";
-import TextInput from '../../../components/Reusable Component/TextInput';
-import EmailInput from '../../../components/Reusable Component/EmailInput';
-import PhoneInput from "../../../components/Reusable Component/PhoneInput";
+import TextInput from '../../../components/reusable_components/TextInput';
+import EmailInput from '../../../components/reusable_components/EmailInput';
+import PhoneInput from "../../../components/reusable_components/PhoneInput";
 import AddingButton from "../../../components/ui/buttons/AddingBtn";
 import CancelButton from '../../../components/ui/buttons/CancelBtn';
 import { toast } from 'react-toastify';

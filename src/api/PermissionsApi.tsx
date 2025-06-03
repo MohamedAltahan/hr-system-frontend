@@ -1,28 +1,19 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
-// 🔁 Utility to construct dynamic subdomain-based base URL
-const getDynamicBaseUrl = (): string => {
-  const baseDomain = import.meta.env.VITE_API_BASE_DOMAIN; // e.g., "alkholoudhr.com/api/v1"
-  const hostname = window.location.hostname;
+const baseUrl = import.meta.env.VITE_API_BASE_URL; // Vite
 
-  const parts = hostname.split('.');
-  let subdomain = 'admin'; // fallback
-  if (parts.length > 2) {
-    subdomain = parts[0];
-  }
-
-  return `https://${subdomain}.${baseDomain}`;
-};
 
 const permissionsApi = createApi({
   reducerPath: 'PermissionsApi',
   tagTypes: ['permission'],
   baseQuery: fetchBaseQuery({
-    baseUrl: getDynamicBaseUrl(),
+    baseUrl: baseUrl,
     prepareHeaders: (headers) => {
       headers.set('Accept', 'application/json');
       headers.set('Lang', localStorage.getItem('lang') || 'ar');
       headers.set('Authorization', `Bearer ${localStorage.getItem('HrSystem') || ''}`);
+                  headers.set('X-Company',localStorage.getItem('X-Company') || 'default_company');
+
       return headers;
     },
   }),

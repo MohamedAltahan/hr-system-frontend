@@ -2,9 +2,9 @@ import { useState } from 'react';
 import { useGetAllRolesQuery, useDeleteRoleMutation } from '../../api/RolesApi';
 import SectionBox from '../../components/ui/containers/SectionBox';
 import AddingButton from '../../components/ui/buttons/AddingBtn';
-import ProductTable from '../../components/reusable Component/DataTable';
+import ProductTable from '../../components/reusable_components/DataTable';
 import { MdEdit, MdDelete } from 'react-icons/md';
-import ConfirmDialog from '../../components/Reusable Component/ConfirmDialog';
+import ConfirmDialog from '../../components/reusable_components/ConfirmDialog';
 import { toast } from 'react-toastify';
 
 const Roles = () => {

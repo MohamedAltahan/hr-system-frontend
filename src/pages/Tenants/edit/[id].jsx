@@ -1,13 +1,13 @@
 import { useState, useEffect, useMemo } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import SectionBox from '../../../components/ui/containers/SectionBox';
-import TextInput from '../../../components/Reusable Component/TextInput';
-import EmailInput from '../../../components/Reusable Component/EmailInput';
-import NewPhoneInput from '../../../components/Reusable Component/NewPhoneInput';
+import TextInput from '../../../components/reusable_components/TextInput';
+import EmailInput from '../../../components/reusable_components/EmailInput';
+import NewPhoneInput from '../../../components/reusable_components/NewPhoneInput';
 import AddingButton from '../../../components/ui/buttons/AddingBtn';
 import CancelButton from '../../../components/ui/buttons/CancelBtn';
 import Select from 'react-select';
-import ToggleInput from '../../../components/Reusable Component/ToggleInput';
+import ToggleInput from '../../../components/reusable_components/ToggleInput';
 
 import { toast } from 'react-toastify';
 
@@ -117,7 +117,7 @@ export default function EditTenant() {
       <form onSubmit={handleSubmit}>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <TextInput
-            label="اسم الشركة (عربي)"
+            label="اسم الشركة "
             name="company_name_ar"
             value={formData.company_name_ar}
             onChange={handleChange}
