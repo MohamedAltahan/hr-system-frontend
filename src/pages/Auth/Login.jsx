@@ -33,7 +33,7 @@ const Login = () => {
       localStorage.setItem("user", JSON.stringify(response.data.response.body.user))
       localStorage.setItem("roles", JSON.stringify(response.data.response.body.user.roles))
       localStorage.setItem("lang", "ar");
-      localStorage.setItem("X-Company", JSON.stringify(response.data.response.body.company))
+      localStorage.setItem("X-Company", company_name)
       navigate('/app/dashboard')
      }
      if(response?.error){

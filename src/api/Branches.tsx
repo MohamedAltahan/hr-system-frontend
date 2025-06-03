@@ -17,6 +17,7 @@ const branchesApi = createApi({
       if (token) headers.set('Authorization', `Bearer ${token}`);
 
       headers.set('Accept', 'application/json');
+            headers.set('X-Company',localStorage.getItem('X-Company') || 'default_company');
       return headers;
     },
   }),

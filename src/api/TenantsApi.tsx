@@ -13,7 +13,7 @@ const tenantApi = createApi({
       headers.set('Accept', 'application/json');
       headers.set('Lang', localStorage.getItem('lang') || 'en');
       headers.set('Authorization', `Bearer ${localStorage.getItem('HrSystem') || ''}`);
-      headers.set("X-Company" , localStorage.getItem('company_name') || '')
+            headers.set('X-Company',localStorage.getItem('X-Company') || 'default_company');
       return headers;
     },
   }),

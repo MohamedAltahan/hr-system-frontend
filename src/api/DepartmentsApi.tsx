@@ -11,6 +11,8 @@ const departmentsApi = createApi({
       headers.set('Accept', 'application/json');
       headers.set('Lang', localStorage.getItem('lang') || 'ar');  // fallback to 'ar'
       headers.set('Authorization', `Bearer ${localStorage.getItem('HrSystem') || ''}`);
+            headers.set('X-Company',localStorage.getItem('X-Company') || 'default_company');
+
       return headers;
     },
   }),
