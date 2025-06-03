@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import SectionBox from "../../components/ui/containers/SectionBox";
-import TextInput from '../../components/Reusable Component/TextInput';
-import EmailInput from '../../components/Reusable Component/EmailInput';
-import PhoneInput from "../../components/Reusable Component/PhoneInput";
+import TextInput from '../../components/reusable_components/TextInput';
+import EmailInput from '../../components/reusable_components/EmailInput';
+import PhoneInput from "../../components/reusable_components/PhoneInput";
 import AddingButton from "../../components/ui/buttons/AddingBtn";
 import CancelButton from '../../components/ui/buttons/CancelBtn';
 import { toast } from 'react-toastify';
@@ -18,7 +18,7 @@ import { useGetAllDepartmentsQuery } from '../../api/DepartmentsApi';
 import { useGetAllPositionsQuery } from '../../api/positionsApi';
 import { useGetAllJobTitlesQuery } from '../../api/jobTitlesApi';
 import { useGetAllEmployeeQuery } from '../../api/Employee'; // <- use the correct path to the API file
-import NewPhoneInput from '../../components/Reusable Component/NewPhoneInput';
+import NewPhoneInput from '../../components/reusable_components/NewPhoneInput';
 
 const genderOptions = [
   { value: 'male', label: 'ذكر' },

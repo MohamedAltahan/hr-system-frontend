@@ -7,7 +7,7 @@ import CancelButton from '../../components/ui/buttons/CancelBtn';
 import { LuPencil } from 'react-icons/lu';
 import { format } from 'date-fns-jalali';
 import { ar } from 'date-fns/locale';
-import ProductTable from '../../components/Reusable Component/DataTable'; // ✅ adjust path as needed
+import ProductTable from '../../components/reusable_components/DataTable'; // ✅ adjust path as needed
 
 export default function ShowTenant() {
   const { id } = useParams();

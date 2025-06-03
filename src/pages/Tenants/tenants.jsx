@@ -5,8 +5,8 @@ import { toast } from "react-toastify";
 
 import AddingButton from "../../components/ui/buttons/AddingBtn";
 import SectionBox from "../../components/ui/containers/SectionBox";
-import ProductTable from "../../components/reusable Component/DataTable";
-import ConfirmDialog from "../../components/Reusable Component/ConfirmDialog";
+import ProductTable from "../../components/reusable_components/DataTable";
+import ConfirmDialog from "../../components/reusable_components/ConfirmDialog";
 
 const Tenants = () => {
   const [page, setPage] = useState(1);

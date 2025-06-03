@@ -2,12 +2,12 @@ import React, { useState } from 'react';
 import SectionBox from '../../components/ui/containers/SectionBox';
 import AddingButton from '../../components/ui/buttons/AddingBtn';
 import CancelButton from '../../components/ui/buttons/CancelBtn';
-import TextInput from '../../components/Reusable Component/TextInput';
+import TextInput from '../../components/reusable_components/TextInput';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 import { FiPlus } from "react-icons/fi";
 import { FiMinus } from "react-icons/fi";
-import ToggleInput from '../../components/Reusable Component/ToggleInput';
+import ToggleInput from '../../components/reusable_components/ToggleInput';
 
 
 import { useCreatePlanMutation } from '../../api/PlansApi'; // Adjust API hook

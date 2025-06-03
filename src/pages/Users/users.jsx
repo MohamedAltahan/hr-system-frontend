@@ -2,10 +2,10 @@ import { useEffect, useState } from "react";
 import { useGetAllEmployeeQuery } from "../../api/Employee"; // <- use the correct path to the API file
 import AddingButton from "../../components/ui/buttons/AddingBtn";
 import SectionBox from "../../components/ui/containers/SectionBox";
-import ProductTable from "../../components/reusable Component/DataTable";
+import ProductTable from "../../components/reusable_components/DataTable";
 import { MdEdit } from "react-icons/md";
 import { MdDelete } from 'react-icons/md';
-import ConfirmDialog from "../../components/Reusable Component/ConfirmDialog";
+import ConfirmDialog from "../../components/reusable_components/ConfirmDialog";
 import Select from 'react-select';
 
 import { useDeleteEmployeeMutation } from "../../api/Employee"; // <- use the correct path to the API file
@@ -14,7 +14,7 @@ import { useGetAllbranchesQuery } from '../../api/Branches';
 import { useGetAllDepartmentsQuery } from '../../api/DepartmentsApi';
 import { useGetAllPositionsQuery } from '../../api/positionsApi';
 import { toast } from "react-toastify";
-import TextInput from "../../components/Reusable Component/TextInput";
+import TextInput from "../../components/reusable_components/TextInput";
 
 const Users = () => {
   const [page, setPage] = useState(1);

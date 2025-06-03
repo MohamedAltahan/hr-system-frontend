@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import SectionBox from '../../components/ui/containers/SectionBox';
 import AddingButton from '../../components/ui/buttons/AddingBtn';
-import TextInput from '../../components/Reusable Component/TextInput';
+import TextInput from '../../components/reusable_components/TextInput';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 import CancelButton from '../../components/ui/buttons/CancelBtn';
