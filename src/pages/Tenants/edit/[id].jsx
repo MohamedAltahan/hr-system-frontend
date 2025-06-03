@@ -117,7 +117,7 @@ export default function EditTenant() {
       <form onSubmit={handleSubmit}>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <TextInput
-            label="اسم الشركة (عربي)"
+            label="اسم الشركة "
             name="company_name_ar"
             value={formData.company_name_ar}
             onChange={handleChange}
