@@ -21,6 +21,8 @@ const authApi = createApi({
     // 👇 meta field to carry company name
     headers: {
       'X-Company': formData.company_name, // custom header from formData
+      'content-type': 'application/json',
+      'Accept': 'application/json',
     },
   }),
   transformResponse: (response, meta) => ({
