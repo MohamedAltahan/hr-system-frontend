@@ -12,6 +12,7 @@ const Login = () => {
   const navigate=useNavigate()
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [company_name, setCompanyName] = useState("");
 
   const [adminLogin, { isLoading, error }] = useAdminloginMutation();
 
@@ -20,6 +21,7 @@ const Login = () => {
     const formData = {
       username: username,
       password: password,
+      company_name: company_name,
     };
 
     try {
@@ -31,6 +33,7 @@ const Login = () => {
       localStorage.setItem("user", JSON.stringify(response.data.response.body.user))
       localStorage.setItem("roles", JSON.stringify(response.data.response.body.user.roles))
       localStorage.setItem("lang", "ar");
+      localStorage.setItem("X-Company", JSON.stringify(response.data.response.body.company))
       navigate('/app/dashboard')
      }
      if(response?.error){
@@ -50,26 +53,25 @@ const Login = () => {
   }, [error]);
 
   return (
-    <div className="flex  items-center justify-center h-screen" style={{ backgroundImage: `url(${mainImage})`, backgroundSize: 'cover', 
+    <div className="flex  items-center justify-center h-screen " style={{ backgroundImage: `url(${mainImage})`, backgroundSize: 'cover', 
     }}>
   
-<div className="flex w-full items-center justify-center h-screen" style={{backgroundColor: '#13131399', backgroundSize: 'cover'}}>
-      <div className="bg-white px-8  py-8 rounded-3xl shadow-lg flex flex-col items-center justify-center w-[30%] h-[80%] relative">
+<div className="flex w-full items-center justify-center py-10" style={{backgroundColor: '#13131399', backgroundSize: 'cover'}}>
+<div className="bg-white px-4 py-5 rounded-3xl shadow-lg flex flex-col items-center justify-center my-5 w-[30%] h-[100%] relative">
         <div className="w-[90%] mx-auto">
-          {/* <div className="flex justify-center flex-col w-full">
-            <img
-              src={logo}
-              alt="Al Kholoud HR"
-              className="mx-auto object-fill h-[250px]"
-            />
-            <h2 className="text-3xl font-bold text-center mb-8 text-[#0C0A34]">
-              تسجيل الدخول إلي حسابك
-            </h2>
-          </div> */}
+     
 <h2 className="title-lg mb-5">مرحبًا بك مرة أخرى  👋</h2>
 <span className="title-sm  mb-8" style={{ color: 'var(--secondary-color)' , display: 'block',lineHeight: '1.5'}}> مرحبا بك مجددا في الخلود HR، سجّل الدخول لبدء إدارة مشاريعك</span>
           <form onSubmit={handleSubmit}>
 
+<TextInput
+        label="اسم الشركة"
+        id="company_name"
+        name="company_name"
+        value={company_name}
+        onChange={(e) => setCompanyName(e.target.value)}
+        placeholder="ادخل اسم الشركة"
+      />
 
    <TextInput
         label="اسم المستخدم"
