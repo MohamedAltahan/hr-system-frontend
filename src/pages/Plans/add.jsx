@@ -123,20 +123,20 @@ formData.features.ar.forEach((feature) => {
 
     try {
       const res = await createPlan(formDataToUpload).unwrap();
-      toast.success(res?.message || 'تمت إضافة الخطة بنجاح');
+      toast.success(res?.message || 'تمت إضافة الباقة بنجاح');
       navigate('/app/plans');
     } catch (error) {
-      toast.error(error?.data?.message || 'فشل في إضافة الخطة');
+      toast.error(error?.data?.message || 'فشل في إضافة الباقة');
     }
   };
 
   return (
     <SectionBox className="space-y-6">
-      <h2 className="text-xl font-bold">إضافة خطة جديدة</h2>
+      <h2 className="text-xl font-bold">إضافة باقة جديدة</h2>
       <form onSubmit={handleSubmit} className="grid grid-cols-2 gap-4">
 
        <TextInput
-  label="اسم الخطة "
+  label="اسم الباقة "
   name="name.ar"
   value={formData.name.ar}
   onChange={handleChange}
@@ -179,7 +179,7 @@ formData.features.ar.forEach((feature) => {
       onChange={handleChange}
     />
     <TextInput
-      label="مدة الخطة (شهور)"
+      label="مدة الباقة (شهور)"
       name="duration_in_months"
       type="number"
       value={formData.duration_in_months}
@@ -201,7 +201,7 @@ formData.features.ar.forEach((feature) => {
 <div className="col-span-2 flex  gap-8 mt-3 mb-5">
   <ToggleInput
     name="is_trial"
-    label="خطة تجريبية "
+    label="باقة تجريبية "
     checked={formData.is_trial}
     onChange={handleChange}
   />

@@ -116,23 +116,23 @@ formDataToUpload.append('_method', 'PUT');
 
     try {
       const res = await updatePlan({ id, formData: formDataToUpload }).unwrap();
-      toast.success(res?.message || 'تم تعديل الخطة بنجاح');
+      toast.success(res?.message || 'تم تعديل الباقة بنجاح');
       navigate('/app/plans');
     } catch (error) {
-      toast.error(error?.data?.message || 'فشل في تعديل الخطة');
+      toast.error(error?.data?.message || 'فشل في تعديل الباقة');
     }
   };
 
   return (
     <SectionBox className="space-y-6">
-      <h2 className="text-xl font-bold">تعديل الخطة</h2>
+      <h2 className="text-xl font-bold">تعديل الباقة</h2>
       {isFetching ? (
-        <p>جاري تحميل بيانات الخطة...</p>
+        <p>جاري تحميل بيانات الباقة...</p>
       ) : (
         <form onSubmit={handleSubmit} className="grid grid-cols-2 gap-4">
         
           <TextInput
-            label="اسم الخطة"
+            label="اسم الباقة"
             name="name"
             value={formData.name}
             onChange={handleChange}
@@ -177,7 +177,7 @@ formDataToUpload.append('_method', 'PUT');
                 onChange={handleChange}
               />
               <TextInput
-                label="مدة الخطة (شهور)"
+                label="مدة الباقة (شهور)"
                 name="duration_in_months"
                 type="number"
                 value={formData.duration_in_months}
@@ -197,7 +197,7 @@ formDataToUpload.append('_method', 'PUT');
           <div className="col-span-2 flex gap-8 mt-3 mb-5">
             <ToggleInput
               name="is_trial"
-              label="خطة تجريبية"
+              label="باقة تجريبية"
               checked={formData.is_trial}
               onChange={handleChange}
             />

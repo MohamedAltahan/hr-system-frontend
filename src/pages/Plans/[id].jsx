@@ -16,15 +16,15 @@ const ShowPlan = () => {
 
   const plan = data?.body;
 
-  if (!plan) return <p>الخطة غير موجودة</p>;
+  if (!plan) return <p>الباقة غير موجودة</p>;
 
   return (
     <SectionBox className="space-y-6">
-      <h2 className="text-lg font-bold">عرض الخطة</h2>
+      <h2 className="text-lg font-bold">عرض الباقة</h2>
 
       <div className="gap-4 bg-white border border-gray-200" style={{ borderRadius: '10px', overflow: 'hidden' }}>
         <div className="flex items-center justify-between px-4 py-4" style={{ borderBottom: '1px solid #1515151A' }}>
-          <h2 className="text-base font-bold">عرض تفاصيل الخطة</h2>
+          <h2 className="text-base font-bold">عرض تفاصيل الباقة</h2>
           <button className="EditPermissionBtn">
             <CancelButton onClick={() => navigate(`/app/plans/edit/${id}`)}>
               <LuPencil /> تعديل
@@ -34,7 +34,7 @@ const ShowPlan = () => {
 
         <div className="grid grid-cols-2">
           <div className="flex items-center p-4">
-            <span className="font-semibold" style={{ color: '#656565', fontSize: '14px', fontWeight: '500' }}>اسم الخطة :</span>
+            <span className="font-semibold" style={{ color: '#656565', fontSize: '14px', fontWeight: '500' }}>اسم الباقة :</span>
             <p className="ml-2" style={{ color: '#000', fontSize: '14px', fontWeight: '500' }}>{plan.name || '-----'}</p>
           </div>
 

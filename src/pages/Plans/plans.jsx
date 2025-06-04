@@ -39,16 +39,16 @@ const Plans = () => {
   const handleConfirmDelete = async () => {
     try {
       const res = await deletePlan(selectedId).unwrap();
-      toast.success(res?.message || "تم حذف الخطة بنجاح");
+      toast.success(res?.message || "تم حذف الباقة بنجاح");
     } catch (error) {
-      toast.error(error?.message || "فشل حذف الخطة");
+      toast.error(error?.message || "فشل حذف الباقة");
     } finally {
       setConfirmOpen(false);
     }
   };
 
   const headers = [
-    { key: "name", label: "اسم الخطة" },
+    { key: "name", label: "اسم الباقة" },
     { key: "description", label: "الوصف" },
     { key: "price", label: "السعر" },
     { key: "price_after_discount", label: "السعر بعد الخصم" },
@@ -63,10 +63,10 @@ const Plans = () => {
     <SectionBox className="space-y-4">
       {/* Header */}
       <div className="grid grid-cols-2 items-center gap-4">
-        <div className="containerTitle">إدارة الخطط</div>
+        <div className="containerTitle">إدارة الباقات</div>
         <div className="flex justify-end">
           <a href="/app/plans/add">
-            <AddingButton variant="main">إضافة خطة</AddingButton>
+            <AddingButton variant="main">إضافة باقة</AddingButton>
           </a>
         </div>
       </div>
@@ -109,7 +109,7 @@ const Plans = () => {
           onClose={() => setConfirmOpen(false)}
           onConfirm={handleConfirmDelete}
           title="تأكيد الحذف"
-          message="هل أنت متأكد أنك تريد حذف هذه الخطة؟"
+          message="هل أنت متأكد أنك تريد حذف هذه الباقة؟"
         />
       </div>
     </SectionBox>
