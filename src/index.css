@@ -172,12 +172,10 @@ letter-spacing: 0px;
 color: #1D1D1DB2;
 text-align: start;
 padding-block: 15px;
-line-height: 20px;
 }
 .tableHeaderText{
 font-family: Cairo-SemiBold;
 padding-block: 15px;
-line-height: 20px;
 
 text-align: start !important;
 font-weight: 600;

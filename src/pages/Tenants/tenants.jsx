@@ -56,7 +56,7 @@ const tenants = (tenantsData?.body?.data || []).map(tenant => ({
     { key: 'is_active', label: 'الحالة' },
     { key: 'version', label: 'الإصدار' },
     { key: 'plan_name', label: 'الخطة' },
-    { key: 'creating_status', label: 'حالة الإنشاء' },
+    // { key: 'creating_status', label: 'حالة الإنشاء' },
     { key: 'created_at', label: 'تاريخ الإنشاء' },
   ];
 
