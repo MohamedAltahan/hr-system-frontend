@@ -30,6 +30,15 @@ const subscriptionsApi = createApi({
       }),
       providesTags: ['subscription'],
     }),
+    createSubscription: builder.mutation<any, any>({
+  query: (subscriptionData) => ({
+    url: `/subscriptions`,
+    method: 'POST',
+    body: subscriptionData,
+  }),
+  invalidatesTags: ['subscription'],
+}),
+
 
     // Add other endpoints if needed:
     // createSubscription, updateSubscription, deleteSubscription, etc.
@@ -38,6 +47,7 @@ const subscriptionsApi = createApi({
 
 export const {
   useGetSubscriptionsByTenantIdQuery,
+  useCreateSubscriptionMutation,
 } = subscriptionsApi;
 
 export default subscriptionsApi;

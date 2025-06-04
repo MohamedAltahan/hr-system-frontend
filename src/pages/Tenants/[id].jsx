@@ -62,7 +62,6 @@ export default function ShowTenant() {
             <InfoItem label="البريد الالكتروني" value={tenant?.email} />
             <InfoItem label="رقم الهاتف" value={tenant?.phone} />
             <InfoItem label="الدومين" value={tenant?.domain} />
-            <InfoItem label=" اسم الباقة" value={tenant?.plan?.name} />
             <InfoItem label="الحالة" value={tenant?.is_active ? 'نشطة' : 'غير نشطة'} />
             <InfoItem
               label="تاريخ الانشاء"
@@ -109,11 +108,14 @@ export default function ShowTenant() {
                 {subscription ? (
                   <div className="mb-4 rounded-lg overflow-hidden  ">
                     <div className="grid grid-cols-1 gap-2">
-                      <InfoItem label="رقم الاشتراك" value={subscription.id} />
-                      <InfoItem label="الحالة" value={subscription.status} />
+                      {/* <InfoItem label="رقم الاشتراك" value={subscription.id} /> */}
+                                            <InfoItem label="اسم الباقة" value={subscription.plan_data?.name} />
+
+                      <InfoItem label="حالة الاشتراك" value={subscription.status} />
                       <InfoItem label="بداية الاشتراك" value={subscription.start_date?.date} />
                       <InfoItem label="نهاية الاشتراك" value={subscription.end_date?.date} />
-                      <InfoItem label="اسم الباقة" value={subscription.plan_data?.name} />
+                      <InfoItem label="سعر الباقة الاساسي" value={subscription?.plan_data.price + ' ' + subscription?.plan_data.currency} />
+                      <InfoItem label="سعر الباقة بعد الخصم " value={subscription ?.plan_data.price_after_discount + ' ' + subscription?.plan_data.currency}/>
                     </div>
                   </div>
                 ) : (

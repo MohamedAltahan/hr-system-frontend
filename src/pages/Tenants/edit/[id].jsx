@@ -14,6 +14,11 @@ import { toast } from 'react-toastify';
 import { useGetTenantByIdQuery, useUpdateTenantMutation } from '../../../api/TenantsApi';
 import { useGetAllPlansQuery } from '../../../api/PlansApi';
 
+import {
+
+  useCreateSubscriptionMutation,
+} from '../../../api/subscriptionsApi'; 
+
 export default function EditTenant() {
   const { id } = useParams();
   const navigate = useNavigate();
@@ -23,7 +28,10 @@ export default function EditTenant() {
   const user = JSON.parse(localStorage.getItem('user') || '{}');
   const company_id = user?.company_id;
 
-  const { data: plansData } = useGetAllPlansQuery({ company_id });
+  const { data: plansData } = useGetAllPlansQuery({ page: 1, status: 'active' ,company_id : id });
+
+    const [createSubscription, { isLoading: isCreating }] = useCreateSubscriptionMutation();
+
 
   const planOptions = useMemo(() => {
     return plansData?.body?.data?.map(plan => ({
@@ -122,9 +130,25 @@ useEffect(() => {
       </div>
     );
   }
-console.log('Selected Plan:', selectedPlan);
-console.log('Plan Options:', planOptions);
-console.log('Tenant Plan ID:', tenantData?.body?.plan?.id);
+const handlePlanChange = async (selectedOption) => {
+    setSelectedPlan(selectedOption);
+
+    try {
+      await createSubscription({
+        company_id: Number(id),
+
+        plan_id: selectedOption.value,
+      }).unwrap();
+
+      // Optionally navigate or show success
+      console.log('Subscription created successfully');
+      navigate(`/tenants/${id}/subscriptions`);
+    } catch (err) {
+      console.error('Failed to create subscription:', err);
+      // Optionally show error toast
+    }
+  };
+
 
   return (
     <SectionBox className="space-y-4">
@@ -159,12 +183,13 @@ console.log('Tenant Plan ID:', tenantData?.body?.plan?.id);
           <div className="mb-3">
             <label className="block mb-2 label-md">الخطة</label>
             
-            <Select
-              value={selectedPlan}
-              onChange={setSelectedPlan}
-              options={planOptions}
-              placeholder="اختر الخطة"
-            />
+         <Select
+        value={selectedPlan}
+        onChange={handlePlanChange}
+        options={planOptions}
+        placeholder="اختر الخطة"
+        isDisabled={isCreating || tenantLoading}
+      />
           </div>
           <ToggleInput
             label="الحالة"

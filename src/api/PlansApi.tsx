@@ -20,19 +20,23 @@ const plansApi = createApi({
 
   endpoints: (builder) => ({
     // 1. Get All Plans with optional filters
-    getAllPlans: builder.query<any, { name?: string; page?: number }>({
-      query: ({  name, page }) => {
-        const params = new URLSearchParams();
-        if (name) params.append('name', name);
-        if (page) params.append('page', page.toString());
+getAllPlans: builder.query<any, { name?: string; page?: number; status?: string; company_id?: number }>({
+  query: ({ name, page, status, company_id }) => {
+    const params = new URLSearchParams();
+    if (name) params.append('name', name);
+    if (page) params.append('page', page.toString());
+    if (status) params.append('status', status);
+    if (company_id) params.append('company_id', company_id.toString()); // <-- Add this line
 
-        return {
-          url: `/plans?${params.toString()}`,
-          method: 'GET',
-        };
-      },
-      providesTags: ['plan'],
-    }),
+    return {
+      url: `/plans?${params.toString()}`,
+      method: 'GET',
+    };
+  },
+  providesTags: ['plan'],
+}),
+
+
 
     // 2. Get Single Plan by ID
     getPlanById: builder.query<any, number>({
