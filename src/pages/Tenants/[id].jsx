@@ -117,7 +117,7 @@ export default function ShowTenant() {
                     </div>
                   </div>
                 ) : (
-                  <p className="text-sm text-gray-500">لا توجد اشتراكات حالياً.</p>
+                  <p className="text-sm text-gray-500 text-center">لا توجد اشتراكات حالياً.</p>
                 )}
               </>
             )}
@@ -145,7 +145,7 @@ export default function ShowTenant() {
                     rowKey="id"
                   />
                 ) : (
-                  <p className="text-sm text-gray-500">لا يوجد سجل اشتراكات.</p>
+                  <p className="text-sm text-gray-500 text-center">لا يوجد سجل اشتراكات.</p>
                 )}
               </>
             )}
