@@ -46,24 +46,36 @@ export default function EditTenant() {
 
   const [updateTenant, { isLoading: updateLoading }] = useUpdateTenantMutation();
 
-  useEffect(() => {
-    if (tenantData?.body) {
-      const tenant = tenantData.body;
-      setFormData({
-        company_name_ar: tenant.company_name || '',
-        company_name_en: tenant.company_name || '',
-        email: tenant.email || '',
-        phone: tenant.phone || '',
-        domain: tenant.domain || '',
-        is_active: tenant.is_active ?? 1,
-      });
+useEffect(() => {
+  if (tenantData?.body && planOptions.length > 0) {
+    const tenant = tenantData.body;
 
-      if (tenant.plan?.id) {
-        const planOption = planOptions.find(p => p.value === tenant.plan.id);
-        if (planOption) setSelectedPlan(planOption);
-      }
+    setFormData({
+      company_name_ar: tenant.company_name || '',
+      company_name_en: tenant.company_name || '',
+      email: tenant.email || '',
+      phone: tenant.phone || '',
+      domain: tenant.domain || '',
+      is_active: tenant.is_active ?? 1,
+      plan_id: tenant.plan?.id || null,
+    });
+
+    const planOption = planOptions.find(p => p.value === tenant.plan?.id);
+
+    if (planOption) {
+      setSelectedPlan(planOption);
+    } else if (tenant.plan) {
+      // Fallback: use tenant's current plan if not found in options
+      setSelectedPlan({
+        value: tenant.plan.id,
+        label: tenant.plan.name,
+      });
+    } else {
+      setSelectedPlan(null);
     }
-  }, [tenantData, planOptions]);
+  }
+}, [tenantData, planOptions]);
+
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -110,6 +122,9 @@ export default function EditTenant() {
       </div>
     );
   }
+console.log('Selected Plan:', selectedPlan);
+console.log('Plan Options:', planOptions);
+console.log('Tenant Plan ID:', tenantData?.body?.plan?.id);
 
   return (
     <SectionBox className="space-y-4">
@@ -143,6 +158,7 @@ export default function EditTenant() {
           />
           <div className="mb-3">
             <label className="block mb-2 label-md">الخطة</label>
+            
             <Select
               value={selectedPlan}
               onChange={setSelectedPlan}
