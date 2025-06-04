@@ -33,7 +33,6 @@ const Roles = () => {
 
   const roles = rolesData?.body || [];
   const pagination = rolesData?.body?.paginate;
-  console.log(rolesData);
   
 
   const headers = [
@@ -45,7 +44,7 @@ const Roles = () => {
   const tableData = roles.map((role) => ({
     ...role,
     title_ar: role.translation?.title?.ar || role.title,
-    title_en: role.translation?.title?.en || '',
+    title_en: role.name|| '',
     permissions: role.permissions.map((p) => p.title).join(', '),
   }));
 
