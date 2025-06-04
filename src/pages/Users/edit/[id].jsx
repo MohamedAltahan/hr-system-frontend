@@ -68,7 +68,10 @@ export default function EditUser() {
 
   const { data: rolesData } = useGetAllRolesQuery({ id: 0 });
   
-const roleOptions = rolesData?.body?.map(r => ({ value: r.id, label: r.name })) || [];
+const roleOptions = rolesData?.body?.map(role => ({
+  value: role.id,
+  label: role.title || role.name, // use translated title if needed
+})) || [];
 
 // This assumes the employee's current roles come in a field like `employee.role_ids` or `employee.roles`
 const [selectedRoles, setSelectedRoles] = useState([]);
@@ -119,18 +122,6 @@ useEffect(() => {
   if (data?.body) {
     const employee = data.body;
 
-
- if (employee && roleOptions.length) {
-    const currentRoles = employee.roles?.map(role => ({
-      value: role.id,
-      label: role.name
-    })) || [];
-    setSelectedRoles(currentRoles);
-  } 
-
-
-
-
     setFormData({
       name_ar: employee?.translations.name?.ar || '',
       name_en: employee?.translations.name?.en || '',
@@ -153,27 +144,23 @@ useEffect(() => {
     setSelectedGender(genderOptions.find(g => g.value === employee.gender));
     setSelectedStatus(statusOptions.find(s => s.value === employee.is_active));
     setSelectedSocialStatus(socialStatusOptions.find(s => s.value === employee.social_status));
-    setSelectedManager(
-  managerOptions.find(m => m.value === employee.direct_manager?.id)
-);
-
+    setSelectedManager(managerOptions.find(m => m.value === employee.direct_manager?.id));
     setSelectedBranch(branchOptions.find(b => b.value === employee.branch?.id));
     setSelectedDepartment(departmentOptions.find(d => d.value === employee.department_name?.id));
     setSelectedPosition(positionOptions.find(p => p.value === employee.position?.id));
     setSelectedJobTitle(jobTitleOptions.find(j => j.value === employee.job_title?.id));
-
-
-
   }
-}, [
-  data,
-  managerOptions,
-  branchOptions,
-  departmentOptions,
-  positionOptions,
-  jobTitleOptions,
-   roleOptions
-]);
+}, [data, managerOptions, branchOptions, departmentOptions, positionOptions, jobTitleOptions]);
+useEffect(() => {
+  if (data?.body?.roles && roleOptions.length > 0) {
+    const currentRoles = data.body.roles.map(role => ({
+      value: role.id,
+      label: role.translation?.title?.ar || role.name,
+    }));
+    setSelectedRoles(currentRoles);
+  }
+}, [data?.body?.roles, roleOptions.length]);
+
 
   const handleChange = (e) => {
     const { name, value, files } = e.target;
