@@ -80,7 +80,7 @@ const { data: plansData } = useGetAllPlansQuery();
             onChange={handleChange}
           />
           <TextInput
-            label="اسم الشركة (إنجليزي)"
+            label="اسم الشركة المميز (إنجليزي)"
             name="company_name_en"
             value={formData.company_name_en}
             onChange={handleChange}
