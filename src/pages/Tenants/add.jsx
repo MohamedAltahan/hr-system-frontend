@@ -28,7 +28,7 @@ export default function AddTenant() {
 const user = JSON.parse(localStorage.getItem('user') || '{}');
 const company_id = user?.company_id;
 
-const { data: plansData } = useGetAllPlansQuery({ company_id });
+const { data: plansData } = useGetAllPlansQuery();
   
   const planOptions = plansData?.body?.data?.map(plan => ({
     value: plan.id,

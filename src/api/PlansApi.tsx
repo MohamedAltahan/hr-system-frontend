@@ -20,10 +20,9 @@ const plansApi = createApi({
 
   endpoints: (builder) => ({
     // 1. Get All Plans with optional filters
-    getAllPlans: builder.query<any, { company_id: number; name?: string; page?: number }>({
-      query: ({ company_id, name, page }) => {
+    getAllPlans: builder.query<any, { name?: string; page?: number }>({
+      query: ({  name, page }) => {
         const params = new URLSearchParams();
-        params.append('company_id', company_id.toString());
         if (name) params.append('name', name);
         if (page) params.append('page', page.toString());
 
