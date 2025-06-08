@@ -20,10 +20,10 @@ const plansApi = createApi({
 
   endpoints: (builder) => ({
     // 1. Get All Plans with optional filters
-getAllPlans: builder.query<any, { name?: string; page?: number; status?: string; company_id?: number }>({
-  query: ({ name, page, status, company_id }) => {
+getAllPlans: builder.query<any, {  page?: number; status?: string; company_id?: number }>({
+  query: ({  page, status, company_id }) => {
     const params = new URLSearchParams();
-    if (name) params.append('name', name);
+    // if (name) params.append('name', name);
     if (page) params.append('page', page.toString());
     if (status) params.append('status', status);
     if (company_id) params.append('company_id', company_id.toString()); // <-- Add this line
@@ -75,6 +75,16 @@ getAllPlans: builder.query<any, { name?: string; page?: number; status?: string;
       }),
       invalidatesTags: ['plan'],
     }),
+    // 6. Assign Plan to Tenant
+assignPlanToTenant: builder.mutation<any, { company_id: number; plan_id: number }>({
+  query: (data) => ({
+    url: '/assign-plan-to-tenant',
+    method: 'POST',
+    body: data,
+  }),
+  invalidatesTags: ['plan'],
+}),
+
   }),
 });
 
@@ -84,6 +94,8 @@ export const {
   useCreatePlanMutation,
   useUpdatePlanMutation,
   useDeletePlanMutation,
+    useAssignPlanToTenantMutation, 
+
 } = plansApi;
 
 export default plansApi;

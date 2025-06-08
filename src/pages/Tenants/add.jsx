@@ -28,7 +28,11 @@ export default function AddTenant() {
 const user = JSON.parse(localStorage.getItem('user') || '{}');
 const company_id = user?.company_id;
 
-const { data: plansData } = useGetAllPlansQuery();
+const { data: plansData } = useGetAllPlansQuery({
+  // company_id: Number(id), 
+  page: 1,
+  status: 'active',
+});
   
   const planOptions = plansData?.body?.data?.map(plan => ({
     value: plan.id,
@@ -104,12 +108,12 @@ const { data: plansData } = useGetAllPlansQuery();
             onChange={handleChange}
           />
           <div className="mb-3">
-            <label className="block mb-2 label-md">الخطة</label>
+            <label className="block mb-2 label-md">الباقة</label>
             <Select
               value={selectedPlan}
               onChange={setSelectedPlan}
               options={planOptions}
-              placeholder="اختر الخطة"
+              placeholder="اختر الباقة"
             />
           </div>
         </div>
