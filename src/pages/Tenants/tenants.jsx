@@ -19,7 +19,7 @@ const tenants = (tenantsData?.body?.data || []).map(tenant => ({
   ...tenant,
   created_at: tenant.created_at?.date || '',
   is_active: tenant.is_active === 1 ? 'نشط' : 'غير نشط',
-  plan_name: tenant.plan?.name || '-------',
+  plan_name: tenant.subscription?.plan_data?.name || '-------',
 }));
 
 
