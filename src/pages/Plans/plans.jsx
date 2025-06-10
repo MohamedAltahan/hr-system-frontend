@@ -22,7 +22,7 @@ const Plans = () => {
     ...plan,
     features: plan.features?.join("، "), // Join features for display
       is_active: plan.is_active === 1 ? 'نشط' : 'غير نشط', // translate status here
-
+      trial_days: plan.is_trial != 0 ? plan.trial_days : '---', // translate trial days
   }));
 
   const pagination = plansData?.body?.paginate;
