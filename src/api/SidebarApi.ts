@@ -1,28 +1,19 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import { prepareHeaders } from './common/prepareHeaders'; // adjust path as needed
 
-const baseUrl = import.meta.env.VITE_API_BASE_URL; // Vite
-
+const baseUrl = import.meta.env.VITE_API_BASE_URL;
 
 const SidebarApi = createApi({
   reducerPath: 'SidebarApi',
   tagTypes: ['Sidebar'],
-
   baseQuery: fetchBaseQuery({
-    baseUrl: baseUrl,
-    prepareHeaders: (headers) => {
-      headers.set('Accept', 'application/json');
-      headers.set('Lang', localStorage.getItem('lang') || 'en');
-      headers.set('Authorization', `Bearer ${localStorage.getItem('HrSystem') || ''}`);
-            headers.set('X-Company',localStorage.getItem('X-Company') || 'default_company');
-
-      return headers;
-    },
+    baseUrl,
+    prepareHeaders,
   }),
-
   endpoints: (builder) => ({
     getSidebarServices: builder.query<any, void>({
       query: () => ({
-        url: `/sidebar`,
+        url: '/sidebar',
         method: 'GET',
       }),
       providesTags: ['Sidebar'],

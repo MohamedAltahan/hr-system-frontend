@@ -1,4 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import { prepareHeaders } from './common/prepareHeaders'; // adjust path as needed
 
 const baseUrl = import.meta.env.VITE_API_BASE_URL; // Vite
 
@@ -9,17 +10,7 @@ const branchesApi = createApi({
 
   baseQuery: fetchBaseQuery({
     baseUrl : baseUrl,
-    prepareHeaders: (headers) => {
-      const lang = localStorage.getItem('lang');
-      const token = localStorage.getItem('HrSystem');
-
-      if (lang) headers.set('Lang', lang);
-      if (token) headers.set('Authorization', `Bearer ${token}`);
-
-      headers.set('Accept', 'application/json');
-            headers.set('X-Company',localStorage.getItem('X-Company') || 'default_company');
-      return headers;
-    },
+    prepareHeaders
   }),
 
   endpoints: (builder) => ({
