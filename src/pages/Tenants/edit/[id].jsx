@@ -254,7 +254,7 @@ export default function EditTenant() {
             className="text-right"
           />
 
-          <div className="flex justify-between gap-4 pt-4">
+          <div className="flex justify-end gap-4 pt-4">
             {/* <button
               className="px-4 py-2 text-sm rounded-md bg-gray-100 hover:bg-gray-200 text-gray-700 border"
               onClick={() => {
