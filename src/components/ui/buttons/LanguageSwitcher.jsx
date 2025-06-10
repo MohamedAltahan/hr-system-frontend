@@ -21,7 +21,7 @@ const LanguageSwitcher = () => {
     <a
       href="#"
       onClick={toggleLanguage}
-      className="block px-4 py-2 mb-4 text-sm text-gray-700 hover:bg-gray-100 flex items-center gap-2"
+      className="block px-4 py-2  text-sm text-gray-700 hover:bg-gray-100 flex items-center gap-2"
     >
       <img src={languageIcon} className="w-5 h-5" alt="language" />
       <span>{language === "en" ? "العربية" : "English"}</span>
