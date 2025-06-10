@@ -74,7 +74,6 @@ console.log('id', id);
                   : '—'
               }
             />
-            <div className="border-t border-gray-200 border-t" />
             
           </div>
         </div>
