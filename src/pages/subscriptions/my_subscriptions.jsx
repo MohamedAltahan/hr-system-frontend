@@ -10,7 +10,9 @@ import { ar } from 'date-fns/locale';
 import ProductTable from '../../components/reusable_components/DataTable'; // ✅ adjust path as needed
 
 export default function ShowTenant() {
-  const { id } = useParams();
+  const user = localStorage.getItem('user');
+const id = user ? JSON.parse(user).company_id : null;
+console.log('id', id);
   const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState('subscriptions');
   const [page, setPage] = useState(1);
@@ -73,11 +75,7 @@ export default function ShowTenant() {
               }
             />
             <div className="border-t border-gray-200 border-t" />
-            <button className="EditPermissionBtn py-3 flex items-center justify-center w-full">
-              <CancelButton onClick={() => navigate(`/app/tenant/edit/${id}`)}>
-                <LuPencil /> تعديل
-              </CancelButton>
-            </button>
+            
           </div>
         </div>
 
@@ -157,7 +155,7 @@ export default function ShowTenant() {
       </div>
 
       <div className="mt-6 flex justify-end">
-        <CancelButton onClick={() => navigate('/app/tenant')}>رجوع</CancelButton>
+        <CancelButton onClick={() => navigate('/app/')}>رجوع</CancelButton>
       </div>
     </SectionBox>
   );

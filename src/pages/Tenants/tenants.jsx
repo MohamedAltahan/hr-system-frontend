@@ -50,7 +50,7 @@ const tenants = (tenantsData?.body?.data || []).map(tenant => ({
   // Table headers based on your tenant response fields
   const headers = [
     { key: 'company_name', label: 'اسم الشركة' },
-    // { key: 'domain', label: 'النطاق' },
+    { key: 'domain', label: 'اسم الشركة المميز' },
     // { key: 'email', label: 'البريد الإلكتروني' },
     // { key: 'phone', label: 'رقم الهاتف' },
     { key: 'is_active', label: 'الحالة' },

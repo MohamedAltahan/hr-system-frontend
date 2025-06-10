@@ -2,8 +2,12 @@ import { useEffect, useState } from "react";
 import { Outlet } from "react-router-dom";
 import Sidebar from "../Sidebar/Sidebar";
 import Navbar from "../Navbar/Navbar";
+import { useAuthReady } from "../../hooks/useAuthReady";
+
 
 const AppLayout = () => {
+    const isAuthReady = useAuthReady();
+
   const [direction, setDirection] = useState("ltr");
 
   useEffect(() => {
@@ -15,6 +19,7 @@ const AppLayout = () => {
     document.documentElement.lang = lang;
     document.documentElement.dir = dir;
   }, []);
+  if (!isAuthReady) return null; // or <SplashScreen />
 
   return (
     <div className="flex gap-1 h-screen" dir={direction}>

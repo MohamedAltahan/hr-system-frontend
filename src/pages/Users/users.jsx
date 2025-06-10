@@ -119,7 +119,7 @@ useEffect(() => {
 {/* filters */}
 
 
-<div className="grid grid-cols-5 gap-4 mb-4">
+<div className="grid grid-cols-5 gap-4 mb-4 " style={{alignItems:"end"}}>
 
     <div>
     <TextInput
@@ -127,7 +127,7 @@ useEffect(() => {
       value={searchName}
       onChange={(e) => setSearchName(e.target.value)}
       placeholder=" اسم الموظف"
-      className="w-full border border-gray-300 rounded px-2 py-1"
+      className="w-full border border-gray-300 rounded px-2 py-1 "
     />
   </div>
   <div>

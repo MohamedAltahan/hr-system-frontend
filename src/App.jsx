@@ -72,6 +72,10 @@ import AddPlane from './pages/Plans/add';
 import EditPlane from './pages/Plans/edit/[id]';
 import ShowPlane from './pages/Plans/[id]';
 
+
+
+import MySubscription from './pages/Subscriptions/my_subscriptions';
+
 const App = () => {
   return (
     <>
@@ -195,6 +199,17 @@ const App = () => {
     }
   />
 
+  </Route>
+
+  <Route path="my_subscriptions">
+  <Route
+    index
+    element={
+      <AuthGuard>
+        <MySubscription/>
+      </AuthGuard>
+    }
+  />
   </Route>
 <Route path="department">
   <Route

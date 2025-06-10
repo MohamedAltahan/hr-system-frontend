@@ -5,6 +5,8 @@ import { FiLogOut, FiChevronDown, FiChevronUp } from "react-icons/fi";
 import { useGetSidebarServicesQuery } from "../../api/SidebarApi";
 import DefaultIcon from "../Icons/DotIcon";
 import { BsBuilding } from "react-icons/bs";
+import { CiBadgeDollar } from "react-icons/ci";
+
 
 // Icon imports
 import Setting from "../Icons/Setting";
@@ -21,6 +23,7 @@ import Others from "../Icons/Others";
 // Icon mapping
 const iconMap = {
   companies_and_plans: BsBuilding ,
+  my_current_subscriptions: CiBadgeDollar,
   settings: Setting,
   self_service: SelfService,
   staff: Staff,

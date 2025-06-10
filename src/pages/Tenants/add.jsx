@@ -53,7 +53,7 @@ const { data: plansData } = useGetAllPlansQuery({
     const payload = {
       company_name: {
         ar: formData.company_name_ar,
-        en: formData.company_name_en,
+        en: formData.company_name_ar,
       },
       email: formData.email,
       phone: formData.phone,
@@ -75,55 +75,59 @@ const { data: plansData } = useGetAllPlansQuery({
   return (
     <SectionBox className="space-y-4">
       <h1 className="subtitle mb-9 ">إضافة شركة</h1>
-      <form onSubmit={handleSubmit}>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <TextInput
-            label="اسم الشركة (عربي)"
-            name="company_name_ar"
-            value={formData.company_name_ar}
-            onChange={handleChange}
-          />
-          <TextInput
-            label="اسم الشركة المميز (إنجليزي)"
-            name="company_name_en"
-            value={formData.company_name_en}
-            onChange={handleChange}
-          />
-          <EmailInput
-            label="البريد الإلكتروني"
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
-          />
-          <NewPhoneInput
-                    label="رقم الهاتف"
-            name="phone"
-            value={formData.phone}
-            onChange={handleChange}
-          />
-          <TextInput
-            label="الدومين"
-            name="domain"
-            value={formData.domain}
-            onChange={handleChange}
-          />
-          <div className="mb-3">
-            <label className="block mb-2 label-md">الباقة</label>
-            <Select
-              value={selectedPlan}
-              onChange={setSelectedPlan}
-              options={planOptions}
-              placeholder="اختر الباقة"
-            />
-          </div>
-        </div>
-        <div className="mt-6 flex justify-end gap-4">
-          <AddingButton type="submit">إضافة</AddingButton>
-          <CancelButton type="button" onClick={() => navigate('/app/tenant')}>
-            إلغاء
-          </CancelButton>
-        </div>
-      </form>
+    <form onSubmit={handleSubmit}>
+  <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+    <TextInput
+      label="اسم الشركة (عربي)"
+      name="company_name_ar"
+      value={formData.company_name_ar}
+      onChange={handleChange}
+    />
+    <TextInput
+      label="اسم الشركة المميز (إنجليزي)"
+      name="domain"
+      value={formData.domain}
+      onChange={handleChange}
+      placeholder="يستخدم عند تسجيل الدخول"
+    />
+    <EmailInput
+      label="البريد الإلكتروني"
+      name="email"
+      value={formData.email}
+      onChange={handleChange}
+    />
+    <NewPhoneInput
+      label="رقم الهاتف"
+      name="phone"
+      value={formData.phone}
+      onChange={handleChange}
+    />
+    <div className="mb-3">
+      <label className="block mb-2 label-md">الباقة</label>
+      <Select
+        value={selectedPlan}
+        onChange={setSelectedPlan}
+        options={planOptions}
+        placeholder="اختر الباقة"
+      />
+    </div>
+  </div>
+
+  {/* 👇 Hint Box Here */}
+  <div className="mt-4 p-4 bg-yellow-50 border border-yellow-300 rounded text-yellow-800 text-sm"
+  style={{borderRadius: '12px'}}>
+    <p className='mb-2'><strong> اسم المستخدم الافتراضي: </strong> admin</p>
+    <p><strong>كلمة المرور الافتراضية:</strong> admin</p>
+  </div>
+
+  <div className="mt-6 flex justify-end gap-4">
+    <AddingButton type="submit">إضافة</AddingButton>
+    <CancelButton type="button" onClick={() => navigate('/app/tenant')}>
+      إلغاء
+    </CancelButton>
+  </div>
+</form>
+
     </SectionBox>
   );
 }
