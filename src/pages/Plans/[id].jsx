@@ -69,10 +69,23 @@ const ShowPlan = () => {
           </div>
 
        
-            <div className="flex items-center p-4">
-              <span className="font-semibold" style={{ color: '#656565', fontSize: '14px', fontWeight: '500' }}>أيام التجربة :</span>
-              <p className="ml-2" style={{ color: '#000', fontSize: '14px', fontWeight: '500' }}>{plan.trial_days || '----'}</p>
-            </div>
+            {plan.is_trial !== 0 && (
+  <div className="flex items-center p-4">
+    <span
+      className="font-semibold"
+      style={{ color: '#656565', fontSize: '14px', fontWeight: '500' }}
+    >
+      أيام التجربة :
+    </span>
+    <p
+      className="ml-2"
+      style={{ color: '#000', fontSize: '14px', fontWeight: '500' }}
+    >
+      {plan.trial_days}
+    </p>
+  </div>
+)}
+
          
 
           <div className="flex items-center p-4">
