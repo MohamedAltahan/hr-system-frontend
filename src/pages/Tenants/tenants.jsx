@@ -41,7 +41,9 @@ const tenants = (tenantsData?.body?.data || []).map(tenant => ({
       const res = await deleteTenant(selectedId).unwrap();
       toast.success(res?.message || 'Tenant deleted successfully');
     } catch (error) {
-      toast.error(error?.message || 'Failed to delete tenant');
+      console.log(error);
+      
+      toast.error(error?.data?.message || 'Failed to delete tenant');
     } finally {
       setConfirmOpen(false);
     }
