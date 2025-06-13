@@ -76,6 +76,10 @@ import ShowPlane from './pages/Plans/[id]';
 
 import MySubscription from './pages/Subscriptions/my_subscriptions';
 
+
+import Profile from './pages/Profile/Profile';
+
+
 const App = () => {
   return (
     <>
@@ -211,6 +215,15 @@ const App = () => {
     }
   />
   </Route>
+  <Route path='profile'>
+  <Route
+    index
+    element={
+      <AuthGuard>
+        <Profile />
+      </AuthGuard>
+    }
+  />
 <Route path="department">
   <Route
     index
@@ -610,6 +623,7 @@ const App = () => {
           />
           <Route path="*" element={<Maintenence />} />
           
+        </Route>
         </Route>
 
       </Routes>
