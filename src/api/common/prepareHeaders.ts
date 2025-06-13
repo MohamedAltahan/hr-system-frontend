@@ -5,7 +5,7 @@ import type { BaseQueryFn } from '@reduxjs/toolkit/query/react';
 export const prepareHeaders = (headers: Headers) => {
   headers.set('Accept', 'application/json');
 
-  const lang = localStorage.getItem('lang') || 'en';
+  const lang = localStorage.getItem('lang') || 'ar';
   headers.set('Lang', lang);
   headers.set('accept-language', lang);
 

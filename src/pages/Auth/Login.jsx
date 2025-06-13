@@ -16,50 +16,48 @@ const Login = () => {
   const [adminLogin, { isLoading, error }] = useAdminloginMutation();
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
+  e.preventDefault();
 
-    localStorage.setItem("X-Company", company_name); // Needed for the login request
+  localStorage.setItem("X-Company", company_name); // Optional: move to prepareHeaders
 
-    const formData = {
-      username,
-      password,
-      company_name,
-    };
-
-    try {
-      const response = await adminLogin(formData);
-
-      if (response?.data?.status === 200) {
-        window.scrollTo(0, 0); // Scroll to top on successful login
-        window.location.reload(); // Reload the page to apply new auth state
-        const { token, user } = response.data.response.body;
-
-        // ✅ Save auth info AFTER login success
-        localStorage.setItem("HrSystem", token);
-        localStorage.setItem("user", JSON.stringify(user));
-        localStorage.setItem("roles", JSON.stringify(user.roles));
-        localStorage.setItem("lang", "ar");
-        localStorage.setItem("X-Company", company_name);
-
-        toast.success("تم تسجيل الدخول بنجاح");
-
-        // ✅ Navigate to dashboard (no reload)
-        navigate('/app/dashboard', { replace: true });
-      } else if (response?.error) {
-        toast.error("هناك خطأ ف الأيميل او الباسورد");
-      }
-    } catch (err) {
-      console.error("Login failed", err);
-      toast.error("حدث خطأ أثناء محاولة تسجيل الدخول");
-    }
+  const formData = {
+    username,
+    password,
+    company_name,
   };
 
-  useEffect(() => {
-    if (error) {
-      toast.error("حدث خطأ أثناء محاولة تسجيل الدخول");
-    }
-  }, [error]);
+  try {
+    const response = await adminLogin(formData);
 
+    // Success case
+    if (response?.data?.status === 200) {
+      const { token, user } = response.data.response.body;
+
+      // Store data
+      localStorage.setItem("HrSystem", token);
+      localStorage.setItem("user", JSON.stringify(user));
+      localStorage.setItem("roles", JSON.stringify(user.roles));
+      localStorage.setItem("lang", "ar");
+      localStorage.setItem("X-Company", company_name);
+
+      toast.success(response?.data?.response?.message || "تم تسجيل الدخول بنجاح");
+
+      // Redirect
+      navigate('/app/dashboard', { replace: true });
+
+    } else if (response?.error) {
+      
+      const errorMsg = response?.error?.response?.data?.message || "فشل في تسجيل الدخول";
+      toast.error(errorMsg);
+    }
+  } catch (err) {
+    console.error("Login failed", err);
+    toast.error("حدث خطأ أثناء محاولة تسجيل الدخول");
+  }
+};
+
+
+ 
   return (
     <div
       className="flex items-center justify-center h-screen"
