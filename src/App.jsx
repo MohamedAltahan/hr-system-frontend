@@ -224,6 +224,7 @@ const App = () => {
       </AuthGuard>
     }
   />
+  </Route>
 <Route path="department">
   <Route
     index
@@ -623,7 +624,6 @@ const App = () => {
           />
           <Route path="*" element={<Maintenence />} />
           
-        </Route>
         </Route>
 
       </Routes>

@@ -66,6 +66,18 @@ const tenantApi = createApi({
       }),
       invalidatesTags: ['tenant'],
     }),
+
+
+    // 6. Disable company
+disableCompany: builder.mutation<any, { company_id: number; is_active: 0 | 1 }>({
+  query: (payload) => ({
+    url: '/disable-company?_method=put',
+    method: 'POST',
+    body: payload,
+  }),
+  invalidatesTags: ['tenant'],
+}),
+
   }),
 });
 
@@ -75,6 +87,8 @@ export const {
   useCreateTenantMutation,
   useUpdateTenantMutation,
   useDeleteTenantMutation,
+    useDisableCompanyMutation, 
+
 } = tenantApi;
 
 export default tenantApi;

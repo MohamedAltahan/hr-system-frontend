@@ -11,6 +11,7 @@ const ProductTable = ({
   pagination,
   onPageChange,
   baseRoute = '',
+  customCellRender = {}, // ✅ support for custom cell rendering
 }) => {
   const navigate = useNavigate();
 
@@ -25,7 +26,10 @@ const ProductTable = ({
     if (!pagination) return null;
 
     return (
-      <nav className="flex items-center flex-column flex-wrap md:flex-row justify-between pt-4" aria-label="Table navigation">
+      <nav
+        className="flex items-center flex-column flex-wrap md:flex-row justify-between pt-4"
+        aria-label="Table navigation"
+      >
         <span className="text-sm font-normal text-gray-500 mb-4 md:mb-0 block w-full md:inline md:w-auto">
           عرض <span className="font-semibold text-gray-900">{from}</span> إلى{' '}
           <span className="font-semibold text-gray-900">{to}</span> من{' '}
@@ -46,9 +50,10 @@ const ProductTable = ({
                   onClick={() => !isDisabled && page && onPageChange(page)}
                   disabled={isDisabled}
                   className={`flex items-center justify-center px-3 h-8 leading-tight border 
-                    ${isActive
-                      ? 'text-blue-600 bg-blue-50 border-gray-300 hover:bg-blue-100'
-                      : 'text-gray-500 bg-white border-gray-300 hover:bg-gray-100 hover:text-gray-700'
+                    ${
+                      isActive
+                        ? 'text-blue-600 bg-blue-50 border-gray-300 hover:bg-blue-100'
+                        : 'text-gray-500 bg-white border-gray-300 hover:bg-gray-100 hover:text-gray-700'
                     }
                     ${idx === 0 ? 'rounded-s-lg' : ''} 
                     ${idx === links.length - 1 ? 'rounded-e-lg' : ''}
@@ -56,8 +61,14 @@ const ProductTable = ({
                   `}
                 >
                   {isArrow ? (
-                    label === 'Next' ? <MdChevronLeft className="text-lg" /> : <MdChevronRight className="text-lg" />
-                  ) : label}
+                    label === 'Next' ? (
+                      <MdChevronLeft className="text-lg" />
+                    ) : (
+                      <MdChevronRight className="text-lg" />
+                    )
+                  ) : (
+                    label
+                  )}
                 </button>
               </li>
             );
@@ -77,9 +88,7 @@ const ProductTable = ({
                 {typeof header === 'string' ? header : header.label}
               </th>
             ))}
-            {renderActions && (
-              <th className="px-6 py-3 tableHeaderText">الاجراءات</th>
-            )}
+            {renderActions && <th className="px-6 py-3 tableHeaderText">الاجراءات</th>}
           </tr>
         </thead>
         <tbody>
@@ -89,28 +98,38 @@ const ProductTable = ({
               className={`bg-white hover:bg-gray-50 cursor-pointer ${
                 index !== data.length - 1 ? 'border-b border-[#F6F6F6]' : ''
               }`}
-              onClick={() => navigate(`${baseRoute}/${item[rowKey]}`)} // ✅ Dynamic route
+              onClick={() => navigate(`${baseRoute}/${item[rowKey]}`)} // ✅ row click
             >
               {headers.map((header, idx) => {
                 const key = typeof header === 'string' ? header : header.key;
                 const value = item[key];
+
                 return (
-                  <td key={idx} className="px-6 py-4 tableContentText">
-                    {typeof value === 'string' &&
-                    value.match(/\.(jpeg|jpg|gif|png|webp)$/i) ? (
-                      <img
-                        src={value}
-                        alt=""
-                        className="w-12 h-12 object-cover rounded"
-                      />
-                    ) : (
-                      value
-                    )}
-                  </td>
+                <td
+  key={idx}
+  className="px-6 py-4 tableContentText"
+  onClick={(e) => {
+    // prevent row navigation when clicking inside custom cell content
+    if (customCellRender[key]) e.stopPropagation();
+  }}
+>
+  {customCellRender[key] ? (
+    customCellRender[key](item)
+  ) : typeof value === 'string' && value.match(/\.(jpeg|jpg|gif|png|webp)$/i) ? (
+    <img src={value} alt="" className="w-12 h-12 object-cover rounded" />
+  ) : (
+    value
+  )}
+</td>
+
                 );
               })}
+
               {renderActions && (
-                <td className="px-6 py-4 tableContentText" onClick={(e) => e.stopPropagation()}>
+                <td
+                  className="px-6 py-4 tableContentText"
+                  onClick={(e) => e.stopPropagation()} // ✅ prevent row click
+                >
                   {renderActions(item)}
                 </td>
               )}
@@ -132,6 +151,7 @@ ProductTable.propTypes = {
   pagination: PropTypes.object,
   onPageChange: PropTypes.func,
   baseRoute: PropTypes.string,
+  customCellRender: PropTypes.object, // ✅ new
 };
 
 export default ProductTable;
