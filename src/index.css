@@ -394,7 +394,7 @@ height: 40px !important;
 }
 
 .toggle-checkbox {
-  right: 0.25rem;
+  inset-inline-start: 0.25rem;
   transition: all 0.3s ease-in-out;
 }
 
