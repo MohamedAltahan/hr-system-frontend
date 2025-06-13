@@ -186,11 +186,12 @@ const [updatePassword, { isLoading: isUpdating }] = useUpdateTenantPasswordMutat
                 ) : history?.length > 0 ? (
                   <ProductTable
                     headers={[
-                      { label: 'رقم الاشتراك', key: 'id' },
+                      // { label: 'رقم الاشتراك', key: 'id' },
+                                            { label: 'اسم الباقة', key: 'plan_data.name' },
+
                       { label: 'الحالة', key: 'status' },
                       { label: 'بداية الاشتراك', key: 'start_date.date' },
                       { label: 'نهاية الاشتراك', key: 'end_date.date' },
-                      { label: 'اسم الباقة', key: 'plan_data.name' },
                     ]}
                     data={history.map((item) => ({
                       ...item,
