@@ -1,6 +1,6 @@
 import { useParams, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
-import { useGetTenantByIdQuery } from '../../api/TenantsApi';
+import { useGetTenantByIdQuery ,useUpdateTenantPasswordMutation  } from '../../api/TenantsApi';
 import { useGetSubscriptionsByTenantIdQuery } from '../../api/subscriptionsApi';
 import SectionBox from '../../components/ui/containers/SectionBox';
 import CancelButton from '../../components/ui/buttons/CancelBtn';
@@ -8,6 +8,9 @@ import { LuPencil } from 'react-icons/lu';
 import { format } from 'date-fns-jalali';
 import { ar } from 'date-fns/locale';
 import ProductTable from '../../components/reusable_components/DataTable'; // ✅ adjust path as needed
+import AddingButton from '../../components/ui/buttons/AddingBtn';
+import TextInput from '../../components/reusable_components/TextInput';
+import { toast } from 'react-toastify';
 
 export default function ShowTenant() {
   const { id } = useParams();
@@ -20,6 +23,11 @@ export default function ShowTenant() {
     skip: activeTab !== 'history',
   });
 
+  const [password, setPassword] = useState('');
+const [passwordConfirmation, setPasswordConfirmation] = useState('');
+const [updatePassword, { isLoading: isUpdating }] = useUpdateTenantPasswordMutation();
+
+
   const tenant = tenantData?.body;
   const subscription = tenant?.subscription;
   const history = subscriptionHistoryData?.body?.data || [];
@@ -31,6 +39,35 @@ export default function ShowTenant() {
       <p className="text-sm text-black ms-2">{value || '-'}</p>
     </div>
   );
+
+
+  const handleUpdatePassword = async (e) => {
+  e.preventDefault();
+
+  if (password !== passwordConfirmation) {
+    toast.error('تأكيد كلمة المرور غير متطابق');
+    return;
+  }
+
+  try {
+    const response = await updatePassword({
+      company_id: Number(id),
+      password,
+      password_confirmation: passwordConfirmation,
+    }).unwrap();
+
+    // ✅ Show success message from backend
+    toast.success(response?.message || 'تم تحديث كلمة المرور بنجاح');
+
+    // Clear form
+    setPassword('');
+    setPasswordConfirmation('');
+  } catch (err) {
+    // ✅ Show error message from backend if available
+    toast.error(err?.data?.message || 'فشل تحديث كلمة المرور');
+  }
+};
+
 
   if (isLoading) {
     return (
@@ -59,7 +96,8 @@ export default function ShowTenant() {
 
           <div className="grid grid-cols-1 mt-5">
             <InfoItem label="اسم الشركة" value={tenant?.company_name} />
-                        <InfoItem label="اسم الشركة المميز" value={tenant?.domain} />
+            <InfoItem label="اسم الشركة المميز" value={tenant?.domain} />
+            <InfoItem label="اسم المشرف المميز" value={tenant?.super_admin_name} />
 
             <InfoItem label="البريد الالكتروني" value={tenant?.email} />
             <InfoItem label="رقم الهاتف" value={tenant?.phone} />
@@ -85,20 +123,36 @@ export default function ShowTenant() {
         <div className="w-2/3 bg-white border border-gray-200 rounded-lg overflow-hidden">
           <div className="px-4 pt-3 relative">
             <div className="flex space-x-4 rtl:space-x-reverse">
-              {['subscriptions', 'history'].map((tab) => (
-                <button
-                  key={tab}
-                  onClick={() => setActiveTab(tab)}
-                className={`relative px-4 py-2 text-sm font-medium border-b-2 transition-colors duration-200 ${
-  activeTab === tab
-    ? 'border-blue-500 text-blue-600 -mb-px z-10 bg-white'
-    : 'border-transparent text-gray-600'
-}`}
+             {['subscriptions', 'history', 'super_admin'].map((tab) => (
+<button
+  key={tab}
+  onClick={() => setActiveTab(tab)}
+  className={`relative px-4 py-2 text-sm font-medium border-b-2 transition-colors duration-200 ${
+    activeTab === tab
+      ? 'border-blue-500 text-blue-600 -mb-px z-10 bg-white'
+      : 'border-transparent text-gray-600'
+  }`}
+>
+  {tab === 'subscriptions'
+    ? 'الاشتراكات'
+    : tab === 'history'
+    ? 'سجل الاشتراكات'
+    : (
+        <>
+          المشرف المميز
+          {tenant?.super_admin_name && (
+            <>
+              {' '}
+              <span className="font-bold text-gray-700 " style={{fontSize:"12px"}}>  ({tenant.super_admin_name})</span>
+            </>
+          )}
+        </>
+      )}
+</button>
 
-                >
-                  {tab === 'subscriptions' ? 'الاشتراكات' : 'سجل الاشتراكات'}
-                </button>
-              ))}
+
+))}
+
             </div>
             <div className="absolute bottom-0 left-0 w-full h-px bg-gray-200" />
           </div>
@@ -152,6 +206,38 @@ export default function ShowTenant() {
                 )}
               </>
             )}
+
+
+    {activeTab === 'super_admin' && (
+  <form onSubmit={handleUpdatePassword} className=" space-y-4 pt-5">
+    <div className="grid grid-cols-2 gap-4">
+      <TextInput
+        label="كلمة المرور الجديدة"
+        name="password"
+        type="password"
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+        required
+      />
+
+      <TextInput
+        label="تأكيد كلمة المرور"
+        name="password_confirmation"
+        type="password"
+        value={passwordConfirmation}
+        onChange={(e) => setPasswordConfirmation(e.target.value)}
+        required
+      />
+    </div>
+
+    <div className="flex justify-end pt-2">
+      <AddingButton type="submit" disabled={isUpdating}>
+        {isUpdating ? 'جاري التحديث...' : 'تحديث كلمة المرور'}
+      </AddingButton>
+    </div>
+  </form>
+)}
+
           </div>
         </div>
       </div>

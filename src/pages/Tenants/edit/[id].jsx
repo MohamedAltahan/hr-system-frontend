@@ -214,7 +214,7 @@ export default function EditTenant() {
             onChange={handleChange}
           />
           <TextInput
-            label="الدومين"
+            label=" الدومين او اسم الشركة المميز (إنجليزي)"
             name="domain"
             value={formData.domain}
             onChange={handleChange}

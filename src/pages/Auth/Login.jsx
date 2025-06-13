@@ -41,6 +41,7 @@ const Login = () => {
       localStorage.setItem("X-Company", company_name);
 
       toast.success(response?.data?.response?.message || "تم تسجيل الدخول بنجاح");
+      window.location.reload();
 
       // Redirect
       navigate('/app/dashboard', { replace: true });

@@ -82,7 +82,7 @@ export default function AddTenant() {
             onChange={handleChange}
           />
           <TextInput
-            label="اسم الشركة المميز (إنجليزي)"
+            label=" الدومين او اسم الشركة المميز (إنجليزي)"
             name="domain"
             value={formData.domain}
             onChange={handleChange}

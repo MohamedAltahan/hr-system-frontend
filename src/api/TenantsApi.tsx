@@ -77,6 +77,20 @@ disableCompany: builder.mutation<any, { company_id: number; is_active: 0 | 1 }>(
   }),
   invalidatesTags: ['tenant'],
 }),
+// 7. Update tenant password
+updateTenantPassword: builder.mutation<any, {
+  company_id: number;
+  password: string;
+  password_confirmation: string;
+}>({
+  query: (formData) => ({
+    url: '/update-password?_method=put',
+    method: 'POST', // Laravel expects POST with _method=PUT
+    body: formData,
+  }),
+  invalidatesTags: ['tenant'],
+}),
+
 
   }),
 });
@@ -88,6 +102,7 @@ export const {
   useUpdateTenantMutation,
   useDeleteTenantMutation,
     useDisableCompanyMutation, 
+    useUpdateTenantPasswordMutation
 
 } = tenantApi;
 
