@@ -168,7 +168,7 @@ const [updatePassword, { isLoading: isUpdating }] = useUpdateTenantPasswordMutat
                       <InfoItem label={t('plan_price_after_discount')} value={subscription ?.plan_data.price_after_discount + ' ' + subscription?.plan_data.currency}/>
                       */}
                      
-                      <InfoItem label={t('subscription_price')} value={subscription ?.plan_data.price + ' ' + subscription?.plan_data.currency_code}/>
+                      <InfoItem label={t('subscription_price')} value={subscription ?.plan_data.price + ' ' + subscription?.plan_data.currency_translated}/>
                     </div>
                   </div>
                 ) : (
@@ -194,7 +194,7 @@ const [updatePassword, { isLoading: isUpdating }] = useUpdateTenantPasswordMutat
                       ...item,
                       'start_date.date': item.start_date?.date,
                       'end_date.date': item.end_date?.date,
-                      'plan_data.price': item.plan_data?.price ? `${item.plan_data.price} ${item.plan_data.currency_code}` : t('trail'),
+                      'plan_data.price': item.plan_data?.price ? `${item.plan_data.price} ${item.plan_data.currency_translated}` : t('trail'),
                     }))}
                     onPageChange={(page) => setPage(page)}
                     rowKey="id"
@@ -228,7 +228,7 @@ const [updatePassword, { isLoading: isUpdating }] = useUpdateTenantPasswordMutat
       />
       <InfoItem
         label={t('subscription_price')}
-        value={`${subscription.plan_data?.price} ${subscription.plan_data?.currency_code}`}
+        value={`${subscription.plan_data?.price} ${subscription.plan_data?.currency_translated}`}
       />
         <AddingButton
      
