@@ -140,12 +140,7 @@ const [updatePassword, { isLoading: isUpdating }] = useUpdateTenantPasswordMutat
     : (
         <>
           المشرف المميز
-          {tenant?.super_admin_name && (
-            <>
-              {' '}
-              <span className="font-bold text-gray-700 " style={{fontSize:"12px"}}>  ({tenant.super_admin_name})</span>
-            </>
-          )}
+          
         </>
       )}
 </button>
@@ -157,7 +152,7 @@ const [updatePassword, { isLoading: isUpdating }] = useUpdateTenantPasswordMutat
             <div className="absolute bottom-0 left-0 w-full h-px bg-gray-200" />
           </div>
 
-          <div className="px-4 mt-10">
+          <div className="px-4 mt-5">
             {activeTab === 'subscriptions' && (
               <>
                 {subscription ? (
@@ -210,7 +205,24 @@ const [updatePassword, { isLoading: isUpdating }] = useUpdateTenantPasswordMutat
 
 
     {activeTab === 'super_admin' && (
-  <form onSubmit={handleUpdatePassword} className=" space-y-4 pt-5">
+  <form onSubmit={handleUpdatePassword} className=" space-y-4">
+    <div className="grid grid-cols-1 gap-4 mb-8">
+      
+
+<InfoItem
+  label="اسم المشرف المميز"
+  value={
+    tenant?.super_admin_name ? (
+      <span className="font-bold text-blue-600 bg-blue-100 px-2 py-0.5 rounded">
+        {tenant.super_admin_name}
+      </span>
+    ) : (
+      '-'
+    )
+  }
+/>
+
+    </div>
     <div className="grid grid-cols-2 gap-4">
       <TextInput
         label="كلمة المرور الجديدة"
