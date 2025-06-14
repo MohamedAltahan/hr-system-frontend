@@ -89,6 +89,20 @@
 "click_to_choose_image":"Click to choose an image",
 "name_en":"Name (English)",
 "name_ar":"Name (Arabic)",
-"update":"Update"
+"update":"Update",
+"num_trial_days":"Number of Trial Days",
+"plan_type":"Plan Type",
+"trail_subscription":"Trial Subscription",
+"subscription":"Subscription",
+"month": "Month",
+"subscription_price":"Subscription Price",
+"trail_package":"Trial Package",
+"trail": "Trial",
+"select_currency":"Select Currency",
+"during": "During",
+"months": "Months",
+"subscribe_to_price": "Subscribe to Price",
+"Subscription_type":"Subscription Type",
+"renew_subscription":"Renew Subscription"
     
 }

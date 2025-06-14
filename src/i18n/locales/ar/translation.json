@@ -85,7 +85,21 @@
         "click_to_choose_image":" اضغط لاختيار صورة",
         "name_ar":" الاسم (عربي)",
         "name_en":" الاسم (إنجليزي)",
-        "update":" تحديث"
+        "update":" تحديث",
+        "num_trial_days":" عدد أيام التجربة ",
+        "plan_type":" نوع الباقة",
+        "trail_subscription":" اشتراك تجريبي",
+        "subscription":" اشتراك",
+        "month": " شهر",
+        "subscription_price":" سعر الاشتراك",
+        "trail_package":" باقة تجريبية",
+        "trail": " تجريبية",
+        "select_currency":" اختر العملة",
+        "during": " خلال",
+        "months": " أشهر",
+        "subscribe_to_price": "الاشتراك في سعر",
+        "Subscription_type": "نوع الاشتراك",
+        "renew_subscription": "تجديد الاشتراك"
 
  
 

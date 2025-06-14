@@ -38,6 +38,7 @@ const Login = () => {
       localStorage.setItem("user", JSON.stringify(user));
       localStorage.setItem("roles", JSON.stringify(user.roles));
       localStorage.setItem("lang", "ar");
+      localStorage.setItem("i18nextLng", "ar");
       localStorage.setItem("X-Company", company_name);
 
       toast.success(response?.data?.response?.message || "تم تسجيل الدخول بنجاح");

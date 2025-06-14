@@ -162,14 +162,20 @@ const [updatePassword, { isLoading: isUpdating }] = useUpdateTenantPasswordMutat
                 {subscription ? (
                   <div className="mb-4 rounded-lg overflow-hidden  ">
                     <div className="grid grid-cols-1 gap-2">
-                      {/* <InfoItem label="رقم الاشتراك" value={subscription.id} /> */}
-                                            <InfoItem label={t('plan_name')} value={subscription.plan_data?.name} />
+                      {/* <InfoItem label={t('plan_name')} value={subscription.plan_data?.name} /> */}
+
+                      <InfoItem label={t('Subscription_type')}
+                       value={subscription.plan_data?.price == 0 ? t('trail_subscription') : t('subscription')+' ' + subscription.plan_data?.duration_in_months + t('months')} />
 
                       <InfoItem label={t('subscription_status')} value={subscription.status} />
                       <InfoItem label={t('subscription_starts_at')} value={subscription.start_date?.date} />
                       <InfoItem label={t('subscription_ends_at')} value={subscription.end_date?.date} />
-                      <InfoItem label={t('main_price_of_plan')} value={subscription?.plan_data.price + ' ' + subscription?.plan_data.currency} />
+                     
+                      {/* <InfoItem label={t('main_price_of_plan')} value={subscription?.plan_data.price + ' ' + subscription?.plan_data.currency} />
                       <InfoItem label={t('plan_price_after_discount')} value={subscription ?.plan_data.price_after_discount + ' ' + subscription?.plan_data.currency}/>
+                      */}
+                     
+                      <InfoItem label={t('subscription_price')} value={subscription ?.plan_data.price + ' ' + subscription?.plan_data.currency_code}/>
                     </div>
                   </div>
                 ) : (
@@ -185,9 +191,8 @@ const [updatePassword, { isLoading: isUpdating }] = useUpdateTenantPasswordMutat
                 ) : history?.length > 0 ? (
                   <ProductTable
                     headers={[
-                      // { label: 'رقم الاشتراك', key: 'id' },
-                                            { label: t('plan_name'), key: 'plan_data.name' },
-
+                      // { label: t('plan_name'), key: 'plan_data.name' },
+                      { label: t('price'), key: 'plan_data.price' },
                       { label: t('status'), key: 'status' },
                       { label: t('subscription_starts_at'), key: 'start_date.date' },
                       { label: t('subscription_ends_at'), key: 'end_date.date' },
@@ -196,7 +201,7 @@ const [updatePassword, { isLoading: isUpdating }] = useUpdateTenantPasswordMutat
                       ...item,
                       'start_date.date': item.start_date?.date,
                       'end_date.date': item.end_date?.date,
-                      'plan_data.name': item.plan_data?.name,
+                      'plan_data.price': item.plan_data?.price ? `${item.plan_data.price} ${item.plan_data.currency_code}` : t('trail'),
                     }))}
                     onPageChange={(page) => setPage(page)}
                     rowKey="id"

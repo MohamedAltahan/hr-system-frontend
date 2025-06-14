@@ -25,7 +25,8 @@ export default function AddTenant() {
     email: '',
     phone: '',
     domain: '',
-    active: '1'
+    active: '1',
+    trial_days: '',
   });
 
   const user = JSON.parse(localStorage.getItem('user') || '{}');
@@ -61,7 +62,8 @@ export default function AddTenant() {
       phone: formData.phone,
       domain: formData.domain,
       plan_id: selectedPlan?.value,
-      is_active: formData.active
+      is_active: formData.active,
+      trial_days: formData.trial_days,
     };
 
     try {
@@ -104,7 +106,14 @@ export default function AddTenant() {
     value={formData.phone}
     onChange={handleChange}
   />
-  <div className="mb-3">
+ <TextInput
+    label={t("num_trial_days")}
+    name="trial_days"
+    value={formData.trial_days}
+    onChange={handleChange}
+  />
+
+  {/* <div className="mb-3">
     <label className="block mb-2 label-md">{t("plan")}</label>
     <Select
       value={selectedPlan}
@@ -113,7 +122,7 @@ export default function AddTenant() {
       placeholder={t("select_plan")}
       isDisabled={isLoading}
     />
-  </div>
+  </div> */}
 </div>
 
 

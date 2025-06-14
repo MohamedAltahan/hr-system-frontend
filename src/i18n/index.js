@@ -21,6 +21,7 @@ i18n
   .init({
     resources,
     fallbackLng: 'ar',
+    
     interpolation: {
       escapeValue: false,
     },

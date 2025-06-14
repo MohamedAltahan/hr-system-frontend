@@ -3,6 +3,9 @@ import { Fragment } from 'react';
 import { X } from 'lucide-react';
 
 export default function Modal({ isOpen, onClose, title, children }) {
+  const lang = typeof window !== 'undefined' ? localStorage.getItem('lang') : 'en';
+  const dir = lang === 'ar' ? 'rtl' : 'ltr';
+
   return (
     <Transition appear show={isOpen} as={Fragment}>
       <Dialog as="div" className="relative z-50" onClose={onClose}>
@@ -18,7 +21,7 @@ export default function Modal({ isOpen, onClose, title, children }) {
           <div className="fixed inset-0 bg-black/25 backdrop-blur-sm" />
         </Transition.Child>
 
-        <div className="fixed inset-0 overflow-y-auto z-[9999]"> {/* Ensure high z-index */}
+        <div className="fixed inset-0 overflow-y-auto z-[9999]">
           <div className="flex min-h-full items-center justify-center p-4 text-center">
             <Transition.Child
               as={Fragment}
@@ -30,7 +33,8 @@ export default function Modal({ isOpen, onClose, title, children }) {
               leaveTo="opacity-0 scale-95"
             >
               <Dialog.Panel
-                className="w-full max-w-md transform overflow-visible rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all"
+                dir={dir}
+                className="w-full max-w-md transform overflow-visible rounded-2xl bg-white p-6 text-start align-middle shadow-xl transition-all"
               >
                 {/* Header */}
                 <div className="flex justify-between items-center mb-6">

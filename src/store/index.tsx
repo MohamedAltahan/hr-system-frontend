@@ -16,6 +16,7 @@ import tenantApi from '../api/TenantsApi';
 import plansApi from '../api/PlansApi';
 import subscriptionsApi from '../api/subscriptionsApi';
 import ProfileApi from '../api/ProfileApi';
+import PricesApi from '../api/pricesApi';
 const rootReducer = combineReducers({
     [authApi.reducerPath]: authApi.reducer,
     [Self_ServicesApi.reducerPath]: Self_ServicesApi.reducer,
@@ -33,6 +34,7 @@ const rootReducer = combineReducers({
     [plansApi.reducerPath]: plansApi.reducer, 
     [subscriptionsApi.reducerPath]: subscriptionsApi.reducer,
     [ProfileApi.reducerPath]: ProfileApi.reducer, 
+    [PricesApi.reducerPath]: PricesApi.reducer
 });
 
 export default configureStore({
@@ -56,6 +58,7 @@ export default configureStore({
             plansApi.middleware,
             subscriptionsApi.middleware,
             ProfileApi.middleware,
+            PricesApi.middleware
         ),
 });
 
