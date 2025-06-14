@@ -15,7 +15,7 @@
     "status":" الحالة",
     "created_at":" تاريخ الانشاء",
     "version":" الاصدار",
-    "plan_name":" اسم الخطة",
+    "plan_name":" اسم الباقة",
     "show_tenant_details":" عرض تفاصيل الشركة",
     "super_admin":" المشرف المميز",
     "subscription_history":" تاريخ الاشتراك",
@@ -57,5 +57,26 @@
   "subscribe_to_plan": "الاشتراك في باقة",
   "confirm_subscription": "تأكيد الاشتراك"
 
+,
+  
+    "description": "الوصف",
+    "price": "السعر",
+    "price_after_discount": "السعر بعد الخصم",
+    "duration_months": "المدة (بالأشهر)",
+    "trial_days": "أيام التجربة",
+    "plans_management": "إدارة الباقات",
+    "add_plan": "إضافة باقة",
+    "plan_delete_success": "تم حذف الباقة بنجاح",
+    "plan_delete_error": "فشل حذف الباقة",
+    "plan_confirm_delete_title": "تأكيد الحذف",
+    "plan_confirm_delete_message": "هل أنت متأكد أنك تريد حذف هذه الباقة؟"
+,
+    "active": "نشط",
+    "inactive": "غير نشط",
+        "not_applicable": "---"
+
+ 
+
+  
 
 }
