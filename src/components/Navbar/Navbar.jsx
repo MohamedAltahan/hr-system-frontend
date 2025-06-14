@@ -11,8 +11,11 @@ import { FiUser } from "react-icons/fi";
 import FiKey  from "../../assets/images/keyicon.svg"; 
 import LanguageSwitcher from "../ui/buttons/LanguageSwitcher";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 const Navbar = () => {
+    const { t } = useTranslation();
+  
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const user = JSON.parse(localStorage.getItem("user")) || {};
   const navigate = useNavigate();
@@ -84,9 +87,9 @@ const Navbar = () => {
               alt="User"
               className="w-12 h-12 rounded-full object-cover border border-gray-300"
             />
-            <div className="me-4 text-right mr-2">
+            <div className="me-4 ml-2 mr-2">
               <p className="font-semibold text-sm text-gray-800">{user.name || '---'}</p>
-              <p className="text-xs text-gray-500">{user.email || '---'}</p>
+              <p className="text-xs text-gray-500 ">{user.email || '---'}</p>
             </div>
           </div>
 
@@ -98,7 +101,7 @@ const Navbar = () => {
   className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 flex items-center gap-2"
 >
   <FiUser className="w-5 h-5" />
-  <span>عرض الملف الشخصي</span>
+  <span>{t('show_profile')}  </span>
 </Link>
 
 
@@ -107,14 +110,14 @@ const Navbar = () => {
 
           <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 flex items-center gap-2">
             <img src={FiKey} className="w-5 h-5" alt="key" />
-            <span>تغيير كلمة المرور</span>
+            <span>{t('change_password')}  </span>
           </a>
 
           <hr className="my-2 border-t border-gray-200" />
 
           <a onClick={handleLogout} className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 flex items-center gap-2 cursor-pointer">
             <FiLogOut className="w-5 h-5" />
-            <span>تسجيل الخروج</span>
+            <span> {t('logout')}</span>
           </a>
         </div>
       )}

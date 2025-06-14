@@ -6,6 +6,7 @@ import { useGetSidebarServicesQuery } from "../../api/SidebarApi";
 import DefaultIcon from "../Icons/DotIcon";
 import { BsBuilding } from "react-icons/bs";
 import { CiBadgeDollar } from "react-icons/ci";
+import { useTranslation } from "react-i18next";
 
 
 // Icon imports
@@ -48,6 +49,8 @@ const iconMap = {
 };
 
 const Sidebar = () => {
+    const { t } = useTranslation();
+
   const [openMenus, setOpenMenus] = useState({});
   const navigate = useNavigate();
   const location = useLocation();
@@ -176,7 +179,7 @@ const toggleMenu = (id) => {
               style={{ height: "48px", borderRadius: "10px" }}
             >
               <FiLogOut className="w-5 h-5" />
-              <span className="text-[16px] font-normal">تسجيل الخروج</span>
+              <span className="text-[16px] font-normal">{t('logout')} </span>
             </button>
           </li>
         </ul>

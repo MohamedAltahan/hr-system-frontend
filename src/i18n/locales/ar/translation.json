@@ -73,7 +73,10 @@
 ,
     "active": "نشط",
     "inactive": "غير نشط",
-        "not_applicable": "---"
+        "not_applicable": "---",
+        "show_profile": "عرض الملف الشخصي",
+        "change_password": "تغيير كلمة المرور",
+        "logout":" تسجيل الخروج"
 
  
 
