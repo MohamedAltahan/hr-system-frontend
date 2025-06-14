@@ -6,8 +6,11 @@ import CancelButton from '../../components/ui/buttons/CancelBtn';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 import { useGetProfileQuery, useUpdateProfileMutation } from '../../api/ProfileApi';
+import { useTranslation } from "react-i18next";
 
 const ProfileEdit = () => {
+    const { t } = useTranslation();
+
   const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
@@ -103,7 +106,7 @@ try {
 
   return (
     <SectionBox className="space-y-6">
-      <h2 className="text-xl font-bold">تعديل الملف الشخصي</h2>
+      <h2 className="text-xl font-bold">{t('edit_profile')}  </h2>
       <form onSubmit={handleSubmit}>
       {/* Avatar and Form Side-by-Side */}
 <div className="flex flex-col md:flex-row gap-6 mt-8">
@@ -114,13 +117,13 @@ try {
         {formData.avatar ? (
           <img
             src={URL.createObjectURL(formData.avatar)}
-            alt="صورة الموظف"
+            alt={t('image')}
             className="w-full h-full object-cover"
           />
         ) : formData.currentAvatar ? (
           <img
             src={formData.currentAvatar}
-            alt="الصورة الحالية"
+            alt={t('current_image')}
             className="w-full h-full object-cover"
           />
         ) : (
@@ -129,7 +132,7 @@ try {
           </div>
         )}
       </div>
-      <div className="text-sm text-blue-700 hover:underline mt-2">اضغط لاختيار صورة</div>
+      <div className="text-sm text-blue-700 hover:underline mt-2">{t('click_to_choose_image')}</div>
       <input
         id="avatar-upload"
         type="file"
@@ -143,12 +146,12 @@ try {
 
   {/* Form Fields - 70% */}
   <div className="w-full md:w-[70%] grid grid-cols-1 md:grid-cols-2 gap-4">
-    <TextInput label="الاسم (عربي)" name="name_ar" value={formData.name_ar} onChange={handleChange} />
-    <TextInput label="الاسم (إنجليزي)" name="name_en" value={formData.name_en} onChange={handleChange} />
-    <TextInput label="البريد الإلكتروني" name="email" value={formData.email} onChange={handleChange} />
-    <TextInput label="رقم الهاتف" name="phone" value={formData.phone} onChange={handleChange} />
-    <TextInput label="كلمة المرور الجديدة" name="password" type="password" value={formData.password} onChange={handleChange} required={false} />
-    <TextInput label="تأكيد كلمة المرور" name="password_confirmation" required={false} type="password" value={formData.password_confirmation} onChange={handleChange} />
+    <TextInput label={t('name_ar')} name="name_ar" value={formData.name_ar} onChange={handleChange} />
+    <TextInput label={t('name_en')} name="name_en" value={formData.name_en} onChange={handleChange} />
+    <TextInput label={t('email')} name="email" value={formData.email} onChange={handleChange} />
+    <TextInput label={t('phone')} name="phone" value={formData.phone} onChange={handleChange} />
+    <TextInput label={t('password')} name="password" type="password" value={formData.password} onChange={handleChange} required={false} />
+    <TextInput label={t('confirm_password')} name="password_confirmation" required={false} type="password" value={formData.password_confirmation} onChange={handleChange} />
   </div>
 </div>
 
@@ -156,10 +159,10 @@ try {
         {/* Buttons */}
         <div className="col-span-2 flex justify-end gap-4 mt-5">
           <AddingButton type="submit" disabled={isUpdating}>
-            {isUpdating ? 'جاري التحديث...' : 'تحديث'}
+            {isUpdating ? t('updating') : t('update')}
           </AddingButton>
           <CancelButton type="button" onClick={() => navigate('/app')}>
-            إلغاء
+            {t('cancel')}
           </CancelButton>
         </div>
       </form>

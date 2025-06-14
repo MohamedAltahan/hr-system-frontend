@@ -80,6 +80,15 @@
 ,
 "logout":"Logout",
 "change_password":"Change Password",
-"show_profile":"Show Profile"
+"show_profile":"Show Profile",
+"edit_profile":"Edit Profile",
+"password":"Password",
+"confirm_password":"Confirm Password",
+"image":"Image",
+"current_image":"Current Image",
+"click_to_choose_image":"Click to choose an image",
+"name_en":"Name (English)",
+"name_ar":"Name (Arabic)",
+"update":"Update"
     
 }

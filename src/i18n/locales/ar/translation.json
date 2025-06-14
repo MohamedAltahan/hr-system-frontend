@@ -76,7 +76,16 @@
         "not_applicable": "---",
         "show_profile": "عرض الملف الشخصي",
         "change_password": "تغيير كلمة المرور",
-        "logout":" تسجيل الخروج"
+        "logout":" تسجيل الخروج",
+        "edit_profile":" تعديل الملف الشخصي",
+        "password":" كلمة المرور",
+        "confirm_password":" تأكيد كلمة المرور",
+        "image":" صورة",
+        "current_image":" الصورة الحالية",
+        "click_to_choose_image":" اضغط لاختيار صورة",
+        "name_ar":" الاسم (عربي)",
+        "name_en":" الاسم (إنجليزي)",
+        "update":" تحديث"
 
  
 
