@@ -82,6 +82,7 @@ import Profile from './pages/Profile/Profile';
 
 const App = () => {
   return (
+    
     <>
       <Routes >
         {/* Landing Page */}
@@ -628,7 +629,14 @@ const App = () => {
 
       </Routes>
     </>
+
+
+
   );
+
+
+
+  
 };
 
 export default App;

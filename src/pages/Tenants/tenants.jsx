@@ -11,11 +11,14 @@ import { useDisableCompanyMutation } from "../../api/TenantsApi";
 
 import CustomToggle from '../../components/reusable_components/StyledSwitch';
 
+import { useTranslation } from 'react-i18next';
 
 const Tenants = () => {
+    const { t } = useTranslation();
+
   const [page, setPage] = useState(1);
 
-  // Fetch tenants data
+  // Fetch tenants dataa
   const { data: tenantsData, isLoading } = useGetAllTenantsQuery({ name: '', page });
 
   // Map tenants data for table, flattening created_at.date
@@ -54,17 +57,17 @@ const tenants = (tenantsData?.body?.data || []).map(tenant => ({
   };
 
   // Table headers based on your tenant response fields
-  const headers = [
-    { key: 'company_name', label: 'اسم الشركة' },
-    { key: 'domain', label: 'اسم الشركة المميز' },
-    // { key: 'email', label: 'البريد الإلكتروني' },
-    // { key: 'phone', label: 'رقم الهاتف' },
-    { key: 'is_active', label: 'الحالة' },
-    { key: 'version', label: 'الإصدار' },
-    { key: 'plan_name', label: 'اسم الباقة' },
-    // { key: 'creating_status', label: 'حالة الإنشاء' },
-    { key: 'created_at', label: 'تاريخ الإنشاء' },
-  ];
+const headers = [
+  { key: 'company_name', label: t('company_name') },
+  { key: 'domain', label: t('company_unique_name') },
+  // { key: 'email', label: t('email') },
+  // { key: 'phone', label: t('phone') },
+  { key: 'is_active', label: t('status') },
+  { key: 'version', label: t('version') },
+  { key: 'plan_name', label: t('plan_name') },
+  // { key: 'creating_status', label: t('creating_status') },
+  { key: 'created_at', label: t('created_at') },
+];
 
 
 const [disableCompany, { isLoading: toggleLoading }] = useDisableCompanyMutation();
@@ -85,10 +88,11 @@ const [disableCompany, { isLoading: toggleLoading }] = useDisableCompanyMutation
     <SectionBox className="space-y-4">
       {/* Header */}
       <div className="grid grid-cols-2 items-center gap-4">
-        <div className="containerTitle">إدارة الشركات</div>
+
+        <div className="containerTitle"> {t('tenant_management')}</div>
         <div className="flex justify-end">
           <a href="/app/tenant/add">
-            <AddingButton variant="main">إضافة شركة</AddingButton>
+            <AddingButton variant="main"> {t('add_tenant')} </AddingButton>
           </a>
         </div>
       </div>
@@ -135,8 +139,8 @@ const [disableCompany, { isLoading: toggleLoading }] = useDisableCompanyMutation
           isOpen={confirmOpen}
           onClose={() => setConfirmOpen(false)}
           onConfirm={handleConfirmDelete}
-          title="تأكيد الحذف"
-          message="هل أنت متأكد أنك تريد حذف هذه الشركة؟" 
+          title={t('confirm_delete')}
+          message={t('confirm_delete_message_tenants')}
         />
       </div>
     </SectionBox>

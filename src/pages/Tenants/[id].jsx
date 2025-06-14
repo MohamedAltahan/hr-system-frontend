@@ -11,8 +11,12 @@ import ProductTable from '../../components/reusable_components/DataTable'; // �
 import AddingButton from '../../components/ui/buttons/AddingBtn';
 import TextInput from '../../components/reusable_components/TextInput';
 import { toast } from 'react-toastify';
+import { useTranslation } from 'react-i18next';
+
 
 export default function ShowTenant() {
+      const { t } = useTranslation();
+
   const { id } = useParams();
   const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState('subscriptions');
@@ -91,19 +95,19 @@ const [updatePassword, { isLoading: isUpdating }] = useUpdateTenantPasswordMutat
         {/* Left: Company Info */}
         <div className="w-1/3 bg-white border border-gray-200 rounded-lg overflow-hidden">
           <div className="flex items-center justify-between px-4 py-3 align-center border-b border-gray-200">
-            <h2 className="text-base font-bold mb-0">عرض تفاصيل الشركة</h2>
+            <h2 className="text-base font-bold mb-0">{t('show_tenant_details')}</h2>
           </div>
 
           <div className="grid grid-cols-1 mt-5">
-            <InfoItem label="اسم الشركة" value={tenant?.company_name} />
-            <InfoItem label="اسم الشركة المميز" value={tenant?.domain} />
-            <InfoItem label="اسم المشرف المميز" value={tenant?.super_admin_name} />
+            <InfoItem label={t('company_name')} value={tenant?.company_name} />
+            <InfoItem label={t('company_unique_name')} value={tenant?.domain} />
+            <InfoItem label={t('super_admin_name')} value={tenant?.super_admin_name} />
 
-            <InfoItem label="البريد الالكتروني" value={tenant?.email} />
-            <InfoItem label="رقم الهاتف" value={tenant?.phone} />
-            <InfoItem label="الحالة" value={tenant?.is_active ? 'نشطة' : 'غير نشطة'} />
+            <InfoItem label={t('email')} value={tenant?.email} />
+            <InfoItem label={t('phone')} value={tenant?.phone} />
+            <InfoItem label={t('status')} value={tenant?.is_active ? t('active') : t('not_active')} />
             <InfoItem
-              label="تاريخ الانشاء"
+              label={t('created_at')}
               value={
                 tenant.created_at?.date
                   ? tenant.created_at.date
@@ -113,7 +117,7 @@ const [updatePassword, { isLoading: isUpdating }] = useUpdateTenantPasswordMutat
             <div className="border-t border-gray-200 border-t" />
             <button className="EditPermissionBtn py-3 flex items-center justify-center w-full">
               <CancelButton onClick={() => navigate(`/app/tenant/edit/${id}`)}>
-                <LuPencil /> تعديل
+                <LuPencil /> {t('edit')}
               </CancelButton>
             </button>
           </div>
@@ -134,12 +138,12 @@ const [updatePassword, { isLoading: isUpdating }] = useUpdateTenantPasswordMutat
   }`}
 >
   {tab === 'subscriptions'
-    ? 'الاشتراكات'
+    ?  t('subscriptions') 
     : tab === 'history'
-    ? 'سجل الاشتراكات'
+    ? t('subscription_history')
     : (
         <>
-          المشرف المميز
+          {t('super_admin')} 
           
         </>
       )}
@@ -159,17 +163,17 @@ const [updatePassword, { isLoading: isUpdating }] = useUpdateTenantPasswordMutat
                   <div className="mb-4 rounded-lg overflow-hidden  ">
                     <div className="grid grid-cols-1 gap-2">
                       {/* <InfoItem label="رقم الاشتراك" value={subscription.id} /> */}
-                                            <InfoItem label="اسم الباقة" value={subscription.plan_data?.name} />
+                                            <InfoItem label={t('plan_name')} value={subscription.plan_data?.name} />
 
-                      <InfoItem label="حالة الاشتراك" value={subscription.status} />
-                      <InfoItem label="بداية الاشتراك" value={subscription.start_date?.date} />
-                      <InfoItem label="نهاية الاشتراك" value={subscription.end_date?.date} />
-                      <InfoItem label="سعر الباقة الاساسي" value={subscription?.plan_data.price + ' ' + subscription?.plan_data.currency} />
-                      <InfoItem label="سعر الباقة بعد الخصم " value={subscription ?.plan_data.price_after_discount + ' ' + subscription?.plan_data.currency}/>
+                      <InfoItem label={t('subscription_status')} value={subscription.status} />
+                      <InfoItem label={t('subscription_starts_at')} value={subscription.start_date?.date} />
+                      <InfoItem label={t('subscription_ends_at')} value={subscription.end_date?.date} />
+                      <InfoItem label={t('main_price_of_plan')} value={subscription?.plan_data.price + ' ' + subscription?.plan_data.currency} />
+                      <InfoItem label={t('plan_price_after_discount')} value={subscription ?.plan_data.price_after_discount + ' ' + subscription?.plan_data.currency}/>
                     </div>
                   </div>
                 ) : (
-                  <p className="text-sm text-gray-500 text-center">لا توجد اشتراكات حالياً.</p>
+                  <p className="text-sm text-gray-500 text-center">{t('no_subscriptions_now')}</p>
                 )}
               </>
             )}
@@ -177,16 +181,16 @@ const [updatePassword, { isLoading: isUpdating }] = useUpdateTenantPasswordMutat
             {activeTab === 'history' && (
               <>
                 {isFetching ? (
-                  <p className="text-sm text-gray-500 text-center">جاري تحميل ...</p>
+                  <p className="text-sm text-gray-500 text-center">{t('loading')}</p>
                 ) : history?.length > 0 ? (
                   <ProductTable
                     headers={[
                       // { label: 'رقم الاشتراك', key: 'id' },
-                                            { label: 'اسم الباقة', key: 'plan_data.name' },
+                                            { label: t('plan_name'), key: 'plan_data.name' },
 
-                      { label: 'الحالة', key: 'status' },
-                      { label: 'بداية الاشتراك', key: 'start_date.date' },
-                      { label: 'نهاية الاشتراك', key: 'end_date.date' },
+                      { label: t('status'), key: 'status' },
+                      { label: t('subscription_starts_at'), key: 'start_date.date' },
+                      { label: t('subscription_ends_at'), key: 'end_date.date' },
                     ]}
                     data={history.map((item) => ({
                       ...item,
@@ -198,7 +202,7 @@ const [updatePassword, { isLoading: isUpdating }] = useUpdateTenantPasswordMutat
                     rowKey="id"
                   />
                 ) : (
-                  <p className="text-sm text-gray-500 text-center">لا يوجد سجل اشتراكات.</p>
+                  <p className="text-sm text-gray-500 text-center">{t('no_subscriptions_history')}</p>
                 )}
               </>
             )}
@@ -210,8 +214,8 @@ const [updatePassword, { isLoading: isUpdating }] = useUpdateTenantPasswordMutat
       
 
 <InfoItem
-  label="اسم المشرف المميز"
-  value={
+  label={t('super_admin_name')}
+    value={
     tenant?.super_admin_name ? (
       <span className="font-bold text-blue-600 bg-blue-100 px-2 py-0.5 rounded">
         {tenant.super_admin_name}
@@ -225,7 +229,7 @@ const [updatePassword, { isLoading: isUpdating }] = useUpdateTenantPasswordMutat
     </div>
     <div className="grid grid-cols-2 gap-4">
       <TextInput
-        label="كلمة المرور الجديدة"
+        label={t('new_password')}
         name="password"
         type="password"
         value={password}
@@ -234,8 +238,8 @@ const [updatePassword, { isLoading: isUpdating }] = useUpdateTenantPasswordMutat
       />
 
       <TextInput
-        label="تأكيد كلمة المرور"
-        name="password_confirmation"
+        label={t('confirm_new_password')}
+                name="password_confirmation"
         type="password"
         value={passwordConfirmation}
         onChange={(e) => setPasswordConfirmation(e.target.value)}
@@ -245,7 +249,7 @@ const [updatePassword, { isLoading: isUpdating }] = useUpdateTenantPasswordMutat
 
     <div className="flex justify-end pt-2">
       <AddingButton type="submit" disabled={isUpdating}>
-        {isUpdating ? 'جاري التحديث...' : 'تحديث كلمة المرور'}
+        {isUpdating ? t('updating') : t('update_password')}
       </AddingButton>
     </div>
   </form>
@@ -256,7 +260,7 @@ const [updatePassword, { isLoading: isUpdating }] = useUpdateTenantPasswordMutat
       </div>
 
       <div className="mt-6 flex justify-end">
-        <CancelButton onClick={() => navigate('/app/tenant')}>رجوع</CancelButton>
+        <CancelButton onClick={() => navigate('/app/tenant')}>{t('back')}</CancelButton>
       </div>
     </SectionBox>
   );

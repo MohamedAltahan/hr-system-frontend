@@ -9,6 +9,7 @@ import CancelButton from '../../../components/ui/buttons/CancelBtn';
 import Select from 'react-select';
 import ToggleInput from '../../../components/reusable_components/ToggleInput';
 import { DollarSign } from 'lucide-react'; // Optional icon
+import { useTranslation } from 'react-i18next';
 
 
 import Modal from '../../../components/ui/modals/Modal'; // Assuming you have a reusable modal
@@ -28,6 +29,7 @@ import {
 export default function EditTenant() {
   const { id } = useParams();
   const navigate = useNavigate();
+const { t } = useTranslation();
 
   const { data: tenantData, isLoading: tenantLoading } = useGetTenantByIdQuery(id);
 
@@ -104,39 +106,39 @@ export default function EditTenant() {
     setTempSelectedPlan(selectedPlan);
     setIsPlanModalOpen(true);
   };
+const handleAssignPlan = async () => {
+  if (!tempSelectedPlan) return;
+  try {
+    const res = await assignPlanToTenant({
+      company_id: Number(id),
+      plan_id: tempSelectedPlan.value,
+    }).unwrap();
 
-  const handleAssignPlan = async () => {
-    if (!tempSelectedPlan) return;
-    try {
-      await assignPlanToTenant({
-        company_id: Number(id),
-        plan_id: tempSelectedPlan.value,
-      }).unwrap();
+    toast.success(res?.message || t('assign_plan_success'));
+    setSelectedPlan(tempSelectedPlan);
+    setShowSubscribeSelect(true);
+  } catch (err) {
+    toast.error(err?.data?.message || t('assign_plan_failed'));
+  }
+};
 
-      toast.success('تم تعيين الباقة بنجاح');
-      setSelectedPlan(tempSelectedPlan);
-      setShowSubscribeSelect(true); // show subscription input after success
-    } catch (err) {
-      toast.error(err?.data?.message || 'فشل تعيين الباقة');
-    }
-  };
+const handleConfirmSubscribe = async () => {
+  if (!subscriptionPlan) return;
+  try {
+    const res = await createSubscription({
+      company_id: Number(id),
+      plan_id: subscriptionPlan.value,
+    }).unwrap();
 
-  const handleConfirmSubscribe = async () => {
-    if (!subscriptionPlan) return;
-    try {
-      await createSubscription({
-        company_id: Number(id),
-        plan_id: subscriptionPlan.value,
-      }).unwrap();
+    toast.success(res?.message || t('subscription_success'));
+    setIsPlanModalOpen(false);
+    setShowSubscribeSelect(false);
+    setSubscriptionPlan(null);
+  } catch (err) {
+    toast.error(err?.data?.message || t('subscription_failed'));
+  }
+};
 
-      toast.success('تم الاشتراك في الباقة بنجاح');
-      setIsPlanModalOpen(false);
-      setShowSubscribeSelect(false);
-      setSubscriptionPlan(null);
-    } catch (err) {
-      toast.error(err?.data?.message || 'فشل الاشتراك في الباقة');
-    }
-  };
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -180,127 +182,125 @@ export default function EditTenant() {
   }
 
   return (
-    <SectionBox className="space-y-4">
-      <form onSubmit={handleSubmit}>
-        <div className="flex items-center justify-between mb-9">
-          <h1 className="subtitle">تعديل شركة</h1>
-          <div style={{ position: 'absolute', insetInlineEnd: '0' }}>
-            <ToggleInput
-              label="الحالة"
-              name="is_active"
-              checked={formData.is_active === 1}
-              onChange={handleChange}
-            />
-          </div>
-        </div>
+  <SectionBox className="space-y-4">
+  <form onSubmit={handleSubmit}>
+    <div className="flex items-center justify-between mb-9">
+      <h1 className="subtitle">{t('edit_company')}</h1>
+      <div style={{ position: 'absolute', insetInlineEnd: '0' }}>
+        <ToggleInput
+          label={t('status')}
+          name="is_active"
+          checked={formData.is_active === 1}
+          onChange={handleChange}
+        />
+      </div>
+    </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <TextInput
-            label="اسم الشركة"
-            name="company_name_ar"
-            value={formData.company_name_ar}
-            onChange={handleChange}
-          />
-          <EmailInput
-            label="البريد الإلكتروني"
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
-          />
-          <NewPhoneInput
-            label="رقم الهاتف"
-            name="phone"
-            value={formData.phone}
-            onChange={handleChange}
-          />
-          <TextInput
-            label=" الدومين او اسم الشركة المميز (إنجليزي)"
-            name="domain"
-            value={formData.domain}
-            onChange={handleChange}
-          />
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <TextInput
+        label={t('company_name')}
+        name="company_name_ar"
+        value={formData.company_name_ar}
+        onChange={handleChange}
+      />
+      <EmailInput
+        label={t('email')}
+        name="email"
+        value={formData.email}
+        onChange={handleChange}
+      />
+      <NewPhoneInput
+        label={t('phone')}
+        name="phone"
+        value={formData.phone}
+        onChange={handleChange}
+      />
+      <TextInput
+        label={t('domain')}
+        name="domain"
+        value={formData.domain}
+        onChange={handleChange}
+      />
 
-          <button
-          style={{width:'fit-content'}}
-            type="button"
-            onClick={handleOpenPlanModal}
-            className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-white bg-indigo-600 rounded-md shadow-sm hover:bg-indigo-700"
-          >
-            <DollarSign className="w-4 h-4" />
-            تحديد السعر
-          </button>
-        </div>
+      <button
+        style={{ width: 'fit-content' }}
+        type="button"
+        onClick={handleOpenPlanModal}
+        className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-white bg-indigo-600 rounded-md shadow-sm hover:bg-indigo-700"
+      >
+        <DollarSign className="w-4 h-4" />
+        {t('assign_price')}
+      </button>
+    </div>
 
-        <div className="mt-6 flex justify-end gap-4">
-          <AddingButton type="submit" disabled={updateLoading}>حفظ التغييرات</AddingButton>
-          <CancelButton type="button" onClick={() => navigate('/app/tenant')}>إلغاء</CancelButton>
-        </div>
-      </form>
+    <div className="mt-6 flex justify-end gap-4">
+      <AddingButton type="submit" disabled={updateLoading}>
+        {t('save_changes')}
+      </AddingButton>
+      <CancelButton type="button" onClick={() => navigate('/app/tenant')}>
+        {t('cancel')}
+      </CancelButton>
+    </div>
+  </form>
 
-      {/* Plan Modal */}
-      <Modal isOpen={isPlanModalOpen} onClose={() => {
-        setIsPlanModalOpen(false);
-        setShowSubscribeSelect(false);
-        setSubscriptionPlan(null);
-      }} title="تحديد السعر">
-        <div className="space-y-6 px-2 py-1">
+  {/* Plan Modal */}
+  <Modal
+    isOpen={isPlanModalOpen}
+    onClose={() => {
+      setIsPlanModalOpen(false);
+      setShowSubscribeSelect(false);
+      setSubscriptionPlan(null);
+    }}
+    title={t('assign_price')}
+  >
+    <div className="space-y-6 px-2 py-1">
+      <Select
+        value={tempSelectedPlan}
+        onChange={setTempSelectedPlan}
+        options={assignPlanOptions}
+        placeholder={t('select_plan')}
+        isSearchable
+        isDisabled={assigning}
+        className="text-right"
+      />
+
+      <div className="flex justify-end gap-4 pt-4">
+        <button
+          className="px-4 py-2 text-sm rounded-md bg-indigo-600 hover:bg-indigo-700 text-white disabled:opacity-50"
+          onClick={handleAssignPlan}
+          disabled={assigning || !tempSelectedPlan}
+        >
+          {t('confirm_assignment')}
+        </button>
+      </div>
+
+      {showSubscribeSelect && (
+        <div className="mt-6 border-t pt-6">
+          <label className="block mb-2 label-md">{t('subscribe_to_plan')}</label>
           <Select
-            value={tempSelectedPlan}
-            onChange={setTempSelectedPlan}
-            options={assignPlanOptions}
-            placeholder="اختر الباقة"
+            value={subscriptionPlan}
+            onChange={setSubscriptionPlan}
+            options={subscribePlanOptions}
+            placeholder={t('select_plan')}
             isSearchable
-            isDisabled={assigning}
+            isDisabled={isCreating}
             className="text-right"
           />
-
-          <div className="flex justify-end gap-4 pt-4">
-            {/* <button
-              className="px-4 py-2 text-sm rounded-md bg-gray-100 hover:bg-gray-200 text-gray-700 border"
-              onClick={() => {
-                setIsPlanModalOpen(false);
-                setShowSubscribeSelect(false);
-                setSubscriptionPlan(null);
-              }}
-            >
-              إلغاء
-            </button> */}
-
+          <div className="flex justify-end pt-4">
             <button
-              className="px-4 py-2 text-sm rounded-md bg-indigo-600 hover:bg-indigo-700 text-white disabled:opacity-50"
-              onClick={handleAssignPlan}
-              disabled={assigning || !tempSelectedPlan}
+              className="px-4 py-2 text-sm rounded-md bg-green-600 hover:bg-green-700 text-white disabled:opacity-50"
+              onClick={handleConfirmSubscribe}
+              disabled={!subscriptionPlan || isCreating}
             >
-              تأكيد التعيين
+              {t('confirm_subscription')}
             </button>
           </div>
-
-          {showSubscribeSelect && (
-            <div className="mt-6 border-t pt-6">
-              <label className="block mb-2 label-md">الاشتراك في باقة</label>
-              <Select
-                value={subscriptionPlan}
-                onChange={setSubscriptionPlan}
-                options={subscribePlanOptions}
-                placeholder="اختر باقة للاشتراك"
-                isSearchable
-                isDisabled={isCreating}
-                className="text-right"
-              />
-              <div className="flex justify-end pt-4">
-                <button
-                  className="px-4 py-2 text-sm rounded-md bg-green-600 hover:bg-green-700 text-white disabled:opacity-50"
-                  onClick={handleConfirmSubscribe}
-                  disabled={!subscriptionPlan || isCreating}
-                >
-                  تأكيد الاشتراك
-                </button>
-              </div>
-            </div>
-          )}
         </div>
-      </Modal>
-    </SectionBox>
+      )}
+    </div>
+  </Modal>
+</SectionBox>
+
   );
 }
 

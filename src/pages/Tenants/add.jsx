@@ -8,11 +8,15 @@ import AddingButton from '../../components/ui/buttons/AddingBtn';
 import CancelButton from '../../components/ui/buttons/CancelBtn';
 import Select from 'react-select';
 import { toast } from 'react-toastify';
+import { useTranslation } from 'react-i18next';
+
 
 import { useCreateTenantMutation } from '../../api/TenantsApi';
 import { useGetAllPlansQuery } from '../../api/PlansApi';
 
 export default function AddTenant() {
+        const { t } = useTranslation();
+
   const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
@@ -72,68 +76,74 @@ export default function AddTenant() {
 
   return (
     <SectionBox className="space-y-4">
-      <h1 className="subtitle mb-9">إضافة شركة</h1>
+      <h1 className="subtitle mb-9">{t('add_tenant')} </h1>
       <form onSubmit={handleSubmit}>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-          <TextInput
-            label="اسم الشركة (عربي)"
-            name="company_name_ar"
-            value={formData.company_name_ar}
-            onChange={handleChange}
-          />
-          <TextInput
-            label=" الدومين او اسم الشركة المميز (إنجليزي)"
-            name="domain"
-            value={formData.domain}
-            onChange={handleChange}
-            placeholder="يستخدم عند تسجيل الدخول"
-          />
-          <EmailInput
-            label="البريد الإلكتروني"
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
-          />
-          <NewPhoneInput
-            label="رقم الهاتف"
-            name="phone"
-            value={formData.phone}
-            onChange={handleChange}
-          />
-          <div className="mb-3">
-            <label className="block mb-2 label-md">الباقة</label>
-            <Select
-              value={selectedPlan}
-              onChange={setSelectedPlan}
-              options={planOptions}
-              placeholder="اختر الباقة"
-              isDisabled={isLoading}
-            />
-          </div>
-        </div>
+  <TextInput
+    label={t("company_name_ar")}
+    name="company_name_ar"
+    value={formData.company_name_ar}
+    onChange={handleChange}
+  />
+  <TextInput
+    label={t("domain")}
+    name="domain"
+    value={formData.domain}
+    onChange={handleChange}
+    placeholder={t("domain_placeholder")}
+  />
+  <EmailInput
+    label={t("email")}
+    name="email"
+    value={formData.email}
+    onChange={handleChange}
+  />
+  <NewPhoneInput
+    label={t("phone")}
+    name="phone"
+    value={formData.phone}
+    onChange={handleChange}
+  />
+  <div className="mb-3">
+    <label className="block mb-2 label-md">{t("plan")}</label>
+    <Select
+      value={selectedPlan}
+      onChange={setSelectedPlan}
+      options={planOptions}
+      placeholder={t("select_plan")}
+      isDisabled={isLoading}
+    />
+  </div>
+</div>
+
 
         {/* Hint box */}
-        <div
-          className="mt-4 p-4 bg-yellow-50 border border-yellow-300 rounded text-yellow-800 text-sm"
-          style={{ borderRadius: '12px' }}
-        >
-          <p className="mb-2"><strong>اسم المستخدم الافتراضي:</strong> admin</p>
-          <p><strong>كلمة المرور الافتراضية:</strong> admin</p>
-        </div>
+     <div
+  className="mt-4 p-4 bg-yellow-50 border border-yellow-300 rounded text-yellow-800 text-sm"
+  style={{ borderRadius: '12px' }}
+>
+  <p className="mb-2">
+    <strong>{t('default_username')}:</strong> admin
+  </p>
+  <p>
+    <strong>{t('default_password')}:</strong> admin
+  </p>
+</div>
 
-        {/* Buttons */}
-        <div className="mt-6 flex justify-end gap-4">
-          <AddingButton type="submit" disabled={isLoading}>
-            {isLoading ? 'جاري الإضافة...' : 'إضافة'}
-          </AddingButton>
-          <CancelButton
-            type="button"
-            onClick={() => navigate('/app/tenant')}
-            disabled={isLoading}
-          >
-            إلغاء
-          </CancelButton>
-        </div>
+{/* Buttons */}
+<div className="mt-6 flex justify-end gap-4">
+  <AddingButton type="submit" disabled={isLoading}>
+    {isLoading ? t('adding') : t('add')}
+  </AddingButton>
+  <CancelButton
+    type="button"
+    onClick={() => navigate('/app/tenant')}
+    disabled={isLoading}
+  >
+    {t('cancel')}
+  </CancelButton>
+</div>
+
       </form>
     </SectionBox>
   );

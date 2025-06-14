@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { MdChevronLeft, MdChevronRight } from 'react-icons/md';
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 const ProductTable = ({
   headers = [],
@@ -21,6 +22,8 @@ const ProductTable = ({
   const to = pagination?.to;
   const total = pagination?.total;
   const links = pagination?.links || [];
+      const { t } = useTranslation();
+
 
   const renderPagination = () => {
     if (!pagination) return null;
@@ -31,8 +34,8 @@ const ProductTable = ({
         aria-label="Table navigation"
       >
         <span className="text-sm font-normal text-gray-500 mb-4 md:mb-0 block w-full md:inline md:w-auto">
-          عرض <span className="font-semibold text-gray-900">{from}</span> إلى{' '}
-          <span className="font-semibold text-gray-900">{to}</span> من{' '}
+          {t('show')} <span className="font-semibold text-gray-900">{from}</span> {t('to')} {' '}
+          <span className="font-semibold text-gray-900">{to}</span> {t('from')} {' '}
           <span className="font-semibold text-gray-900">{total}</span>
         </span>
         <ul className="inline-flex -space-x-px rtl:space-x-reverse text-sm h-8">
@@ -88,7 +91,7 @@ const ProductTable = ({
                 {typeof header === 'string' ? header : header.label}
               </th>
             ))}
-            {renderActions && <th className="px-6 py-3 tableHeaderText">الاجراءات</th>}
+            {renderActions && <th className="px-6 py-3 tableHeaderText">{t('actions')}</th>}
           </tr>
         </thead>
         <tbody>
