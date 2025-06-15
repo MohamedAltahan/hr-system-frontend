@@ -162,6 +162,18 @@
 "leave_blank_if_not_change":"Leave blank if not changing",
 "show_employee":"Show Employee",
 "personal_data":"Personal Data",
-"job_data":"Job Data"
-    
+"job_data":"Job Data",
+"roles_mamagment":"Roles Management",
+"add_role":"Add Role",
+"are_you_sure_delete_role":"Are you sure you want to delete this role?",
+"please_fill_all_fields":"Please fill all fields",
+"please_select_at_least_one_permission":"Please select at least one permission",
+"select_permissions":"Select Permissions",
+"select_all":"Select All",
+"edit_role":"Edit Role",
+"show_role_details":"Show Role Details",
+"role_name":"Role Name",
+"permissions":"Permissions",
+"show_role":"Show Role"
+
 }

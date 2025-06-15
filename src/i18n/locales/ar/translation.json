@@ -158,7 +158,19 @@
         "leave_blank_if_not_change":" اتركها فارغة إذا لم ترغب في التغيير",
         "show_employee": "عرض الموظف",
         "personal_data": "البيانات الشخصية",
-        "job_data": "البيانات الوظيفية"
+        "job_data": "البيانات الوظيفية",
+        "roles_mamagment": "إدارة الأدوار",
+        "add_role": "إضافة دور",
+        "are_you_sure_delete_role": "هل أنت متأكد أنك تريد حذف هذا الدور؟",
+        "please_fill_all_fields": "يرجى ملء جميع الحقول",
+        "please_select_at_least_one_permission": "يرجى اختيار إذن واحد على الأقل",
+        "select_permissions": "اختر الصلاحيات",
+        "select_all": "اختر الكل",
+        "edit_role": "تعديل دور",
+        "show_role_details": "عرض تفاصيل الدور",
+        "role_name": "اسم الدور",
+        "permissions": "الصلاحيات",
+        "show_role": "عرض الدور"
 
  
 

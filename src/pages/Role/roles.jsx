@@ -6,9 +6,11 @@ import ProductTable from '../../components/reusable_components/DataTable';
 import { MdEdit, MdDelete } from 'react-icons/md';
 import ConfirmDialog from '../../components/reusable_components/ConfirmDialog';
 import { toast } from 'react-toastify';
+import { useTranslation } from 'react-i18next';
 
 const Roles = () => {
   const [page, setPage] = useState(1);
+  const { t } = useTranslation();
   const { data: rolesData, isLoading } = useGetAllRolesQuery({ page, per_page: 10 });
   const [deleteRole] = useDeleteRoleMutation();
 
@@ -36,8 +38,8 @@ const Roles = () => {
   
 
   const headers = [
-    { key: 'title_ar', label: 'الاسم (AR)' },
-    { key: 'title_en', label: 'الاسم (EN)' },
+    { key: 'title_ar', label: t('name') + ' (AR)' },
+    { key: 'title_en', label: t('name') + ' (EN)' },
    
   ];
 
@@ -52,10 +54,10 @@ const Roles = () => {
     <SectionBox className="space-y-4">
       {/* Header */}
       <div className="grid grid-cols-2 items-center gap-4">
-        <div className="containerTitle">إدارة الأدوار</div>
+        <div className="containerTitle">{t('roles_mamagment')} </div>
         <div className="flex justify-end">
           <a href="/app/role/add">
-            <AddingButton variant="main">إضافة دور</AddingButton>
+            <AddingButton variant="main"> {t('add_role')} </AddingButton>
           </a>
         </div>
       </div>
@@ -90,8 +92,8 @@ const Roles = () => {
         isOpen={confirmOpen}
         onClose={() => setConfirmOpen(false)}
         onConfirm={handleConfirmDelete}
-        title="تأكيد الحذف"
-        message="هل أنت متأكد أنك تريد حذف هذا الدور؟"
+        title={t('confirm_delete')}
+        message= {t('are_you_sure_delete_role')}   
       />
     </SectionBox>
   );

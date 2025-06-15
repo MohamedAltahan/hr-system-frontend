@@ -7,8 +7,10 @@ import CancelButton from '../../../components/ui/buttons/CancelBtn';
 import { toast } from 'react-toastify';
 import { useUpdateRoleMutation, useGetRoleByIdQuery } from '../../../api/RolesApi';
 import { useGetAllPermissionsQuery } from '../../../api/PermissionsApi';
+import { useTranslation } from 'react-i18next';
 
 const EditRole = () => {
+  const { t } = useTranslation();
   const { id } = useParams();
   const navigate = useNavigate();
 
@@ -84,12 +86,12 @@ setFormData({
     e.preventDefault();
 
     if (!formData.title.ar || !formData.name) {
-      toast.error('الرجاء ملء جميع الحقول');
+      toast.error(t('please_fill_all_fields'));
       return;
     }
 
     if (formData.permissions.length === 0) {
-      toast.error('الرجاء تحديد صلاحية واحدة على الأقل');
+      toast.error(t('please_select_at_least_one_permission'));
       return;
     }
 
@@ -124,25 +126,26 @@ console.log("permissionsData", permissionsData);
 
 
 
-    if (roleLoading) return <p>جاري تحميل البيانات...</p>;
+    if (roleLoading) return     <SectionBox className="space-y-6">
+ <p> {t('loading')} </p> </SectionBox>;
   return (
     <SectionBox className="space-y-6">
-      <h2 className="text-xl font-bold">تعديل الدور</h2>
+      <h2 className="text-xl font-bold"> {t('edit_role')} </h2>
       <form onSubmit={handleSubmit} className="grid grid-cols-2 gap-4">
         <TextInput
-          label="الاسم (عربي)"
+          label={t('name_ar')}
           name="title_ar"
           value={formData.title.ar}
           onChange={handleChange}
         />
        
         <TextInput
-          label="الاسم (انجليزي)"
+          label={t('name_en')}
           name="name"
           value={formData.name}
           onChange={handleChange}
         />
-        <h2 className="col-span-2 text-[#131313] font-semibold mt-6">حدد الصلاحيات</h2>
+        <h2 className="col-span-2 text-[#131313] font-semibold mt-6"> {t('select_permissions')} </h2>
         
 
         <div className="col-span-2 grid grid-cols-1 gap-4 overflow-y-auto">
@@ -159,13 +162,13 @@ console.log("permissionsData", permissionsData);
                     onChange={() => handleGroupToggle(permissions)}
                     className="w-5 h-5"
                   />
-                  تحديد الكل
+                  {t('select_all')} 
                 </label>
               </div>
               
               <div className="grid grid-cols-3 gap-3 p-4">
                 {permissions.map((perm) => (
-                  <label key={perm.id} className="flex items-center gap-2" style={{ fontSize: '14px', fontWeight: '400', fontFamily: 'Cairo' }}>
+                  <label key={perm.id} className="flex items-center gap-2 mr-2 ml-2" style={{ fontSize: '14px', fontWeight: '400', fontFamily: 'Cairo' }}>
                     <input
                       type="checkbox"
                       checked={formData.permissions.includes(perm.id)}
@@ -182,10 +185,10 @@ console.log("permissionsData", permissionsData);
 
         <div className="col-span-2 flex justify-end gap-4 mt-5">
           <AddingButton type="submit" disabled={isUpdating}>
-            {isUpdating ? 'جاري التحديث...' : 'تحديث'}
+            {isUpdating ? t('updating') : t('update')}
           </AddingButton>
           <CancelButton type="button" onClick={() => navigate('/app/role')}>
-            إلغاء
+            {t('cancel')}
           </CancelButton>
         </div>
       </form>

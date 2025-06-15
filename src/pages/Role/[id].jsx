@@ -6,9 +6,11 @@ import CancelButton from '../../components/ui/buttons/CancelBtn';
 import { LuPencil } from "react-icons/lu";
 import { ChevronDown, ChevronUp, CheckCircle } from "lucide-react";
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 
 const RoleShow = () => {
+  const { t } = useTranslation();
   const { id } = useParams();
   const navigate = useNavigate();
   
@@ -36,7 +38,7 @@ const RoleShow = () => {
   };
   return (
     <SectionBox className="space-y-6">
-      <h2 className="text-lg font-bold">عرض  الدور</h2>
+      <h2 className="text-lg font-bold"> {t('show_role')} </h2>
       
 
       <div className=" gap-4 bg-white border border-gray-200"
@@ -46,21 +48,21 @@ const RoleShow = () => {
         style={{ borderRadius: '10px', overflow: 'hidden' }}>
 
 <div className="flex align-center items-center px-4 py-4 justify-between" style={{borderBottom: '1px solid #1515151A'}}>
-<h2 className="text-base font-bold">عرض تفاصيل الدور</h2>
-<button className='EditPermissionBtn'><CancelButton   onClick={() => navigate(`/app/role/edit/${id}` )}> <LuPencil /> تعديل
+<h2 className="text-base font-bold"> {t('show_role_details')} </h2>
+<button className='EditPermissionBtn'><CancelButton   onClick={() => navigate(`/app/role/edit/${id}` )}> <LuPencil /> {t('edit')}
 </CancelButton></button>
 </div>
 
 
 <div className='grid grid-cols-2'>
      <div className="flex align-center items-center p-4">
-          <span className="font-semibold block mb-1" style={{color:"#656565",fontSize:"14px",fontWeight:"500"}}>اسم الدور (AR):</span>
+          <span className="font-semibold block mb-1" style={{color:"#656565",fontSize:"14px",fontWeight:"500"}}> {t('role_name')} (AR):</span>
           <p className="mt-0" style={{color:"#000000",fontSize:"14px",fontWeight:"500",marginInlineStart:"5px"}}>{role?.translation?.title?.ar || '-'}</p>
         </div>
 
 
          <div className="flex align-center items-center p-3">
-          <span className="font-semibold block mb-1" style={{color:"#656565",fontSize:"14px",fontWeight:"500"}}>اسم الدور (EN):</span>
+          <span className="font-semibold block mb-1" style={{color:"#656565",fontSize:"14px",fontWeight:"500"}}> {t('role_name')} (EN):</span>
           <p className="mt-0" style={{color:"#000000",fontSize:"14px",fontWeight:"500",marginInlineStart:"5px"}}>{role?.name || '-'}</p>
         </div>
 </div>
@@ -72,7 +74,7 @@ const RoleShow = () => {
         <div className=" gap-4 bg-white border border-gray-200 shadow-sm rounded-xl "
 
 >
-        <h3 className="text-lg font-bold border-b p-4" >الصلاحيات:</h3>
+        <h3 className="text-lg font-bold border-b p-4" >{t('permissions')} :</h3>
    {Object.entries(groupedPermissions).map(([group, perms]) => {
         const isOpen = openGroups[group];
 
@@ -114,7 +116,7 @@ const RoleShow = () => {
 
       <div className="flex justify-end mt-6">
         <CancelButton onClick={() => navigate('/app/role')}>
-          رجوع
+          {t('back')}
         </CancelButton>
       </div>
     </SectionBox>

@@ -7,8 +7,10 @@ import { useNavigate } from 'react-router-dom';
 import CancelButton from '../../components/ui/buttons/CancelBtn';
 import { useCreateRoleMutation } from '../../api/RolesApi';
 import { useGetAllPermissionsQuery } from '../../api/PermissionsApi';
+import { useTranslation } from 'react-i18next';
 
 const AddRole = () => {
+  const { t } = useTranslation();
   const [formData, setFormData] = useState({
     title: { ar: '', en: '' },
     name: '',
@@ -76,12 +78,12 @@ const AddRole = () => {
     e.preventDefault();
 
     if (!formData.title.ar || !formData.name) {
-      toast.error('الرجاء ملء جميع الحقول');
+      toast.error(t('please_fill_all_fields'));
       return;
     }
 
     if (formData.permissions.length === 0) {
-      toast.error('الرجاء تحديد صلاحية واحدة على الأقل');
+      toast.error(t('please_select_at_least_one_permission'));
       return;
     }
 
@@ -103,8 +105,7 @@ const AddRole = () => {
     }
   };
 
-  if (permissionsLoading) return <p>Loading permissions...</p>;
-  if (permissionsError) return <p>Error loading permissions.</p>;
+  if (permissionsLoading) return <SectionBox className="space-y-6"><p>{t('loading')} </p></SectionBox> ;
 
   // Group permissions by group key
   const groupedPermissions = permissionsData?.body?.reduce((groups, permission) => {
@@ -131,10 +132,10 @@ const AddRole = () => {
 
   return (
     <SectionBox className="space-y-6">
-      <h2 className="text-xl font-bold">إضافة دور جديد</h2>
+      <h2 className="text-xl font-bold">{t('add_role')} </h2>
       <form onSubmit={handleSubmit} className="grid grid-cols-2 gap-4">
         <TextInput
-          label="الاسم (عربي)"
+          label={t('name_ar')}
           name="title_ar"
           value={formData.title.ar}
           onChange={handleChange}
@@ -143,14 +144,14 @@ const AddRole = () => {
 
 
         <TextInput
-          label="الاسم (انجليزي)"
+          label={t('name_en')}
           name="name"
           value={formData.name}
           onChange={handleChange}
           required
         />
 
-        <h2 className="col-span-2  mb-1 mt-5 text-[#131313]" style={{ fontSize: '14px', fontWeight: '600', fontFamily: 'Cairo' }}>حدد الصلاحيات</h2>
+        <h2 className="col-span-2  mb-1 mt-5 text-[#131313]" style={{ fontSize: '14px', fontWeight: '600', fontFamily: 'Cairo' }}> {t('select_permissions')} </h2>
 
       <div className="col-span-2 overflow-y-auto grid grid-cols-1 gap-6 space-y-0" style={{boxShadow:"box-shadow: 0px 0px 2px 0px #00000040;"}}>
   {Object.entries(groupedPermissions).map(([groupName, permissions]) => (
@@ -168,7 +169,7 @@ const AddRole = () => {
         onChange={() => handleGroupToggle(permissions)}
         className="w-5 h-5"
       />
-      <label className="" style={{ fontSize: '14px', fontWeight: '400', fontFamily: 'Cairo' }}>تحديد الكل</label>
+      <label className="" style={{ fontSize: '14px', fontWeight: '400', fontFamily: 'Cairo' }}> {t('select_all')} </label>
     </div>
   </div>
       {/* Change here: grid with 2 columns */}
@@ -181,7 +182,7 @@ const AddRole = () => {
               onChange={() => handlePermissionToggle(permission.id)}
               className="w-5 h-5"
             />
-            <label className="mr-2 permission_title" style={{ fontSize: '14px', fontWeight: '400', fontFamily: 'Cairo' }}>
+            <label className="mr-2  ml-2 permission_title" style={{ fontSize: '14px', fontWeight: '400', fontFamily: 'Cairo' }}>
               {permission.title || permission.name}
             </label>
           </div>
@@ -196,7 +197,7 @@ const AddRole = () => {
 
         <div className="col-span-2 flex justify-end gap-5 mt-5">
           <AddingButton type="submit" variant="main" disabled={isLoading}>
-            {isLoading ? 'جاري الإضافة...' : 'إضافة'}
+            {isLoading ? t('adding') : t('add')}
           </AddingButton>
 
           <CancelButton
@@ -204,7 +205,7 @@ const AddRole = () => {
             type="button"
             onClick={() => navigate('/app/role')}
           >
-            إلغاء
+            {t('cancel')}
           </CancelButton>
         </div>
       </form>
