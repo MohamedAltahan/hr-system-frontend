@@ -100,7 +100,28 @@
         "subscribe_to_price": "الاشتراك في سعر",
         "Subscription_type": "نوع الاشتراك",
         "renew_subscription": "تجديد الاشتراك",
-        "title": "العنوان"
+        "title": "العنوان",
+        "branches_managment": "إدارة الفروع",
+        "add_branch": "إضافة فرع",
+        "confirm_delete_message_branches": "هل أنت متأكد أنك تريد حذف هذا الفرع؟",
+        "branch_name": "اسم الفرع",
+        "address": "العنوان",
+        "branch_details": "تفاصيل الفرع",
+        "show_branch": "عرض الفرع",
+        "add_new_branch":" إضافة فرع جديد",
+        "name": "الاسم",
+        "departments_managment": "إدارة الأقسام",
+        "add_department": "إضافة قسم",
+        "confirm_delete_departments": "هل أنت متأكد أنك تريد حذف هذا القسم؟",
+        "department_name": "اسم القسم",
+        "manager_name": "اسم المدير",
+        "employees_count": "عدد الموظفين",
+        "responsable_manager": "المدير المسؤول",
+        "select_manager": "اختر مديرًا",
+        "show_department": "عرض القسم",
+        "show_department_details": "عرض تفاصيل القسم",
+        "department_not_found":"القسم غير موجود",
+        "edit_department": "تعديل قسم"
 
  
 

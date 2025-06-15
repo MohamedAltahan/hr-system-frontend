@@ -9,6 +9,7 @@ import { useNavigate } from 'react-router-dom';
 import TextAreaInput from '../../components/reusable_components/TextAreaInput';
 import CancelButton from '../../components/ui/buttons/CancelBtn';
 import NewPhoneInput from '../../components/reusable_components/NewPhoneInput';
+import { t } from 'i18next';
 
 const AddBranch = () => {
   const [formData, setFormData] = useState({
@@ -78,23 +79,23 @@ formDataToUpload.append('is_active', formData.is_active);
 
   return (
     <SectionBox className="space-y-6">
-      <h2 className="text-xl font-bold">إضافة فرع جديد</h2>
+      <h2 className="text-xl font-bold">{t('add_new_branch')}  </h2>
       <form onSubmit={handleSubmit} className="grid grid-cols-2 gap-4">
         <TextInput
-          label="الاسم"
+          label={t('name')}
           name="name_ar"
           value={formData.name.ar}
           onChange={handleChange}
         />
         <TextInput
-          label="الوصف"
+          label={t('description')}
           name="description_ar"
           value={formData.description.ar}
           onChange={handleChange}
         />
 
         <TextInput
-          label="العنوان"
+          label={t('address')}
           name="address_ar"
           value={formData.address.ar}
           onChange={handleChange}
@@ -103,7 +104,7 @@ formDataToUpload.append('is_active', formData.is_active);
         <NewPhoneInput
           value={formData.phone}
           onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-          label="رقم الهاتف"
+          label={t('phone')}
           name="phone"
           className="w-full"
         />
@@ -111,7 +112,7 @@ formDataToUpload.append('is_active', formData.is_active);
         
 
         <ToggleInput
-          label="الحالة"
+          label={t('status')}
           name="is_active"
   checked={formData.is_active === 1}
           onChange={handleChange}
@@ -119,7 +120,7 @@ formDataToUpload.append('is_active', formData.is_active);
 
         <div className="col-span-2 flex justify-end gap-5">
           <AddingButton type="submit" variant="main" disabled={isLoading}>
-            {isLoading ? 'جاري الإضافة...' : 'إضافة'}
+            {isLoading ? t('adding') : t('add_branch')}
           </AddingButton>
 
           <CancelButton
@@ -127,7 +128,7 @@ formDataToUpload.append('is_active', formData.is_active);
             type="button"
             onClick={() => navigate('/app/branch')}
           >
-            إلغاء
+            {t('cancel')}
           </CancelButton>
         </div>
       </form>

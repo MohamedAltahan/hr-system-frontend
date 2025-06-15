@@ -104,6 +104,27 @@
 "subscribe_to_price": "Subscribe to Price",
 "Subscription_type":"Subscription Type",
 "renew_subscription":"Renew Subscription",
-"title":"Title"
+"title":"Title",
+"branches_managment":"Branches Management",
+"add_branch":"Add Branch",
+"confirm_delete_message_branches":"Are you sure you want to delete this branch?",
+"branch_name":"Branch Name",
+"address":"Address",
+"branch_details":"Branch Details",
+"show_branch":"Show Branch",
+"add_new_branch":"Add New Branch",
+"name":"Name",
+"departments_managment":"Departments Management",
+"add_department":"Add Department",
+"confirm_delete_department":"Are you sure you want to delete this department?",
+"department_name":"Department Name",
+"manager_name":"Manager Name",
+"employees_count":"Employees Count",
+"responsable_manager":"Responsible Manager",
+"select_manager":"Select Manager",
+"show_department":"Show Department",
+"show_department_details":"Show Department Details",
+"department_not_found":"Department Not Found",
+"edit_department":"Edit Department"
     
 }

@@ -7,6 +7,7 @@ import CancelButton from '../../../components/ui/buttons/CancelBtn';
 import TextInput from '../../../components/reusable_components/TextInput';
 import Toggle from '../../../components/reusable_components/ToggleInput';
 import { toast } from 'react-toastify';
+import { t } from 'i18next';
 
 
 const EditBranch = () => {
@@ -76,7 +77,7 @@ const handleSubmit = async (e) => {
               <form onSubmit={handleSubmit} className="grid grid-cols-2 gap-4">
 
         <TextInput
-          label="الاسم"
+          label={t('name')}
           name="name"
           value={formData.name}
           onChange={handleChange}
@@ -84,36 +85,36 @@ const handleSubmit = async (e) => {
         />
 
         <TextInput
-          label="الوصف"
+          label={t('description')}
           name="description"
           value={formData.description}
           onChange={handleChange}
         />
 
         <TextInput
-          label="العنوان"
+          label={t('address')}
           name="address"
           value={formData.address}
           onChange={handleChange}
         />
 
         <TextInput
-          label="رقم الهاتف"
+          label={t('phone')}
           name="phone"
           value={formData.phone}
           onChange={handleChange}
         />
 
         <Toggle
-          label="الحالة"
+          label={t('status')}
           checked={formData.is_active === 1}
           onChange={handleToggle}
         />
 
         <div className="flex justify-end gap-4">
-                    <AddingBtn type="submit" isLoading={isLoading}>تعديل</AddingBtn>
+                    <AddingBtn type="submit" isLoading={isLoading}>{t('edit')}</AddingBtn>
 
-          <CancelButton onClick={() => navigate('/app/branch')} type="button">إلغاء</CancelButton>
+          <CancelButton onClick={() => navigate('/app/branch')} type="button">{t('cancel')}</CancelButton>
         </div>
       </form>
     </SectionBox>

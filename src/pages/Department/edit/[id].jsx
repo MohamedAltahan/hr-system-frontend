@@ -8,8 +8,11 @@ import AddingButton from '../../../components/ui/buttons/AddingBtn';
 import CancelButton from '../../../components/ui/buttons/CancelBtn';
 import Select from 'react-select';
 import { toast } from 'react-toastify';
+import { useTranslation } from 'react-i18next';
+
 
 const EditDepartment = () => {
+  const { t } = useTranslation();
   const { id } = useParams();
   const navigate = useNavigate();
 
@@ -88,16 +91,18 @@ const EditDepartment = () => {
     }
   };
 
-  if (isLoading) return <p>Loading...</p>;
-
+  if (isLoading) return
+   <SectionBox className="space-y-6">
+   <p>Loading...</p>;
+</SectionBox> 
   return (
     <SectionBox className="space-y-6">
-      <h1 className="subtitle mb-9">تعديل قسم</h1>
+      <h1 className="subtitle mb-9"> {t('edit_department')} </h1>
       <form onSubmit={handleSubmit} className="space-y-6">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <TextInput
             name="name_ar"
-            label="اسم القسم"
+            label={t('department_name')}
             value={formData.name_ar}
             onChange={handleChange}
           />
@@ -105,7 +110,7 @@ const EditDepartment = () => {
         
           <TextInput
             name="description_ar"
-            label="الوصف"
+            label={t('description')}
             value={formData.description_ar}
             onChange={handleChange}
           />
@@ -113,12 +118,12 @@ const EditDepartment = () => {
         
 
           <div>
-            <label className="block mb-2 label-md">المدير المسؤول</label>
+            <label className="block mb-2 label-md"> {t('responsable_manager')} </label>
             <Select
               options={managerOptions}
               value={selectedManager}
               onChange={setSelectedManager}
-              placeholder="اختر المدير"
+              placeholder={t('select_manager')}
               isClearable
             />
           </div>
@@ -126,10 +131,10 @@ const EditDepartment = () => {
 
         <div className="flex justify-end gap-4">
           <AddingButton type="submit">
-            {isUpdating ? 'جاري التحديث...' : 'تحديث القسم'}
+            {isUpdating ? t('updating') : t('update')}
           </AddingButton>
           <CancelButton onClick={() => navigate('/app/department')} type="button">
-            إلغاء
+            {t('cancel')}
           </CancelButton>
         </div>
       </form>

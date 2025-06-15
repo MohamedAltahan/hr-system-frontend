@@ -6,12 +6,14 @@ import AddingButton from '../../components/ui/buttons/AddingBtn';
 import CancelButton from '../../components/ui/buttons/CancelBtn';
 import { toast } from 'react-toastify';
 import Select from 'react-select';
+import { useTranslation } from 'react-i18next';
 
 import { useGetAllEmployeeQuery } from '../../api/Employee';
 import { useCreateDepartmentMutation } from '../../api/DepartmentsApi';
 
 export default function AddDepartment() {
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   const [formData, setFormData] = useState({
     name_ar: '',
@@ -59,12 +61,12 @@ export default function AddDepartment() {
 
   return (
     <SectionBox className="space-y-6">
-      <h1 className="subtitle mb-6">إضافة قسم</h1>
+      <h1 className="subtitle mb-6">{t('add_department')} </h1>
       <form onSubmit={handleSubmit} className="space-y-6">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <TextInput
             name="name_ar"
-            label="اسم القسم "
+            label={t('department_name')}
             value={formData.name_ar}
             onChange={handleChange}
           />
@@ -76,7 +78,7 @@ export default function AddDepartment() {
           /> */}
           <TextInput
             name="description_ar"
-            label="الوصف  "
+            label={t('description')}
             value={formData.description_ar}
             onChange={handleChange}
           />
@@ -87,19 +89,19 @@ export default function AddDepartment() {
             onChange={handleChange}
           /> */}
           <div>
-            <label className="block mb-2 label-md">المدير المسؤول</label>
+            <label className="block mb-2 label-md"> {t('responsable_manager')} </label>
             <Select
               options={managerOptions}
               value={selectedManager}
               onChange={setSelectedManager}
-              placeholder="اختر المدير"
+              placeholder={t('select_manager')}
             />
           </div>
         </div>
 
         <div className="flex justify-end gap-4">
-          <AddingButton type="submit">إضافة</AddingButton>
-          <CancelButton onClick={() => navigate('/app/department')}>إلغاء</CancelButton>
+          <AddingButton type="submit">{t('add')}</AddingButton>
+          <CancelButton onClick={() => navigate('/app/department')}>{t('cancel')}</CancelButton>
         </div>
       </form>
     </SectionBox>
