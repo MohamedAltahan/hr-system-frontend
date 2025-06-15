@@ -26,7 +26,11 @@ const tenants = (tenantsData?.body?.data || []).map(tenant => ({
   ...tenant,
   created_at: tenant.created_at?.date || '',
   is_active: tenant.is_active,
-  plan_name: tenant.subscription?.plan_data?.name || '-------',
+
+subscription_price: tenant.subscription?.plan_data?.price  ? `${tenant.subscription.plan_data.price} ${tenant.subscription.plan_data.currency_translated}`
+  : '-------',
+
+
 }));
 
 
@@ -64,7 +68,7 @@ const headers = [
   // { key: 'phone', label: t('phone') },
   { key: 'is_active', label: t('status') },
   { key: 'version', label: t('version') },
-  { key: 'plan_name', label: t('plan_name') },
+  { key: 'subscription_price', label: t('subscription_price') },
   // { key: 'creating_status', label: t('creating_status') },
   { key: 'created_at', label: t('created_at') },
 ];
