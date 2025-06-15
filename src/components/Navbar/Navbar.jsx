@@ -1,32 +1,60 @@
 import { useState } from "react";
-import {  FaChevronDown } from "react-icons/fa";
-import { Link } from 'react-router-dom';
+import { FaChevronDown } from "react-icons/fa";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useGetSidebarServicesQuery } from '../../api/SidebarApi'
 
-import userImage from "../../assets/newLogo.png"; // Replace with the actual image path
+import userImage from "../../assets/newLogo.png";
 import celenderIcon from '../../assets/images/celender.png';
 import notificationsIcon from '../../assets/images/notifications.png';
 import messagesIcon from '../../assets/images/messages.png';
-import { FiLogOut } from "react-icons/fi"; // optional logout icon
-import { FiUser } from "react-icons/fi"; 
-import FiKey  from "../../assets/images/keyicon.svg"; 
+import { FiLogOut, FiUser } from "react-icons/fi";
+import FiKey from "../../assets/images/keyicon.svg";
 import LanguageSwitcher from "../ui/buttons/LanguageSwitcher";
-import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
-const Navbar = () => {
-    const { t } = useTranslation();
+// ✅ move this function before any use
+const getCurrentPageTitle = (menu, currentPath,t) => {
+
+  currentPath = currentPath.replace(/^\/+/, '');
   
-  const [dropdownOpen, setDropdownOpen] = useState(false);
-  const user = JSON.parse(localStorage.getItem("user")) || {};
+
+  for (const item of menu) {
+    if (item.route && currentPath.startsWith(item.route)) {
+      return item.name;
+    }
+
+    if (item.children?.length) {
+      for (const child of item.children) {
+        if (child.route && currentPath.startsWith(child.route)) {
+          return child.name;
+        }
+      }
+    }
+  }
+
+  return t('title');
+};
+
+
+const Navbar = () => {
+  const { t } = useTranslation();
+  const location = useLocation();
   const navigate = useNavigate();
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const { data: sidebarData, isLoading } = useGetSidebarServicesQuery();
+  const user = JSON.parse(localStorage.getItem("user")) || {};
+  
+const pathname = location.pathname.replace(/^\/app\//, '');
+
+ const currentTitle = !isLoading && sidebarData
+? getCurrentPageTitle(sidebarData.body, pathname, t)
+  : t('title');
+
+
 
   const toggleDropdown = () => setDropdownOpen(!dropdownOpen);
 
   const handleLogout = () => {
-    localStorage.removeItem("HrSystem");
-    localStorage.removeItem("user");
-    localStorage.removeItem("roles");
-    localStorage.removeItem("X-Company");
     localStorage.clear();
     navigate("/login");
   };
@@ -44,18 +72,15 @@ const Navbar = () => {
       {/* Navbar */}
       <nav className="bg-white shadow-md py-6 px-6 flex justify-between items-center"
            style={{ height: "61px", borderInlineStart: "1px solid #1E1E1E1A", position: "relative", zIndex: 30, marginInlineStart: "13px" }}>
-        <div className="text-xl font-bold">العنوان</div>
-
+        <div className="text-xl font-bold">{currentTitle}</div>
         <div className="flex items-center gap-8">
-          {/* Icons */}
           <div className="flex gap-4">
             <img src={celenderIcon} alt="calendar" className="w-10 h-10" />
             <img src={messagesIcon} alt="messages" className="w-10 h-10" />
             <img src={notificationsIcon} alt="notifications" className="w-10 h-10" />
           </div>
 
-          {/* Profile */}
-          <div className="relative flex items-center" style={{ width: "16 rem", justifyContent: "space-between" }}>
+          <div className="relative flex items-center" style={{ width: "16rem", justifyContent: "space-between" }}>
             <div className="flex items-center">
               <img
                 src={user.avatar || userImage}
@@ -95,29 +120,27 @@ const Navbar = () => {
 
           <hr className="my-2 border-t border-gray-200" />
 
-    <Link
-  to="/app/profile"
-  onClick={() => setDropdownOpen(false)}  // 👈 Close the dropdown on click
-  className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 flex items-center gap-2"
->
-  <FiUser className="w-5 h-5" />
-  <span>{t('show_profile')}  </span>
-</Link>
-
-
+          <Link
+            to="/app/profile"
+            onClick={() => setDropdownOpen(false)}
+            className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 flex items-center gap-2"
+          >
+            <FiUser className="w-5 h-5" />
+            <span>{t('show_profile')}</span>
+          </Link>
 
           <LanguageSwitcher />
 
           <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 flex items-center gap-2">
             <img src={FiKey} className="w-5 h-5" alt="key" />
-            <span>{t('change_password')}  </span>
+            <span>{t('change_password')}</span>
           </a>
 
           <hr className="my-2 border-t border-gray-200" />
 
           <a onClick={handleLogout} className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 flex items-center gap-2 cursor-pointer">
             <FiLogOut className="w-5 h-5" />
-            <span> {t('logout')}</span>
+            <span>{t('logout')}</span>
           </a>
         </div>
       )}
@@ -126,4 +149,3 @@ const Navbar = () => {
 };
 
 export default Navbar;
-
