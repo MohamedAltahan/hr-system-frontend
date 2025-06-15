@@ -19,20 +19,21 @@ import { useGetAllbranchesQuery } from '../../../api/Branches';
 import { useGetAllDepartmentsQuery } from '../../../api/DepartmentsApi';
 import { useGetAllPositionsQuery } from '../../../api/positionsApi';
 import { useGetAllJobTitlesQuery } from '../../../api/jobTitlesApi';
+import { t } from 'i18next';
 
 const genderOptions = [
-  { value: 'male', label: 'ذكر' },
-  { value: 'female', label: 'أنثى' },
+  { value: 'male', label: t('male') },
+  { value: 'female', label: t('female') },
 ];
 
 const socialStatusOptions = [
-  { value: 'single', label: 'أعزب' },
-  { value: 'married', label: 'متزوج' },
+  { value: 'single', label: t('single') },
+  { value: 'married', label: t('married') },
 ];
 
 const statusOptions = [
-  { value: 1, label: 'نشط' },
-  { value: 0, label: 'غير نشط' },
+  { value: 1, label: t('active') },
+  { value: 0, label: t('inactive') },
 ];
 
 export default function EditUser() {
@@ -211,7 +212,7 @@ useEffect(() => {
   };
   return (
     <SectionBox className="space-y-4">
-      <h1 className="subtitle mb-6">تعديل بيانات الموظف</h1>
+      <h1 className="subtitle mb-6">{t('edit_employee_details')} </h1>
       <form onSubmit={handleSubmit}>
         {/* Add your full form layout here reusing from AddUser */}
           <div className="grid grid-cols-2 md:grid-cols-5 gap-6">
@@ -226,7 +227,7 @@ useEffect(() => {
                       {formData.avatar ? (
                         <img
                           src={URL.createObjectURL(formData.avatar)}
-                          alt="صورة الموظف"
+                          alt={t('image')}
                           className="w-full h-full object-cover"
                         />
                       ) : (
@@ -235,7 +236,7 @@ useEffect(() => {
                         </div>
                       )}
                     </div>
-                    <div className="text-sm text-blue-700 hover:underline mt-1">اضغط لاختيار صورة</div>
+                    <div className="text-sm text-blue-700 hover:underline mt-1"> {t('click_to_choose_image')} </div>
                     <input
                       id="avatar-upload"
                       type="file"
@@ -245,95 +246,93 @@ useEffect(() => {
                       className="hidden"
                     />
                   </label>
-                  <small className="text-gray-500 text-[10px] leading-tight text-center">
-                    يجب أن تكون الصورة أقل من 1 ميجا ونسبة الأبعاد 1:1
-                  </small>
+             
                 </div>
               </div>
         
               {/* بيانات الموظف */}
               <div className="col-span-2 md:col-span-4 space-y-4">
                 <div className="grid grid-cols-2 gap-4">
-                  <TextInput label="الاسم " name="name_ar" value={formData.name_ar} onChange={handleChange} />
-                  <TextInput label="اسم المستخدم" name="username" value={formData.username} onChange={handleChange} />
-                  <TextInput label="كلمة المرور" name="password" 
+                  <TextInput label={t('name')} name="name_ar" value={formData.name_ar} onChange={handleChange} />
+                  <TextInput label={t('username')} name="username" value={formData.username} onChange={handleChange} />
+                  <TextInput label={t('password')} name="password" 
                   
-                    placeholder="كلمة المرور (اتركها فارغة إذا لم ترغب في التغيير)"
+                    placeholder={t('leave_blank_if_not_change')}
 
                   type="password" value={formData.password} onChange={handleChange}   required={false}
  />
-                  <EmailInput name="email" value={formData.email} onChange={handleChange} label="البريد الإلكتروني" />
+                  <EmailInput name="email" value={formData.email} onChange={handleChange} label={t('email')} />
                   <div>
-                    <label className="block text-sm mb-1">رقم الهاتف</label>
+                    <label className="block text-sm mb-1"> {t('phone')}</label>
         <PhoneInput
           value={formData.phone}
           onChange={(value) => setFormData({ ...formData, phone: value })}
         />
         
                   </div>
-                  <TextInput label="العنوان " name="address_ar" value={formData.address_ar} onChange={handleChange} />
-                  <TextInput label="الرقم القومي"  maxLength={14}
+                  <TextInput label={t('address')} name="address_ar" value={formData.address_ar} onChange={handleChange} />
+                  <TextInput label={t('national_number')}  maxLength={14}
           inputMode="numeric" name="national_id" value={formData.national_id} onChange={handleChange} />
                  
       
         
                           <div className='mb-3'>
-                    <label className="block mb-3 label-md">تاريخ الميلاد</label>
+                    <label className="block mb-3 label-md">{t('date_of_birth')}</label>
                     <input type="date" name="birthday" value={formData.birthday} onChange={handleChange} className="w-full border p-2 rounded shadow-input" />
                   </div>
                   <div className='mb-3'>
-                    <label className="block mb-3 label-md">تاريخ التعيين</label>
+                    <label className="block mb-3 label-md"> {t('hire_date')} </label>
                     <input type="date" name="hireDate" value={formData.hireDate} onChange={handleChange} className="w-full border p-2 rounded shadow-input" />
                   </div>
         
                   <div>
-                    <label className="block mb-3 label-md">الجنس</label>
-                    <Select value={selectedGender} onChange={setSelectedGender} options={genderOptions} placeholder="اختر الجنس" />
+                    <label className="block mb-3 label-md">{t('gender')}</label>
+                    <Select value={selectedGender} onChange={setSelectedGender} options={genderOptions} placeholder={t('choose_gender')} />
                   </div>
                   <div className='mb-3'>
-                    <label className="block mb-3 label-md">الحالة الاجتماعية</label>
-                    <Select value={selectedSocialStatus} onChange={setSelectedSocialStatus} options={socialStatusOptions} placeholder="اختر الحالة الاجتماعية" />
+                    <label className="block mb-3 label-md">{t('social_status')} </label>
+                    <Select value={selectedSocialStatus} onChange={setSelectedSocialStatus} options={socialStatusOptions} placeholder={t('choose_social_status')} />
                   </div>
                   <div className='mb-3'>
-                    <label className="block mb-3 label-md">الحالة</label>
-                    <Select value={selectedStatus} onChange={setSelectedStatus} options={statusOptions} placeholder="اختر الحالة" />
+                    <label className="block mb-3 label-md">{t('status')}</label>
+                    <Select value={selectedStatus} onChange={setSelectedStatus} options={statusOptions} placeholder={t('choose_status')} />
                   </div>
         
                   <div className='mb-3'>
-                    <label className="block mb-3 label-md">الفرع</label>
-                    <Select value={selectedBranch} onChange={setSelectedBranch} options={branchOptions} placeholder="اختر الفرع" />
+                    <label className="block mb-3 label-md">{t('branch')}</label>
+                    <Select value={selectedBranch} onChange={setSelectedBranch} options={branchOptions} placeholder={t('choose_branch')} />
                   </div>
                   <div className='mb-3'>
-                    <label className="block mb-3 label-md">القسم</label>
-                    <Select value={selectedDepartment} onChange={setSelectedDepartment} options={departmentOptions} placeholder="اختر القسم" />
+                    <label className="block mb-3 label-md"> {t('department')} </label>
+                    <Select value={selectedDepartment} onChange={setSelectedDepartment} options={departmentOptions} placeholder={t('choose_department')} />
                   </div>
                   <div className='mb-3'>
-                    <label className="block mb-3 label-md">المنصب الوظيفي</label>
-                    <Select value={selectedPosition} onChange={setSelectedPosition} options={positionOptions} placeholder="اختر المنصب" />
+                    <label className="block mb-3 label-md"> {t('job_position')} </label>
+                    <Select value={selectedPosition} onChange={setSelectedPosition} options={positionOptions} placeholder={t('choose_job_position')} />
                   </div>
                   <div className='mb-3'>
-                    <label className="block mb-3 label-md">المسمى الوظيفي</label>
-                    <Select value={selectedJobTitle} onChange={setSelectedJobTitle} options={jobTitleOptions} placeholder="اختر المسمى" />
+                    <label className="block mb-3 label-md"> {t('job_title')} </label>
+                    <Select value={selectedJobTitle} onChange={setSelectedJobTitle} options={jobTitleOptions} placeholder={t('choose_job_title')} />
                   </div>
 
 
                     <div className='mb-3'>
-                         <label className="block mb-3 label-md"> المدير المباشر</label>
+                         <label className="block mb-3 label-md"> {t('direct_manager')} </label>
           <Select
          value={selectedManager}
   onChange={setSelectedManager}
   options={managerOptions}
-            placeholder="اختر المدير المباشر"
+            placeholder={t('choose_direct_manager')}  
           /> 
         </div>
         <div className="mb-3">
-  <label className="block mb-3 label-md">الأدوار</label>
+  <label className="block mb-3 label-md"> {t('roles')} </label>
   <Select
     isMulti
     options={roleOptions}
     value={selectedRoles}
     onChange={setSelectedRoles}
-    placeholder="اختر الأدوار"
+    placeholder={t('select_roles')} 
   />
 </div>
 
@@ -341,8 +340,8 @@ useEffect(() => {
               </div>
             </div>
         <div className="mt-6 flex justify-end gap-4">
-          <AddingButton variant="main" type="submit">حفظ التعديلات</AddingButton>
-          <CancelButton variant="primary" type="button" onClick={() => navigate('/app/users')}>إلغاء</CancelButton>
+          <AddingButton variant="main" type="submit"> {t('update')} </AddingButton>
+          <CancelButton variant="primary" type="button" onClick={() => navigate('/app/users')}> {t('cancel')} </CancelButton>
         </div>
       </form>
     </SectionBox>

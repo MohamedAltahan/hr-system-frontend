@@ -15,9 +15,11 @@ import { useGetAllDepartmentsQuery } from '../../api/DepartmentsApi';
 import { useGetAllPositionsQuery } from '../../api/positionsApi';
 import { toast } from "react-toastify";
 import TextInput from "../../components/reusable_components/TextInput";
+import { useTranslation } from 'react-i18next';
 
 const Users = () => {
   const [page, setPage] = useState(1);
+  const { t } = useTranslation();
 
 
   const { data: branchsData } = useGetAllbranchesQuery({ id: 0 });
@@ -53,16 +55,15 @@ const { data: employeesData, isLoading } = useGetAllEmployeeQuery({
 
   // refetch when page changes
 
-  const title = 'ادارة الموظفين';
 const headers = [
-  { key: 'avatar', label: 'صورة الموظف' },
-  { key: 'name', label: 'اسم الموظف' },
-  { key: 'employee_number', label: ' الكود الوظيفي' },
-  { key: 'branch', label: ' الفرع' }, // You may need to flatten this too if branch is an object
-  { key: 'department', label: 'القسم' },
-  { key: 'hire_date', label: 'تاريخ التعيين' },
-  { key: 'job_title_name', label: 'المسمى الوظيفي' },
-  { key: 'manager_name', label: 'المدير المباشر' },
+  { key: 'avatar', label: t('employee_image') },
+  { key: 'name', label: t('employee_name') },
+  { key: 'employee_number', label: t('employee_code') },
+  { key: 'branch', label: t('branch') }, // You may need to flatten this too if branch is an object
+  { key: 'department', label: t('department') },
+  { key: 'hire_date', label: t('hire_date') },
+  { key: 'job_title_name', label: t('job_title') },
+  { key: 'manager_name', label: t('direct_manager') },
 ];
 
 
@@ -108,11 +109,11 @@ useEffect(() => {
     <SectionBox className="space-y-4">
           {/* Header */}
       <div className="grid grid-cols-2 items-center gap-4">
-        <div className="containerTitle">{title}</div>
+        <div className="containerTitle">{t('employess_managment')}</div>
   
         <div className="flex justify-end">
           <a href="/app/users/add">
-            <AddingButton variant="main">إضافة موظف</AddingButton>
+            <AddingButton variant="main"> {t('add_employee')} </AddingButton>
           </a>
         </div>
       </div>
@@ -126,7 +127,7 @@ useEffect(() => {
       type="text"
       value={searchName}
       onChange={(e) => setSearchName(e.target.value)}
-      placeholder=" اسم الموظف"
+      placeholder={t('employee_name')}
       className="w-full border border-gray-300 rounded px-2 py-1 "
     />
   </div>
@@ -135,34 +136,34 @@ useEffect(() => {
       type="text"
       value={searchEmployeeNumber}
       onChange={(e) => setSearchEmployeeNumber(e.target.value)}
-      placeholder=" كود الموظف"
+      placeholder={t('employee_code')}
       className="w-full border border-gray-300 rounded px-2 py-1"
     />
   </div>
-  <div>
+  <div className="mb-3">
     <Select
       value={selectedBranch}
       onChange={setSelectedBranch}
       options={branchOptions}
-      placeholder=" الفرع"
+      placeholder={t('branch')}
       isClearable
     />
   </div>
-  <div>
+  <div className="mb-3">
     <Select
       value={selectedDepartment}
       onChange={setSelectedDepartment}
       options={departmentOptions}
-      placeholder=" القسم"
+      placeholder={t('department')}
       isClearable
     />
   </div>
-  <div>
+  <div className="mb-3">
     <Select
       value={selectedPosition}
       onChange={setSelectedPosition}
       options={positionOptions}
-      placeholder="المنصب الوظيفي"
+      placeholder={t('job_position')}
       isClearable
     />
   </div>
@@ -210,8 +211,8 @@ useEffect(() => {
         isOpen={confirmOpen}
         onClose={() => setConfirmOpen(false)}
         onConfirm={handleConfirmDelete}
-        title="تأكيد الاجراء"
-        message="هل أنت متأكد أنك تريد حذف هذا الموظف؟"
+        title={t('confirm_delete')}
+        message= {t('are_you_sure_you_want_to_delete_this_employee')}
       />
       </div>
     </SectionBox>
