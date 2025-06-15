@@ -28,7 +28,7 @@ const tenants = (tenantsData?.body?.data || []).map(tenant => ({
   is_active: tenant.is_active,
 
 subscription_price: tenant.subscription?.plan_data?.price  ? `${tenant.subscription.plan_data.price} ${tenant.subscription.plan_data.currency_translated}`
-  : '-------',
+  : t('trail_subscription'),
 
 
 }));
