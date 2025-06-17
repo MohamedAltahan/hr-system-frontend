@@ -78,6 +78,10 @@ import MySubscription from './pages/Subscriptions/my_subscriptions';
 
 
 import Profile from './pages/Profile/Profile';
+import EmployeeEvaluations from './pages/EmployeeEvaluation/EmployeeEvaluations';
+import AddEmployeeEvaluation from './pages/EmployeeEvaluation/add';
+import EditEmployeeEvalution from './pages/EmployeeEvaluation/edit/[id]'
+import ShowEmployeeEvalution from './pages/EmployeeEvaluation/[id]'
 
 
 const App = () => {
@@ -222,6 +226,40 @@ const App = () => {
     element={
       <AuthGuard>
         <Profile />
+      </AuthGuard>
+    }
+  />
+  </Route>
+<Route path="employee-evaluation">
+  <Route
+    index
+    element={
+      <AuthGuard> 
+        <EmployeeEvaluations /> 
+      </AuthGuard>
+    }
+  />
+  <Route
+    path="add"
+    element={
+      <AuthGuard>
+        <AddEmployeeEvaluation />
+      </AuthGuard>
+    }
+  />
+   <Route
+    path="edit/:id"
+    element={
+      <AuthGuard>
+        <EditEmployeeEvalution />
+      </AuthGuard>
+    }
+  />
+  <Route
+    path=":id"
+    element={
+      <AuthGuard>
+        <ShowEmployeeEvalution />
       </AuthGuard>
     }
   />

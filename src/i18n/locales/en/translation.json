@@ -174,6 +174,29 @@
 "show_role_details":"Show Role Details",
 "role_name":"Role Name",
 "permissions":"Permissions",
-"show_role":"Show Role"
+"show_role":"Show Role",
+  "all_fields_required": "All fields are required",
+  "score_must_be_between_0_and_100": "The score must be between 0 and 100",
+  "from_date_cannot_be_after_to_date": "The start date cannot be after the end date",
+  "created_successfully": "Created successfully",
+  "something_went_wrong": "Something went wrong during creation",
+  "score_hint": "The value must be between 0 and 100",
+  "score":"Score",
+  "from_date":"From Date",
+  "to_date":"To Date",
+  "add_evaluation":"Add Evaluation",
+  "employee":"Employee",
+  "evaluator":"Evaluator",
+  "choose_evaluator":"Choose Evaluator",
+  "choose_employee":"Choose Employee",
+  "employee_evaluations":"Employee Evaluations",
+  "evaluation_period":"Evaluation Period",
+  "are_you_sure_you_want_to_delete_this_record":"Are you sure you want to delete this record ?",
+  "edit_evaluation":"Edit Evaluation",
+  "employee_evaluation":"Employee Evaluation",
+  "evaluator_name":"Evaluator Name",
+    "evalution_from_date":"Evaluation From Date",
+  "evalution_to_date":"Evaluation To Date"
+  
 
 }

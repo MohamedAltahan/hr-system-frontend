@@ -17,6 +17,7 @@ import plansApi from '../api/PlansApi';
 import subscriptionsApi from '../api/subscriptionsApi';
 import ProfileApi from '../api/ProfileApi';
 import PricesApi from '../api/pricesApi';
+import EmployeeEvaluationApi from '../api/EmployeeEvaluationApi'; 
 const rootReducer = combineReducers({
     [authApi.reducerPath]: authApi.reducer,
     [Self_ServicesApi.reducerPath]: Self_ServicesApi.reducer,
@@ -34,7 +35,8 @@ const rootReducer = combineReducers({
     [plansApi.reducerPath]: plansApi.reducer, 
     [subscriptionsApi.reducerPath]: subscriptionsApi.reducer,
     [ProfileApi.reducerPath]: ProfileApi.reducer, 
-    [PricesApi.reducerPath]: PricesApi.reducer
+    [PricesApi.reducerPath]: PricesApi.reducer,
+    [EmployeeEvaluationApi.reducerPath]: EmployeeEvaluationApi.reducer, 
 });
 
 export default configureStore({
@@ -58,7 +60,8 @@ export default configureStore({
             plansApi.middleware,
             subscriptionsApi.middleware,
             ProfileApi.middleware,
-            PricesApi.middleware
+            PricesApi.middleware,
+            EmployeeEvaluationApi.middleware,
         ),
 });
 

@@ -338,7 +338,8 @@ color:#3D3D3D
 }
 .css-13cymwt-control  {
 height: 40px !important;
-    margin-block-start: 12px;    box-shadow: 0px 0px 2px 0px  #00000012 !important;
+    /* margin-block-start: 12px;  */
+       box-shadow: 0px 0px 2px 0px  #00000012 !important;
 
 
     border-radius: 8px !important;

@@ -170,7 +170,29 @@
         "show_role_details": "عرض تفاصيل الدور",
         "role_name": "اسم الدور",
         "permissions": "الصلاحيات",
-        "show_role": "عرض الدور"
+        "show_role": "عرض الدور",
+         "all_fields_required": "جميع الحقول مطلوبة",
+  "score_must_be_between_0_and_100": "يجب أن تكون الدرجة بين 0 و100",
+  "from_date_cannot_be_after_to_date": "تاريخ البداية لا يمكن أن يكون بعد تاريخ النهاية",
+  "created_successfully": "تمت الإضافة بنجاح",
+  "something_went_wrong": "حدث خطأ أثناء الإضافة",
+    "score_hint": "القيمة يجب أن تكون بين 0 و 100",
+     "score": "التقييم",
+  "from_date": "تاريخ البداية",
+  "to_date": "تاريخ النهاية",
+  "add_evaluation": "إضافة تقييم",
+  "employee": "الموظف",
+  "evaluator": "المقيِّم",
+  "choose_evaluator": "اختر المقيِّم",
+  "choose_employee": "اختر الموظف",
+  "employee_evaluations": "تقييمات الموظفين",
+  "evaluation_period": "فترة التقييم",
+  "are_you_sure_you_want_to_delete_this_record":"هل انت متاكد من انطك تريد حذف هذا التقييم ؟",
+  "edit_evaluation":"تعديل التقييم",
+  "employee_evaluation":"تقييم الموظف",
+  "evaluator_name":"اسم المقيِّم",
+  "evalution_from_date":"تاريخ بداية التقييم",
+  "evalution_to_date":"تاريخ نهاية التقييم"
 
  
 
