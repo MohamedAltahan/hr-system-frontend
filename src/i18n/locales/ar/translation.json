@@ -192,7 +192,13 @@
   "employee_evaluation":"تقييم الموظف",
   "evaluator_name":"اسم المقيِّم",
   "evalution_from_date":"تاريخ بداية التقييم",
-  "evalution_to_date":"تاريخ نهاية التقييم"
+  "evalution_to_date":"تاريخ نهاية التقييم",
+  "add_job_title":"اضافة مسمي وظيفي",
+  "enter_job_title":"ادخل مسمي وظيفي",
+  "job_titles":"المسميات الوظيفيه",
+  "job_title_details":"تفاصيل المسمي الوظيفي",
+  "show_job_title":"عرض المسمي الوظيفي",
+  "edit_job_title":"تعديل المسمي الوظيفي"
 
  
 

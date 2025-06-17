@@ -84,6 +84,12 @@ import EditEmployeeEvalution from './pages/EmployeeEvaluation/edit/[id]'
 import ShowEmployeeEvalution from './pages/EmployeeEvaluation/[id]'
 
 
+import JobTitles from './pages/JobTitles/index';
+import ShowJobTitle from './pages/JobTitles/[id]';
+import AddJobTitle from './pages/JobTitles/add';
+import EditJobTitle from './pages/JobTitles/edit/[id]';
+
+
 const App = () => {
   return (
     
@@ -264,6 +270,46 @@ const App = () => {
     }
   />
   </Route>
+
+<Route path="job-titles">
+  <Route
+    index
+    element={
+      <AuthGuard>
+        <JobTitles />
+      </AuthGuard>
+    }
+  />
+  <Route
+    path="add"
+    element={
+      <AuthGuard>
+        <AddJobTitle />
+      </AuthGuard>
+    }
+  />
+  <Route
+    path="edit/:id"
+    element={
+      <AuthGuard>
+        <EditJobTitle />
+      </AuthGuard>
+    }
+  />
+
+  <Route
+    path=":id"
+    element={
+      <AuthGuard>
+        <ShowJobTitle />
+      </AuthGuard>
+    }
+  />
+  
+</Route>
+
+
+
 <Route path="department">
   <Route
     index
@@ -300,6 +346,10 @@ const App = () => {
   />
   
 </Route>
+
+
+
+
 <Route path="branch">
     <Route
     index

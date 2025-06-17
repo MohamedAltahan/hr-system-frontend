@@ -196,7 +196,13 @@
   "employee_evaluation":"Employee Evaluation",
   "evaluator_name":"Evaluator Name",
     "evalution_from_date":"Evaluation From Date",
-  "evalution_to_date":"Evaluation To Date"
+  "evalution_to_date":"Evaluation To Date",
+  "add_job_title":"Add Job Title",
+  "enter_job_title":"Enter Job Title",
+  "job_titles":"Job Titles",
+  "show_job_title":"Show Job Title",
+  "job_title_details":"Job Title Details",
+  "edit_job_title":"Edit job Title"
   
 
 }
