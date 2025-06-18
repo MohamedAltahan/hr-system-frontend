@@ -187,7 +187,7 @@
   "choose_employee": "اختر الموظف",
   "employee_evaluations": "تقييمات الموظفين",
   "evaluation_period": "فترة التقييم",
-  "are_you_sure_you_want_to_delete_this_record":"هل انت متاكد من انطك تريد حذف هذا التقييم ؟",
+  "are_you_sure_you_want_to_delete_this_record":"هل انت متاكد من انك تريد حذف هذا التقييم ؟",
   "edit_evaluation":"تعديل التقييم",
   "employee_evaluation":"تقييم الموظف",
   "evaluator_name":"اسم المقيِّم",
@@ -198,7 +198,19 @@
   "job_titles":"المسميات الوظيفيه",
   "job_title_details":"تفاصيل المسمي الوظيفي",
   "show_job_title":"عرض المسمي الوظيفي",
-  "edit_job_title":"تعديل المسمي الوظيفي"
+  "edit_job_title":"تعديل المسمي الوظيفي",
+  "type":"النوع",
+  "employee_requests":"طلبات الموظفين",
+  "add_request":"اضافة طلب",
+  "reviewer":"المراجع",
+  "are_you_sure_you_want_to_delete_this_request":"هل انت متاكد انك تريد حذف هذا الطلب ؟",
+  "show_employee_request":"عرض طلب الموظف",
+  "request_type":"نوع الطلب",
+  "reason":"السبب",
+    "add_employee_request":"اضافة طلب موظف",
+  "choose_type":"اختر النوع",
+  "write_reason":"اكتب السبب",
+  "edit_employee_request":"تعديل طلب موظف"
 
  
 

@@ -90,6 +90,12 @@ import AddJobTitle from './pages/JobTitles/add';
 import EditJobTitle from './pages/JobTitles/edit/[id]';
 
 
+import EmployeeReqests from './pages/EmployeesRequests/EmployeeRequests';
+import ShowEmployeeReqest from './pages/EmployeesRequests/[id]';
+import EditEmployeeReqest from './pages/EmployeesRequests/edit/[id]';
+import AddEmployeeReqest from './pages/EmployeesRequests/add';
+
+
 const App = () => {
   return (
     
@@ -307,6 +313,46 @@ const App = () => {
   />
   
 </Route>
+
+
+
+<Route path="employee-requests">
+  <Route
+    index
+    element={
+      <AuthGuard>
+        <EmployeeReqests />
+      </AuthGuard>
+    }
+  />
+  <Route
+    path="add"
+    element={
+      <AuthGuard>
+        <AddEmployeeReqest />
+      </AuthGuard>
+    }
+  />
+  <Route
+    path="edit/:id"
+    element={
+      <AuthGuard>
+        <EditEmployeeReqest />
+      </AuthGuard>
+    }
+  />
+
+  <Route
+    path=":id"
+    element={
+      <AuthGuard>
+        <ShowEmployeeReqest />
+      </AuthGuard>
+    }
+  />
+  
+</Route>
+
 
 
 

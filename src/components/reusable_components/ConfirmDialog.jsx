@@ -30,7 +30,7 @@ const ConfirmDialog = ({ isOpen, onClose, onConfirm, title, message }) => {
             {message}
           </Dialog.Description>
 
-          <div className={`mt-6 flex gap-3 ${isRTL ? 'justify-start' : 'justify-end'}`}>
+          <div className={`mt-6 flex gap-3 ${isRTL ? 'justify-end' : 'justify-end'}`}>
             <button
               onClick={onConfirm}
               className="px-4 text-sm rounded addingBtn bg-[#055393] hover:bg-[#04457a]"
