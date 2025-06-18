@@ -214,7 +214,19 @@
   "add_employee_request":"Add Employee Request",
   "choose_type":"Choose Type",
   "write_reason":"Write reason",
-  "edit_employee_request":"Edit Employee Request"
+  "edit_employee_request":"Edit Employee Request",
+  "add_employee_asset":"Add Employee Asset",
+  "edit_employee_asset":"Edit Employee Asset",
+  "asset_type":"Asset Type",
+  "manager":"Manager",
+  "return_date":"Return Date",
+  "issue_date":"Issue Date",
+  "choose_manager":"Choose Manager",
+  "choose_asset_type":"Choose Asset Type",
+  "add_asset":"Add Asset",
+  "employee_assets":"Employee Assets",
+  "employee_asset":"Employee Asset",
+  "are_you_sure_you_want_to_delete_this_asset":"Are you sure , you want to delete this asset ?"
   
 
 }

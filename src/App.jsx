@@ -95,6 +95,13 @@ import ShowEmployeeReqest from './pages/EmployeesRequests/[id]';
 import EditEmployeeReqest from './pages/EmployeesRequests/edit/[id]';
 import AddEmployeeReqest from './pages/EmployeesRequests/add';
 
+import EmployeeAssets from './pages/EmoplyeeAssets/EmployeeAssets';
+import ShowEmployeeAsset from './pages/EmoplyeeAssets/[id]';
+import EditEmployeeAsset from './pages/EmoplyeeAssets/edit/[id]';
+import AddEmployeeAsset from './pages/EmoplyeeAssets/add';
+
+
+
 
 const App = () => {
   return (
@@ -354,6 +361,47 @@ const App = () => {
 </Route>
 
 
+
+
+<Route path="employee-assets">
+  <Route
+    index
+    element={
+      <AuthGuard>
+        <EmployeeAssets />
+      </AuthGuard>
+    }
+  />
+  <Route
+        path="add"
+
+    element={
+      <AuthGuard>
+        <AddEmployeeAsset />
+      </AuthGuard>
+    }
+  />
+  <Route
+        path=":id"
+
+    element={
+      <AuthGuard>
+        <ShowEmployeeAsset />
+      </AuthGuard>
+    }
+  />
+
+  <Route
+        path="edit/:id"
+
+    element={
+      <AuthGuard>
+        <EditEmployeeAsset />
+      </AuthGuard>
+    }
+  />
+  
+</Route>
 
 
 <Route path="department">

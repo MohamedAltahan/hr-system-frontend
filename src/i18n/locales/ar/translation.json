@@ -210,7 +210,19 @@
     "add_employee_request":"اضافة طلب موظف",
   "choose_type":"اختر النوع",
   "write_reason":"اكتب السبب",
-  "edit_employee_request":"تعديل طلب موظف"
+  "edit_employee_request":"تعديل طلب موظف",
+    "add_employee_asset":"اضافة عهد موظف",
+  "edit_employee_asset":"تعديل عهد الموظف",
+  "asset_type":"نوع العهد",
+  "manager":"المدير",
+  "return_date":"تاريخ العودة",
+  "issue_date":"تاريخ الاصدار",
+  "choose_manager":"اختر مديرا",
+  "choose_asset_type":"اختر نوع العهد",
+  "add_asset":"اضافة عهد",
+  "employee_assets":"عهود الموظفين",
+  "employee_asset":"عهد الموظفين",
+  "are_you_sure_you_want_to_delete_this_asset":"هل انت متاكد انك تريد حذف هذا العهد ؟"
 
  
 

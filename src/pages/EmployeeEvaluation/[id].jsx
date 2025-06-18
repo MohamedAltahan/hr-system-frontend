@@ -22,11 +22,14 @@ const ShowEmployeeEvaluation = () => {
   }
 
   if (isError) {
-    return <p>{t('something_went_wrong')} : {error?.data?.message || 'تعذر تحميل البيانات'}</p>;
-  }
+    return <SectionBox className="space-y-6"> 
+    <p>{t('something_went_wrong')} : {error?.data?.message || 'تعذر تحميل البيانات'}</p>;
+  
+ </SectionBox>
+ }
 
   const evaluation = data?.body;
-  if (!evaluation) return <p>{t('not_found') || 'لا توجد بيانات'}</p>;
+  if (!evaluation) return<SectionBox className="space-y-6"><p>{t('not_found') || 'لا توجد بيانات'}</p></SectionBox> ;
 
   return (
     <SectionBox className="space-y-6">
