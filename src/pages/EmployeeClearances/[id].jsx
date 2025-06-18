@@ -85,7 +85,7 @@ const ShowEmployeeClearance = () => {
         <div className="flex items-center justify-between px-4 py-4 border-b border-gray-200">
           <h2 className="text-base font-bold">{t('employee_clearance')}</h2>
           <button className="EditPermissionBtn">
-            <CancelButton onClick={() => navigate(`/app/employee-clearances/edit/${id}`)}>
+            <CancelButton onClick={() => navigate(`/app/employee-clearances/edit/${id}`)} type="button">
               <LuPencil /> {t('edit')}
             </CancelButton>
           </button>

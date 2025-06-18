@@ -39,7 +39,7 @@ const ShowDepartment = () => {
 
 <div className="flex align-center items-center px-4 py-4 justify-between" style={{borderBottom: '1px solid #1515151A'}}>
 <h2 className="text-base font-bold">{t('show_department_details')}</h2>
-<button className='EditPermissionBtn'><CancelButton   onClick={() => navigate(`/app/department/edit/${id}` )}> <LuPencil /> {t('edit')}
+<button className='EditPermissionBtn'><CancelButton type="button"  onClick={() => navigate(`/app/department/edit/${id}` )}> <LuPencil /> {t('edit')}
 </CancelButton></button>
 </div>
 

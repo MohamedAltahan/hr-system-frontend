@@ -101,7 +101,7 @@ const ShowEmployee = () => {
 
       {/* Back Button */}
       <div className="flex justify-end">
-        <CancelButton onClick={() => navigate('/app/users')}>{t('back')}</CancelButton>
+        <CancelButton type="button" onClick={() => navigate('/app/users')}>{t('back')}</CancelButton>
       </div>
     </SectionBox>
   );

@@ -90,7 +90,7 @@ const EditJobTitle = () => {
             <AddingButton type="submit" disabled={isUpdating}>
             {t("update")}
           </AddingButton>
-          <CancelButton onClick={() => navigate("/app/job-titles")}>
+          <CancelButton onClick={() => navigate("/app/job-titles")} type="button">
             {t("cancel")}
           </CancelButton>
         

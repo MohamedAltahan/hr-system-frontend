@@ -150,7 +150,7 @@ const EditEmployeeEvaluation = () => {
           <AddingButton type="submit" disabled={isLoading}>
             {isLoading ? t("loading") : t("update")}
           </AddingButton>
-          <CancelButton onClick={() => navigate("/app/employee-evaluation")}>
+          <CancelButton type="button" onClick={() => navigate("/app/employee-evaluation")}>
             {t("cancel")}
           </CancelButton>
         </div>

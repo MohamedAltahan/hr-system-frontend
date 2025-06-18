@@ -147,7 +147,7 @@ const EditEmployeeRequest = () => {
             <AddingButton type="submit" disabled={isLoading}>
               {isLoading ? t("loading") : t("update")}
             </AddingButton>
-            <CancelButton onClick={() => navigate("/app/employee-requests")}>
+            <CancelButton type="button" onClick={() => navigate("/app/employee-requests")}>
               {t("cancel")}
             </CancelButton>
           </div>

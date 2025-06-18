@@ -101,7 +101,7 @@ export default function AddDepartment() {
 
         <div className="flex justify-end gap-4">
           <AddingButton type="submit">{t('add')}</AddingButton>
-          <CancelButton onClick={() => navigate('/app/department')}>{t('cancel')}</CancelButton>
+          <CancelButton type="button" onClick={() => navigate('/app/department')}>{t('cancel')}</CancelButton>
         </div>
       </form>
     </SectionBox>

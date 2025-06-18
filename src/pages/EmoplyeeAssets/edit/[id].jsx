@@ -157,7 +157,7 @@ const EditEmployeeAsset = () => {
           <AddingButton type="submit" disabled={isUpdating}>
             {isUpdating ? t("loading") : t("save")}
           </AddingButton>
-          <CancelButton onClick={() => navigate("/app/employee-assets")}>
+          <CancelButton onClick={() => navigate("/app/employee-assets")} type="button">
             {t("cancel")}
           </CancelButton>
         </div>

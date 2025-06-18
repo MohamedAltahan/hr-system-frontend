@@ -93,7 +93,7 @@ const ShowEmployeeRequest = () => {
       </div>
 
       <div className="flex justify-end mt-6">
-        <CancelButton onClick={() => navigate('/app/employee-requests')}>
+        <CancelButton onClick={() => navigate('/app/employee-requests')} type="button">
           {t('back')}
         </CancelButton>
       </div>

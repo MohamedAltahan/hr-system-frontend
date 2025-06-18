@@ -73,7 +73,7 @@ const ShowBranch = () => {
       </div>
 
       <div className="flex justify-end mt-6">
-        <CancelButton onClick={() => navigate('/app/branch')}>{t('back')}</CancelButton>
+        <CancelButton type="button" onClick={() => navigate('/app/branch')}>{t('back')}</CancelButton>
       </div>
     </SectionBox>
   );

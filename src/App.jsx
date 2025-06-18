@@ -106,6 +106,12 @@ import ShowEmployeeClearance from './pages/EmployeeClearances/[id]';
 import EditEmployeeClearance from './pages/EmployeeClearances/edit/[id]';
 import AddEmployeeClearance from './pages/EmployeeClearances/add';
 
+import EmployeeContract from './pages/EmployeeContracts/EmployeeContracts';
+import ShowEmployeeContract from './pages/EmployeeContracts/[id]';
+import EditEmployeeContract from './pages/EmployeeContracts/edit/[id]';
+import AddEmployeeContract from './pages/EmployeeContracts/add';
+
+
 const App = () => {
   return (
     
@@ -360,6 +366,46 @@ const App = () => {
   />
   
 </Route>
+
+
+<Route path="employee-contracts">
+  <Route
+    index
+    element={
+      <AuthGuard>
+        <EmployeeContract />
+      </AuthGuard>
+    }
+  />
+  <Route
+    path="add"
+    element={
+      <AuthGuard>
+        <AddEmployeeContract/>
+      </AuthGuard>
+    }
+  />
+  <Route
+    path="edit/:id"
+    element={
+      <AuthGuard>
+        <EditEmployeeContract />
+      </AuthGuard>
+    }
+  />
+
+  <Route
+    path=":id"
+    element={
+      <AuthGuard>
+        <ShowEmployeeContract />
+      </AuthGuard>
+    }
+  />
+  
+</Route>
+
+
 
 <Route path="employee-requests">
   <Route

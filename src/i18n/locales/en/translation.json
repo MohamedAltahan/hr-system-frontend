@@ -243,7 +243,23 @@
   "enter_notice_period":"Enter Notice Period",
   "pending": "Pending",
   "approved": "Approved",
-  "rejected": "Rejected"
+  "rejected": "Rejected",
+   "add_contract": "Add Contract",
+  "employee_contracts": "Employee Contracts",
+  "contract_period": "Contract Period",
+  "salary": "Salary",
+  "are_you_sure_you_want_to_delete_this_contract": "Are you sure you want to delete this contract?",
+  "is_active": "Is Active",
+  "add_employee_contract": "Add Employee Contract",
+  "attendance_rule": "Attendance Rule",
+  "choose_attendance_rule": "Choose Attendance Rule",
+  "enter_salary": "Enter Salary",
+  "start_date": "Start Date",
+  "end_date": "End Date",
+  "note": "Note",
+  "enter_note": "Enter Note",
+  "edit_employee_contract": "Edit Employee Contract",
+  "show_employee_contract": "Show Employee Contract"
   
 
 }

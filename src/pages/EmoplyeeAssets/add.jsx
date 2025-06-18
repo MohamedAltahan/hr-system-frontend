@@ -141,7 +141,7 @@ console.log(assetTypesData);
           <AddingButton type="submit" disabled={isLoading}>
             {isLoading ? t("loading") : t("add")}
           </AddingButton>
-          <CancelButton onClick={() => navigate("/app/employee-assets")}>
+          <CancelButton onClick={() => navigate("/app/employee-assets")} type="button">
             {t("cancel")}
           </CancelButton>
         </div>

@@ -41,15 +41,15 @@ const employeeContractsApi = createApi({
       }),
       invalidatesTags: ['employeeContract'],
     }),
+updateEmployeeContract: builder.mutation<any, { id: number; formData: FormData }>({
+  query: ({ id, formData }) => ({
+    url: `/employee-contracts/${id}?_method=PUT`,
+    method: 'POST',
+    body: formData,
+  }),
+  invalidatesTags: ['employeeContract'],
+}),
 
-    updateEmployeeContract: builder.mutation<any, { id: number; formData: FormData }>({
-      query: ({ id, formData }) => ({
-        url: `/employee-contracts/${id}?_method=PUT`,
-        method: 'POST',
-        body: formData,
-      }),
-      invalidatesTags: ['employeeContract'],
-    }),
 
     deleteEmployeeContract: builder.mutation<any, number>({
       query: (id) => ({

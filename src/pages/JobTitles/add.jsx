@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useCreateJobTitleMutation } from "../../api/JobTitlesApi";
+import { useCreateJobTitleMutation } from "../../api/jobTitlesApi";
 import SectionBox from "../../components/ui/containers/SectionBox";
 import TextInput from "../../components/reusable_components/TextInput";
 import AddingButton from "../../components/ui/buttons/AddingBtn";
@@ -58,7 +58,7 @@ const AddJobTitle = () => {
          <AddingButton type="submit" disabled={isLoading}>
             {t("add")}
           </AddingButton>
-          <CancelButton onClick={() => navigate("/app/job-titles")}>
+          <CancelButton onClick={() => navigate("/app/job-titles")} type="button">
             {t("cancel")}
           </CancelButton>
           

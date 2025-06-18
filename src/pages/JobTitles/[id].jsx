@@ -47,7 +47,7 @@ const ShowJobTitle = () => {
           <h2 className="text-base font-bold">{t('job_title_details')}</h2>
                     <button className="EditPermissionBtn">
 
-          <CancelButton onClick={() => navigate(`/app/job-titles/edit/${id}`)}>
+          <CancelButton type="button" onClick={() => navigate(`/app/job-titles/edit/${id}`)}>
             <LuPencil className="mr-1" />
             {t('edit')}
           </CancelButton>
@@ -66,7 +66,7 @@ const ShowJobTitle = () => {
       </div>
 
       <div className="flex justify-end mt-6">
-        <CancelButton onClick={() => navigate('/app/job-titles')}>
+        <CancelButton onClick={() => navigate('/app/job-titles')} type="button">
           {t('back')}
         </CancelButton>
       </div>

@@ -39,7 +39,7 @@ const ShowEmployeeEvaluation = () => {
         <div className="flex items-center justify-between px-4 py-4 border-b border-gray-200">
           <h2 className="text-base font-bold">{t('employee_evaluation')}</h2>
           <button className="EditPermissionBtn">
-            <CancelButton onClick={() => navigate(`/app/employee-evaluation/edit/${id}`)}>
+            <CancelButton type="button" onClick={() => navigate(`/app/employee-evaluation/edit/${id}`)}>
               <LuPencil /> {t('edit')}
             </CancelButton>
           </button>
@@ -74,7 +74,7 @@ const ShowEmployeeEvaluation = () => {
       </div>
 
       <div className="flex justify-end mt-6">
-        <CancelButton onClick={() => navigate('/app/employee-evaluation')}>
+        <CancelButton type="button" onClick={() => navigate('/app/employee-evaluation')}>
           {t('back')}
         </CancelButton>
       </div>

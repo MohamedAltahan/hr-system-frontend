@@ -119,7 +119,7 @@ const EditEmployeeClearance = () => {
           <AddingButton type="submit" disabled={isUpdating}>
             {isUpdating ? t("loading") : t("update")}
           </AddingButton>
-          <CancelButton onClick={() => navigate("/app/employee-clearances")}>
+          <CancelButton onClick={() => navigate("/app/employee-clearances")} type="button">
             {t("cancel")}
           </CancelButton>
         </div>

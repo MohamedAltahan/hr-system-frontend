@@ -34,7 +34,7 @@ const ShowEmployeeAsset = () => {
         <div className="flex items-center justify-between px-4 py-4 border-b border-gray-200">
           <h2 className="text-base font-bold">{t('employee_asset')}</h2>
           <button className="EditPermissionBtn">
-            <CancelButton onClick={() => navigate(`/app/employee-assets/edit/${id}`)}>
+            <CancelButton onClick={() => navigate(`/app/employee-assets/edit/${id}`)} type="button">
               <LuPencil /> {t('edit')}
             </CancelButton>
           </button>

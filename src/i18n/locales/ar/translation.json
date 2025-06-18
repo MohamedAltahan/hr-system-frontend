@@ -239,7 +239,23 @@
   "enter_notice_period":"ادخل الفترة التجريبيه",
   "pending": "قيد الانتظار",
   "approved": "مقبول",
-  "rejected": "مرفوض"
+  "rejected": "مرفوض",
+ "add_contract": "إضافة عقد",
+  "employee_contracts": "عقود الموظفين",
+  "contract_period": "مدة العقد",
+  "salary": "الراتب",
+  "are_you_sure_you_want_to_delete_this_contract": "هل أنت متأكد أنك تريد حذف هذا العقد؟",
+  "is_active": "نشط",
+  "add_employee_contract": "إضافة عقد موظف",
+  "attendance_rule": "قاعدة الحضور",
+  "choose_attendance_rule": "اختر قاعدة الحضور",
+  "enter_salary": "أدخل الراتب",
+  "start_date": "تاريخ البدء",
+  "end_date": "تاريخ الانتهاء",
+  "note": "ملاحظة",
+  "enter_note": "أدخل الملاحظة",
+  "edit_employee_contract": "تعديل عقد الموظف",
+  "show_employee_contract": "عرض عقد الموظف"
 
 
  
