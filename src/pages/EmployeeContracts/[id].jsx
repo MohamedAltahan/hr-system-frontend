@@ -77,7 +77,7 @@ const ShowEmployeeContract = () => {
           </div>
 
           <div className="flex items-center px-4 py-2">
-            <span className="font-semibold text-gray-600 w-40">{t('is_active')}:</span>
+            <span className="font-semibold text-gray-600 w-40">{t('status')}:</span>
             <p className="text-gray-900">{contract?.is_active === '1' ? t('active') : t('inactive')}</p>
           </div>
         </div>
