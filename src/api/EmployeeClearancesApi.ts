@@ -58,6 +58,18 @@ const employeeClearancesApi = createApi({
       }),
       invalidatesTags: ['employeeClearance'],
     }),
+
+    updateEmployeeClearanceStatus: builder.mutation<any, { id: number; status: 'approved' | 'pending' | 'rejected' }>(
+  {
+    query: ({ id, status }) => ({
+      url: `/employee-clearance-update-status/${id}?_method=PUT`,
+      method: 'POST',
+      body: { status },
+    }),
+    invalidatesTags: ['employeeClearance'],
+  }
+),
+
   }),
 });
 
@@ -67,6 +79,7 @@ export const {
   useCreateEmployeeClearanceMutation,
   useUpdateEmployeeClearanceMutation,
   useDeleteEmployeeClearanceMutation,
+    useUpdateEmployeeClearanceStatusMutation,
 } = employeeClearancesApi;
 
 export default employeeClearancesApi;

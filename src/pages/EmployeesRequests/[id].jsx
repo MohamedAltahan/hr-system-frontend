@@ -42,50 +42,50 @@ const ShowEmployeeRequest = () => {
 
         <div className="grid grid-cols-2 gap-2">
           <div className="flex items-center px-4 py-2">
-            <span className="font-semibold text-gray-600 w-40">{t('employee_name')}:</span>
+            <span className="font-semibold text-gray-600 w-28">{t('employee_name')}:</span>
             <p className="text-gray-900">{request?.employee?.name || '-'}</p>
           </div>
 
           <div className="flex items-center px-4 py-2">
-            <span className="font-semibold text-gray-600 w-40">{t('request_type')}:</span>
+            <span className="font-semibold text-gray-600 w-28">{t('request_type')}:</span>
             <p className="text-gray-900">{Object.values(request?.type || {})[0] || '-'}</p>
           </div>
 
           <div className="flex items-center px-4 py-2">
-            <span className="font-semibold text-gray-600 w-40">{t('from_date')}:</span>
+            <span className="font-semibold text-gray-600 w-28">{t('from_date')}:</span>
             <p className="text-gray-900">{request?.from_date?.date || '-'}</p>
           </div>
 
           <div className="flex items-center px-4 py-2">
-            <span className="font-semibold text-gray-600 w-40">{t('to_date')}:</span>
+            <span className="font-semibold text-gray-600 w-28">{t('to_date')}:</span>
             <p className="text-gray-900">{request?.to_date?.date || '-'}</p>
           </div>
 
           {request?.loan_amount && (
             <div className="flex items-center px-4 py-2">
-              <span className="font-semibold text-gray-600 w-40">{t('loan_amount')}:</span>
+              <span className="font-semibold text-gray-600 w-28">{t('loan_amount')}:</span>
               <p className="text-gray-900">{request?.loan_amount}</p>
             </div>
           )}
 
           <div className="flex items-center px-4 py-2 col-span-2">
-            <span className="font-semibold text-gray-600 w-40">{t('reason')}:</span>
+            <span className="font-semibold text-gray-600 w-28">{t('reason')}:</span>
             <p className="text-gray-900">{request?.reason || '-'}</p>
           </div>
 
           <div className="flex items-center px-4 py-2">
-            <span className="font-semibold text-gray-600 w-40">{t('status')}:</span>
+            <span className="font-semibold text-gray-600 w-28">{t('status')}:</span>
             <p className="text-gray-900">{t(request?.status) || '-'}</p>
           </div>
 
           <div className="flex items-center px-4 py-2">
-            <span className="font-semibold text-gray-600 w-40">{t('reviewer')}:</span>
+            <span className="font-semibold text-gray-600 w-28">{t('reviewer')}:</span>
             <p className="text-gray-900">{request?.reviewed_by?.name || '-'}</p>
           </div>
 
           {request?.manager_comment && (
             <div className="flex items-center px-4 py-2 col-span-2">
-              <span className="font-semibold text-gray-600 w-40">{t('manager_comment')}:</span>
+              <span className="font-semibold text-gray-600 w-28">{t('manager_comment')}:</span>
               <p className="text-gray-900">{request?.manager_comment}</p>
             </div>
           )}

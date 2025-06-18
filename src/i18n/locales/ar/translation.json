@@ -222,7 +222,25 @@
   "add_asset":"اضافة عهد",
   "employee_assets":"عهود الموظفين",
   "employee_asset":"عهد الموظفين",
-  "are_you_sure_you_want_to_delete_this_asset":"هل انت متاكد انك تريد حذف هذا العهد ؟"
+  "are_you_sure_you_want_to_delete_this_asset":"هل انت متاكد انك تريد حذف هذا العهد ؟",
+   "are_you_sure_you_want_to_delete_this_clearance": "هل أنت متأكد أنك تريد حذف هذا الإخلاء؟",
+  "employee_clearances": "إخلاءات الطرف",
+  "add_clearance": "إضافة إخلاء طرف",
+  "enter_reason": "أدخل السبب",
+  "add_employee_clearance": "إضافة إخلاء طرف موظف",
+  "employee_clearance": "إخلاء طرف الموظف",
+  "last_working_day": "آخر يوم عمل",
+  "notice_period": "فترة الإشعار",
+  "edit_employee_clearance": "تعديل إخلاء الطرف",
+  "days": "أيام",
+  "status_pending": "قيد الانتظار",
+  "status_approved": "مقبول",
+  "status_rejected": "مرفوض",
+  "enter_notice_period":"ادخل الفترة التجريبيه",
+  "pending": "قيد الانتظار",
+  "approved": "مقبول",
+  "rejected": "مرفوض"
+
 
  
 

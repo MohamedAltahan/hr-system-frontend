@@ -42,37 +42,37 @@ const ShowEmployeeAsset = () => {
 
         <div className="grid grid-cols-2 gap-2">
           <div className="flex items-center px-4 py-2">
-            <span className="font-semibold text-gray-600 w-40">{t('employee_name')}:</span>
+            <span className="font-semibold text-gray-600 w-28">{t('employee_name')}:</span>
             <p className="text-gray-900">{asset?.employee?.name || '-'}</p>
           </div>
 
           <div className="flex items-center px-4 py-2">
-            <span className="font-semibold text-gray-600 w-40">{t('manager_name')}:</span>
+            <span className="font-semibold text-gray-600 w-28">{t('manager_name')}:</span>
             <p className="text-gray-900">{asset?.manager?.name || '-'}</p>
           </div>
 
           <div className="flex items-center px-4 py-2">
-            <span className="font-semibold text-gray-600 w-40">{t('department')}:</span>
+            <span className="font-semibold text-gray-600 w-28">{t('department')}:</span>
             <p className="text-gray-900">{asset?.department?.name || '-'}</p>
           </div>
 
           <div className="flex items-center px-4 py-2">
-            <span className="font-semibold text-gray-600 w-40">{t('asset_type')}:</span>
+            <span className="font-semibold text-gray-600 w-28">{t('asset_type')}:</span>
             <p className="text-gray-900">{asset?.asset_type?.name || '-'}</p>
           </div>
 
           <div className="flex items-center px-4 py-2">
-            <span className="font-semibold text-gray-600 w-40">{t('issue_date')}:</span>
+            <span className="font-semibold text-gray-600 w-28">{t('issue_date')}:</span>
             <p className="text-gray-900">{asset?.issue_date?.date || '-'}</p>
           </div>
 
           <div className="flex items-center px-4 py-2">
-            <span className="font-semibold text-gray-600 w-40">{t('return_date')}:</span>
+            <span className="font-semibold text-gray-600 w-28">{t('return_date')}:</span>
             <p className="text-gray-900">{asset?.return_date?.date || '-'}</p>
           </div>
 
           <div className="flex items-center px-4 py-2">
-            <span className="font-semibold text-gray-600 w-40">{t('status')}:</span>
+            <span className="font-semibold text-gray-600 w-28">{t('status')}:</span>
             <p className="text-gray-900">{t(asset?.status) || '-'}</p>
           </div>
         </div>

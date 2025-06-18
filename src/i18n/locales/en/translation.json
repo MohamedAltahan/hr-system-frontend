@@ -226,7 +226,24 @@
   "add_asset":"Add Asset",
   "employee_assets":"Employee Assets",
   "employee_asset":"Employee Asset",
-  "are_you_sure_you_want_to_delete_this_asset":"Are you sure , you want to delete this asset ?"
+  "are_you_sure_you_want_to_delete_this_asset":"Are you sure , you want to delete this asset ?",
+    "are_you_sure_you_want_to_delete_this_clearance": "Are you sure you want to delete this clearance?",
+  "employee_clearances": "Employee Clearances",
+  "add_clearance": "Add Clearance",
+  "enter_reason": "Enter reason",
+  "add_employee_clearance": "Add Employee Clearance",
+  "employee_clearance": "Employee Clearance",
+  "last_working_day": "Last Working Day",
+  "notice_period": "Notice Period",
+  "edit_employee_clearance": "Edit Employee Clearance",
+  "days": "Days",
+  "status_pending": "Pending",
+  "status_approved": "Approved",
+  "status_rejected": "Rejected",
+  "enter_notice_period":"Enter Notice Period",
+  "pending": "Pending",
+  "approved": "Approved",
+  "rejected": "Rejected"
   
 
 }

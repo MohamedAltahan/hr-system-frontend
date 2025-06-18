@@ -101,7 +101,10 @@ import EditEmployeeAsset from './pages/EmoplyeeAssets/edit/[id]';
 import AddEmployeeAsset from './pages/EmoplyeeAssets/add';
 
 
-
+import EmployeeClearances from './pages/EmployeeClearances/EmployeeClearances';
+import ShowEmployeeClearance from './pages/EmployeeClearances/[id]';
+import EditEmployeeClearance from './pages/EmployeeClearances/edit/[id]';
+import AddEmployeeClearance from './pages/EmployeeClearances/add';
 
 const App = () => {
   return (
@@ -321,7 +324,42 @@ const App = () => {
   
 </Route>
 
+<Route path="employee-clearances">
+  <Route
+    index
+    element={
+      <AuthGuard>
+        <EmployeeClearances />
+      </AuthGuard>
+    }
+  />
+  <Route
+    path="add"
+    element={
+      <AuthGuard>
+        <AddEmployeeClearance />
+      </AuthGuard>
+    }
+  />
+  <Route
+    path="edit/:id"
+    element={
+      <AuthGuard>
+        <EditEmployeeClearance />
+      </AuthGuard>
+    }
+  />
 
+  <Route
+    path=":id"
+    element={
+      <AuthGuard>
+        <ShowEmployeeClearance />
+      </AuthGuard>
+    }
+  />
+  
+</Route>
 
 <Route path="employee-requests">
   <Route
