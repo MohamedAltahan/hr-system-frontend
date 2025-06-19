@@ -10,6 +10,7 @@ import { useGetAllEmployeeQuery } from "../../../api/Employee";
 import {
   useGetEmployeeRequestByIdQuery,
   useUpdateEmployeeRequestMutation,
+  useGetEmployeeRequestTypesQuery
 } from "../../../api/EmployeeRequestsApi";
 import { toast } from "react-toastify";
 import { useTranslation } from "react-i18next";
@@ -21,7 +22,10 @@ const EditEmployeeRequest = () => {
 
   const { data: employeesData } = useGetAllEmployeeQuery({ id: 0 });
   const { data: requestData, isLoading: loadingRequest } = useGetEmployeeRequestByIdQuery(id);
+    const { data: requestTypesData, isLoading: loadingTypes } = useGetEmployeeRequestTypesQuery();
+  
   const [updateRequest, { isLoading }] = useUpdateEmployeeRequestMutation();
+
 
   const [employeeId, setEmployeeId] = useState(null);
   const [type, setType] = useState(null);
@@ -34,10 +38,13 @@ const EditEmployeeRequest = () => {
     label: e.name
   })) || [];
 
-  const typeOptions = [
-    { value: "leave", label: t("leave") || "إجازة" },
-    { value: "loan", label: t("loan") || "سلفة" },
-  ];
+ const typeOptions =
+  requestTypesData?.body
+    ? Object.entries(requestTypesData.body).map(([key, value]) => ({
+        value: key,
+        label: value,
+      }))
+    : [];
 
   useEffect(() => {
     if (requestData?.body) {

@@ -79,6 +79,27 @@ const employeeRequestsApi = createApi({
       }),
       invalidatesTags: ['employeeRequest'],
     }),
+
+
+    updateEmployeeRequestStatus: builder.mutation({
+  query: ({ id, status, manager_comment }) => ({
+    url: `/employee-request-update-status/${id}?_method=put`,
+    method: "POST",
+    body: {
+      status,
+      manager_comment,
+    },
+  }),
+  invalidatesTags: ["employeeRequest"],
+}),
+getEmployeeRequestTypes: builder.query<any, void>({
+  query: () => ({
+    url: `/employee-request-type-list`,
+    method: 'GET',
+  }),
+  providesTags: ['employeeRequest'],
+}),
+
   }),
 });
 
@@ -88,6 +109,8 @@ export const {
   useCreateEmployeeRequestMutation,
   useUpdateEmployeeRequestMutation,
   useDeleteEmployeeRequestMutation,
+  useUpdateEmployeeRequestStatusMutation,
+    useGetEmployeeRequestTypesQuery, 
 } = employeeRequestsApi;
 
 export default employeeRequestsApi;

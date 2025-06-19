@@ -106,7 +106,7 @@ onChange={(e) => setIsActive(e.target.checked ? 1 : 0)}
       <form onSubmit={handleSubmit} className="grid grid-cols-2 gap-6">
         {/* Employee */}
         <div>
-          <label className="block mb-2 text-gray-900 dark:text-black label-md mb-3">
+          <label className="block mb-2 label-md">
             {t("employee")}
           </label>
           <Select
@@ -119,7 +119,7 @@ onChange={(e) => setIsActive(e.target.checked ? 1 : 0)}
 
         {/* Attendance Rule */}
         <div>
-          <label className="block mb-2 text-gray-900 dark:text-black label-md mb-3">
+          <label className="block mb-2 label-md">
             {t("attendance_rule")}
           </label>
           <Select

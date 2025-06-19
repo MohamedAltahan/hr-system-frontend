@@ -23,27 +23,7 @@ const EmployeeRequests = () => {
   const [toDate, setToDate] = useState("");
   const [confirmOpen, setConfirmOpen] = useState(false);
   const [selectedId, setSelectedId] = useState(null);
-const StatusChip = ({ status }) => {
-  const colors = {
-    pending: "bg-yellow-100 text-yellow-800",
-    success: "bg-green-100 text-green-800",
-    failed: "bg-red-100 text-red-800",
-  };
 
-  const labelMap = {
-    pending: "Pending",
-    success: "Approved",
-    failed: "Rejected",
-  };
-
-  return (
-    <span
-      className={`inline-flex items-center px-3 py-1 rounded-full text-sm font-medium ${colors[status] || "bg-gray-100 text-gray-800"}`}
-    >
-      {labelMap[status] || status}
-    </span>
-  );
-};
 
   // Get employees for filter dropdown
   const { data: employeesList } = useGetAllEmployeeQuery({ id: 0 });
@@ -68,8 +48,8 @@ const StatusChip = ({ status }) => {
 
     const statusMap = {
       pending: { label: 'قيد الانتظار', className: 'bg-yellow-100 text-yellow-800' },
-      success: { label: 'مقبول', className: 'bg-green-100 text-green-800' },
-      failed: { label: 'مرفوض', className: 'bg-red-100 text-red-800' },
+      approved: { label: 'مقبول', className: 'bg-green-100 text-green-800' },
+      rejected: { label: 'مرفوض', className: 'bg-red-100 text-red-800' },
     };
 
     const chip = (
@@ -126,6 +106,7 @@ const StatusChip = ({ status }) => {
     { key: "reason", label: t("reason") },
     { key: "status", label: t("status") },
     { key: "reviewer_name", label: t("reviewer") },
+    // { key: "manager_comment", label: t("manager_comment") },
   ];
 
   return (
@@ -182,6 +163,13 @@ const StatusChip = ({ status }) => {
                 >
                   <MdEdit />
                 </a>
+                  <a
+      href={`/app/employee-requests/approve/${item.id}`}
+      className="font-medium text-green-600 "
+      title={t("approve_request")}
+    >
+      ✅
+    </a>
                 <button
                   onClick={() => handleDeleteClick(item.id)}
                   className="deleteIcon"
