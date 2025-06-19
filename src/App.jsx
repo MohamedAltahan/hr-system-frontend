@@ -94,6 +94,7 @@ import EmployeeReqests from './pages/EmployeesRequests/EmployeeRequests';
 import ShowEmployeeReqest from './pages/EmployeesRequests/[id]';
 import EditEmployeeReqest from './pages/EmployeesRequests/edit/[id]';
 import AddEmployeeReqest from './pages/EmployeesRequests/add';
+import ApproveEmployeeRequest from './pages/EmployeesRequests/approve/[id]';
 
 import EmployeeAssets from './pages/EmoplyeeAssets/EmployeeAssets';
 import ShowEmployeeAsset from './pages/EmoplyeeAssets/[id]';
@@ -465,6 +466,14 @@ const App = () => {
     element={
       <AuthGuard>
         <AddEmployeeReqest />
+      </AuthGuard>
+    }
+  />
+    <Route
+    path="approve/:id"
+    element={
+      <AuthGuard>
+        <ApproveEmployeeRequest />
       </AuthGuard>
     }
   />
