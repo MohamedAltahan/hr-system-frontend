@@ -26,7 +26,8 @@ const EditEmployeeAsset = () => {
   const [departmentId, setDepartmentId] = useState(null);
   const [assetTypeId, setAssetTypeId] = useState(null);
   const [issueDate, setIssueDate] = useState("");
-  const [returnDate, setReturnDate] = useState("");
+  const [status, setStatus] = useState(null);
+const [returnDate, setReturnDate] = useState("");
 
   const { data: employeesData } = useGetAllEmployeeQuery({ id: 0 });
   const { data: departmentsData } = useGetAllDepartmentsQuery({ id: 0 });
@@ -41,6 +42,13 @@ const EditEmployeeAsset = () => {
   })) || [];
 
   const managerOptions = employeeOptions;
+  const statusOptions = [
+  { value: "pending", label: t("pending") || "قيد الانتظار" },
+  { value: "issued", label: t("issued") || "تم التسليم" },
+  { value: "returned", label: t("returned") || "تم الإرجاع" },
+  { value: "lost", label: t("lost") || "مفقود" },
+];
+
 
   const departmentOptions = departmentsData?.body?.data?.map((d) => ({
     value: d.id,
@@ -55,46 +63,45 @@ const EditEmployeeAsset = () => {
   useEffect(() => {
     if (assetData?.body) {
       const asset = assetData.body;
-      setEmployeeId({ value: asset.employee_id, label: asset.employee?.name });
-      setManagerId({ value: asset.manager_id, label: asset.manager?.name });
-      setDepartmentId({ value: asset.department_id, label: asset?.employee?.department_name?.name });
-      setAssetTypeId({ value: asset.employee_asset_type_id, label: asset.asset_type?.name });
+      console.log(asset);
+      
+      setEmployeeId({ value: asset.employee?.id, label: asset.employee?.name });
+      setManagerId({ value: asset.manager?.id, label: asset.manager?.name });
+      setDepartmentId({ value: asset.department?.id, label: asset?.department?.name });
+      setAssetTypeId({ value: asset.asset_type?.id, label: asset.asset_type?.name });
       setIssueDate(asset.issue_date?.date);
       setReturnDate(asset.return_date?.date);
+      setStatus({ value: asset.status, label: t(asset.status) || asset.status });
+
     }
   }, [assetData]);
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+const handleSubmit = async (e) => {
+  e.preventDefault();
 
-    if (!employeeId || !managerId || !departmentId || !assetTypeId || !issueDate || !returnDate) {
-      toast.error(t("all_fields_required") || "جميع الحقول مطلوبة");
-      return;
-    }
+  const formData = new FormData();
+  formData.append("employee_id", employeeId?.value);
+  formData.append("manager_id", managerId?.value);
+  formData.append("department_id", departmentId?.value);
+  formData.append("employee_asset_type_id", assetTypeId?.value);
+  formData.append("issue_date", issueDate);
+  formData.append("return_date", returnDate);
+  formData.append("status", status?.value);
 
-    if (new Date(issueDate) > new Date(returnDate)) {
-      toast.error(t("issue_date_cannot_be_after_return_date") || "تاريخ التسليم لا يمكن أن يكون بعد تاريخ الاسترجاع");
-      return;
-    }
+  for (let [key, value] of formData.entries()) {
+    console.log(`${key}: ${value}`);
+  }
 
-    try {
-      const payload = {
-        employee_id: employeeId.value,
-        manager_id: managerId.value,
-        department_id: departmentId.value,
-        employee_asset_type_id: assetTypeId.value,
-        issue_date: issueDate,
-        return_date: returnDate,
-        status: "pending",
-      };
+  try {
+    const res = await updateEmployeeAsset({ id, formData }).unwrap();
+    toast.success(res?.message || t("updated_successfully"));
+    navigate("/app/employee-assets");
+  } catch (err) {
+    toast.error(err?.data?.message || t("something_went_wrong"));
+  }
+};
 
-      const res = await updateEmployeeAsset({ id, data: payload }).unwrap();
-      toast.success(res?.message || t("updated_successfully"));
-      navigate("/app/employee-assets");
-    } catch (err) {
-      toast.error(err?.data?.message || t("something_went_wrong"));
-    }
-  };
+
 
   return (
     <SectionBox className="space-y-6">
@@ -152,10 +159,20 @@ const EditEmployeeAsset = () => {
           value={returnDate}
           onChange={(e) => setReturnDate(e.target.value)}
         />
+<div>
+  <label className="block mb-2 text-gray-900 label-md">{t("status")}</label>
+  <Select
+    value={status}
+    onChange={setStatus}
+    options={statusOptions}
+    placeholder={t("choose_status")}
+    isClearable
+  />
+</div>
 
         <div className="col-span-2 flex justify-end gap-4 mt-4">
           <AddingButton type="submit" disabled={isUpdating}>
-            {isUpdating ? t("loading") : t("save")}
+            {isUpdating ? t("loading") : t("update")}
           </AddingButton>
           <CancelButton onClick={() => navigate("/app/employee-assets")} type="button">
             {t("cancel")}

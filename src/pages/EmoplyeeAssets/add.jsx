@@ -23,6 +23,8 @@ const AddEmployeeAsset = () => {
   const [assetTypeId, setAssetTypeId] = useState(null);
   const [issueDate, setIssueDate] = useState("");
   const [returnDate, setReturnDate] = useState("");
+  const [status, setStatus] = useState(null);
+
 
   const { data: employeesData } = useGetAllEmployeeQuery({ id: 0 });
   const { data: departmentsData } = useGetAllDepartmentsQuery({ id: 0 });
@@ -41,7 +43,12 @@ const AddEmployeeAsset = () => {
     value: d.id,
     label: d.name,
   })) || [];
-console.log(assetTypesData);
+const statusOptions = [
+  { value: "pending", label: t("pending") || "قيد الانتظار" },
+  { value: "issued", label: t("issued") || "تم التسليم" },
+  { value: "returned", label: t("returned") || "تم الإرجاع" },
+  { value: "lost", label: t("lost") || "مفقود" },
+];
 
   const assetTypeOptions = assetTypesData?.body?.data?.map((type) => ({
     value: type.id,
@@ -69,7 +76,7 @@ console.log(assetTypesData);
         employee_asset_type_id: assetTypeId.value,
         issue_date: issueDate,
         return_date: returnDate,
-        status: "pending",
+        status: status.value,
       };
 
       const res = await createEmployeeAsset(payload).unwrap();
@@ -136,6 +143,18 @@ console.log(assetTypesData);
           value={returnDate}
           onChange={(e) => setReturnDate(e.target.value)}
         />
+
+        <div>
+  <label className="block mb-2 text-gray-900 label-md">{t("status")}</label>
+  <Select
+    value={status}
+    onChange={setStatus}
+    options={statusOptions}
+    placeholder={t("choose_status")}
+    isClearable
+  />
+</div>
+
 
         <div className="col-span-2 flex justify-end gap-4 mt-4">
           <AddingButton type="submit" disabled={isLoading}>

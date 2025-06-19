@@ -49,25 +49,15 @@ const employeeAssetsApi = createApi({
     }),
 
     // 4. Update employee asset
-    updateEmployeeAsset: builder.mutation<any, {
-      id: number;
-      body: {
-        manager_id: number;
-        employee_id: number;
-        employee_asset_type_id: number;
-        department_id: number;
-        issue_date: string;
-        return_date: string;
-        status: string;
-      };
-    }>({
-      query: ({ id, body }) => ({
-        url: `/employee-assets/${id}?_method=put`,
-        method: 'POST',
-        body,
-      }),
-      invalidatesTags: ['employeeAsset'],
-    }),
+  updateEmployeeAsset: builder.mutation<any, { id: number; formData: FormData }>({
+  query: ({ id, formData }) => ({
+    url: `/employee-assets/${id}?_method=put`,
+    method: 'POST',
+    body: formData,
+  }),
+  invalidatesTags: ['employeeAsset'],
+}),
+
 
     // 5. Delete employee asset
     deleteEmployeeAsset: builder.mutation<any, number>({
