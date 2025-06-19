@@ -43,9 +43,10 @@ const EditBranch = () => {
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
-  const handleToggle = (value) => {
-    setFormData(prev => ({ ...prev, is_active: value ? 1 : 0 }));
-  };
+const handleToggle = (value) => {
+  setFormData(prev => ({ ...prev, is_active: value ? 1 : 0 }));
+};
+
 const handleSubmit = async (e) => {
   e.preventDefault();
     const payload = new FormData();
@@ -105,11 +106,16 @@ const handleSubmit = async (e) => {
           onChange={handleChange}
         />
 
-        <Toggle
-          label={t('status')}
-          checked={formData.is_active === 1}
-          onChange={handleToggle}
-        />
+ <Toggle
+  name="is_active"
+  label={t('status')}
+  checked={formData.is_active === 1}
+  onChange={(e) => handleToggle(e.target.checked)}
+/>
+
+
+
+        
 
         <div className="flex justify-end gap-4">
                     <AddingBtn type="submit" isLoading={isLoading}>{t('edit')}</AddingBtn>
