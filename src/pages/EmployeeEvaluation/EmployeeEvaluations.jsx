@@ -40,7 +40,7 @@ const EmployeeEvaluations = () => {
     ...item,
     employee_name: item?.employee?.name,
     evaluator_name: item?.evaluator?.name,
-    date_range: `${item.evaluation_from} → ${item.evaluation_to}`,
+    date_range: `${item.evaluation_from} - ${item.evaluation_to}`,
   })) || [];
 
   const pagination = evaluationsData?.body?.paginate;
@@ -86,7 +86,7 @@ const EmployeeEvaluations = () => {
       </div>
 
       {/* Filters */}
-      <div className="grid grid-cols-4 gap-4 mb-4" style={{ alignItems: "end" }}>
+      {/* <div className="grid grid-cols-4 gap-4 mb-4" style={{ alignItems: "end" }}>
         <div>
           <Select
             value={selectedEmployee}
@@ -119,7 +119,7 @@ const EmployeeEvaluations = () => {
             placeholder={t("to_date")}
           />
         </div>
-      </div>
+      </div> */}
 
       {/* Table */}
       <div className="w-full">

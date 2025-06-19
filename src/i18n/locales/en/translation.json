@@ -264,7 +264,16 @@
   "employee_asset_types": "Employee Asset Types",
   "add_asset_type": "Add Asset Type",
   "edit_asset_type": "Edit Asset Type",
-  "are_you_sure_you_want_to_delete_this_asset_type":"Are you sure you want to delete this asset type ?"
+  "are_you_sure_you_want_to_delete_this_asset_type":"Are you sure you want to delete this asset type ?",
+   "approve_request": "Approve Request",
+  "choose_status": "Choose Status",
+  "manager_comment": "Manager Comment",
+  "status_updated_successfully": "Status updated successfully",
+  "please_choose_status": "Please choose a status",
+  "are_you_sure_you_want_to_delete_this_job_title": "Are you sure you want to delete this job title?",
+  "issued": "Issued",
+  "returned": "Returned",
+  "lost": "Lost"
   
 
 }

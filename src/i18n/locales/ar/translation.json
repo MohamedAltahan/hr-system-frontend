@@ -216,7 +216,7 @@
   "asset_type":"نوع العهد",
   "manager":"المدير",
   "return_date":"تاريخ العودة",
-  "issue_date":"تاريخ الاصدار",
+  "issue_date":"تاريخ الاستلام",
   "choose_manager":"اختر مديرا",
   "choose_asset_type":"اختر نوع العهد",
   "add_asset":"اضافة عهد",
@@ -260,7 +260,16 @@
   "employee_asset_types": "أنواع العهد الموظفين",
   "add_asset_type": "إضافة نوع العهد",
   "edit_asset_type": "تعديل نوع العهد",
-  "are_you_sure_you_want_to_delete_this_asset_type": "هل أنت متأكد أنك تريد حذف هذا النوع العهد؟"
+  "are_you_sure_you_want_to_delete_this_asset_type": "هل أنت متأكد أنك تريد حذف هذا النوع العهد؟",
+   "approve_request": "موافقة على الطلب",
+  "choose_status": "اختر الحالة",
+  "manager_comment": "تعليق المدير",
+  "status_updated_successfully": "تم تحديث حالة الطلب بنجاح",
+  "please_choose_status": "يرجى اختيار الحالة",
+  "are_you_sure_you_want_to_delete_this_job_title": "هل أنت متأكد أنك تريد حذف هذا المسمى الوظيفي؟",
+  "issued":"تم التسليم",
+  "returned":"تم الإرجاع",
+  "lost":"مفقود"
 
 
  
