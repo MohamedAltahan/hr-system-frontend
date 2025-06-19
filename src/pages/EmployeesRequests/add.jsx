@@ -7,7 +7,7 @@ import Select from "react-select";
 import DateInput from "../../components/reusable_components/DateInput";
 import TextAreaInput from "../../components/reusable_components/TextAreaInput"; // or use a normal textarea
 import { useGetAllEmployeeQuery } from "../../api/Employee";
-import { useCreateEmployeeRequestMutation } from "../../api/EmployeeRequestsApi";
+import { useCreateEmployeeRequestMutation ,useGetEmployeeRequestTypesQuery} from "../../api/EmployeeRequestsApi";
 import { toast } from "react-toastify";
 import { useTranslation } from "react-i18next";
 
@@ -22,17 +22,22 @@ const AddEmployeeRequest = () => {
   const [reason, setReason] = useState('');
 
   const { data: employeesData } = useGetAllEmployeeQuery({ id: 0 });
+  const { data: requestTypesData, isLoading: loadingTypes } = useGetEmployeeRequestTypesQuery();
+
 
   const employeeOptions = employeesData?.body?.data?.map(e => ({
     value: e.id,
     label: e.name
   })) || [];
 
-  const typeOptions = [
-    { value: "leave", label: t("leave") || "إجازة" },
-    { value: "loan", label: t("loan") || "سلف" },
-    // Add more types if needed
-  ];
+ const typeOptions =
+  requestTypesData?.body
+    ? Object.entries(requestTypesData.body).map(([key, value]) => ({
+        value: key,
+        label: value,
+      }))
+    : [];
+
 
   const [createEmployeeRequest, { isLoading }] = useCreateEmployeeRequestMutation();
 

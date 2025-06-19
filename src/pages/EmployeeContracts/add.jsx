@@ -87,7 +87,8 @@ const AddEmployeeContract = () => {
 <div className="grid grid-cols-2 gap-6">
         {/* Employee Select */}
         <div>
-          <label className="label-md mb-5">{t("employee")}</label>
+          <label className="block mb-2 label-md">{t("employee")}</label>
+          
           <Select
             value={employeeId}
             onChange={setEmployeeId}
@@ -98,7 +99,7 @@ const AddEmployeeContract = () => {
 
         {/* Attendance Rule Select */}
         <div>
-          <label className="label-md mb-2">{t("attendance_rule")}</label>
+          <label className="block mb-2 label-md">{t("attendance_rule")}</label>
           <Select
             value={attendanceRuleId}
             onChange={setAttendanceRuleId}

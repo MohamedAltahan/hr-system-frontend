@@ -38,7 +38,7 @@ const EmployeeContracts = () => {
   const contracts = contractsData?.body?.data?.map(contract => ({
     ...contract,
     employee_name: contract?.employee?.name || "-",
-    date_range: `${contract.start_date.date} → ${contract.end_date.date}`,
+    date_range: `${contract.start_date.date} - ${contract.end_date.date}`,
 is_active: contract?.is_active == "1" ? t("active") : t("inactive")
   })) || [];
 
