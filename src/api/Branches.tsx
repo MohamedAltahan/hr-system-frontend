@@ -14,10 +14,11 @@ const branchesApi = createApi({
   }),
 
   endpoints: (builder) => ({
-    getAllbranches: builder.query<any, { name?: string; page?: number }>({
-      query: ({ name, page }) => {
+    getAllbranches: builder.query<any, { name?: string; page?: number , status?: string }>({
+      query: ({ name, page,status }) => {
         const params = new URLSearchParams();
         if (name) params.append('name', name);
+        if (status) params.append('status', status);
         if (page) params.append('page', page.toString());
         return {
           url: `/branch?${params.toString()}`,

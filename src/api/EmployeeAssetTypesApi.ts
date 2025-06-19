@@ -34,14 +34,15 @@ const employeeAssetTypesApi = createApi({
       providesTags: ['employeeAssetType'],
     }),
 
-    createEmployeeAssetType: builder.mutation<any, FormData>({
-      query: (formData) => ({
-        url: '/employee-asset-types',
-        method: 'POST',
-        body: formData,
-      }),
-      invalidatesTags: ['employeeAssetType'],
-    }),
+  createEmployeeAssetType: builder.mutation<any, FormData>({
+  query: (formData) => ({
+    url: '/employee-asset-types',
+    method: 'POST',
+    body: formData,
+  }),
+  invalidatesTags: ['employeeAssetType'],
+}),
+
 
     updateEmployeeAssetType: builder.mutation<any, { id: number; formData: FormData }>({
       query: ({ id, formData }) => ({

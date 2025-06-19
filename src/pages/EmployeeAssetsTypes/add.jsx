@@ -21,7 +21,7 @@ const AddEmployeeAssetType = () => {
   const [descEn, setDescEn] = useState("");
   const [branchId, setBranchId] = useState(null);
 
-  const { data: branchesData } = useGetAllbranchesQuery({ id: 0 });
+  const { data: branchesData } = useGetAllbranchesQuery({  status:'active'});
   const branchOptions = branchesData?.body?.data?.map((b) => ({
     value: b.id,
     label: b.name,
@@ -30,29 +30,29 @@ const AddEmployeeAssetType = () => {
   const [createAssetType, { isLoading }] = useCreateEmployeeAssetTypeMutation();
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
+  e.preventDefault();
 
-    if (!nameAr  || !descAr || !branchId) {
-      toast.error(t("all_fields_required") || "جميع الحقول مطلوبة");
-      return;
-    }
+  if (!nameAr || !descAr || !branchId) {
+    toast.error(t("all_fields_required") || "جميع الحقول مطلوبة");
+    return;
+  }
 
-    try {
-      const payload = {
-        "name[ar]": nameAr,
-        "name[en]": nameAr,
-        "description[ar]": descAr,
-        "description[en]": descAr,
-        branch_id: branchId.value,
-      };
+  const formData = new FormData();
+  formData.append("name[ar]", nameAr);
+  formData.append("name[en]", nameAr); // Or use a separate value for English
+  formData.append("description[ar]", descAr);
+  formData.append("description[en]", descAr);
+  formData.append("branch_id", branchId.value); // Assuming it's a number or string
 
-      const res = await createAssetType(payload).unwrap();
-      toast.success(res?.message || t("created_successfully"));
-      navigate("/app/asset-types");
-    } catch (err) {
-      toast.error(err?.data?.message || t("something_went_wrong"));
-    }
-  };
+  try {
+    const res = await createAssetType(formData).unwrap();
+    toast.success(res?.message || t("created_successfully"));
+    navigate("/app/employee-asset-types");
+  } catch (err) {
+    toast.error(err?.data?.message || t("something_went_wrong"));
+  }
+};
+
 
   return (
     <SectionBox className="space-y-6">
