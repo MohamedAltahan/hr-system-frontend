@@ -17,28 +17,27 @@ const AddJobTitle = () => {
 
   const [createJobTitle, { isLoading }] = useCreateJobTitleMutation();
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+ const handleSubmit = async (e) => {
+  e.preventDefault();
 
-    if (!nameAr.trim() ) {
-      toast.error(t("all_fields_required"));
-      return;
-    }
+  if (!nameAr.trim()) {
+    toast.error(t("all_fields_required"));
+    return;
+  }
 
-    try {
-      const res = await createJobTitle({
-        name: {
-          ar: nameAr,
-          en: nameAr,
-        },
-      }).unwrap();
+  const formData = new FormData();
+  formData.append("name[ar]", nameAr);
+  formData.append("name[en]", nameAr);
 
-      toast.success(res?.message || t("created_successfully"));
-      navigate("/app/job-titles");
-    } catch (error) {
-      toast.error(error?.data?.message || t("something_went_wrong"));
-    }
-  };
+  try {
+    const res = await createJobTitle(formData).unwrap();
+    toast.success(res?.message || t("created_successfully"));
+    navigate("/app/job-titles");
+  } catch (error) {
+    toast.error(error?.data?.message || t("something_went_wrong"));
+  }
+};
+
 
   return (
     <SectionBox className="space-y-6">

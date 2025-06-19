@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useGetAllJobTitlesQuery, useDeleteJobTitleMutation } from "../../api/JobTitlesApi";
+import { useGetAllJobTitlesQuery, useDeleteJobTitleMutation } from "../../api/jobTitlesApi";
 import SectionBox from "../../components/ui/containers/SectionBox";
 import AddingButton from "../../components/ui/buttons/AddingBtn";
 import ProductTable from "../../components/reusable_components/DataTable";
@@ -82,7 +82,7 @@ const JobTitles = () => {
           onClose={() => setConfirmOpen(false)}
           onConfirm={handleConfirmDelete}
           title={t("confirm_delete")}
-          message={t("are_you_sure_you_want_to_delete_this_record")}
+          message={t("are_you_sure_you_want_to_delete_this_job_title")}
         />
       </div>
     </SectionBox>

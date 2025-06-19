@@ -31,37 +31,26 @@ const jobTitlesApi = createApi({
     }),
 
     // 3. Create job title
-    createJobTitle: builder.mutation<any, {
-      name: { ar: string; en: string };
-    }>({
-      query: ({ name }) => ({
-        url: '/job-titles',
-        method: 'POST',
-        body: {
-          'name[ar]': name.ar,
-          'name[en]': name.ar,
-        },
-      }),
-      invalidatesTags: ['jobTitle'],
-    }),
-
-   // Update job title
-updateJobTitle: builder.mutation<any, {
-  id: number;
-  body: {
-    name: {
-      ar: string;
-      en: string;
-    };
-  };
-}>({
-  query: ({ id, body }) => ({
-    url: `/job-titles/${id}?_method=put`,
+ createJobTitle: builder.mutation<any, FormData>({
+  query: (formData) => ({
+    url: '/job-titles',
     method: 'POST',
-    body,
+    body: formData,
   }),
   invalidatesTags: ['jobTitle'],
 }),
+
+
+   // Update job title
+updateJobTitle: builder.mutation<any, { id: number; formData: FormData }>({
+  query: ({ id, formData }) => ({
+    url: `/job-titles/${id}?_method=put`,
+    method: 'POST',
+    body: formData,
+  }),
+  invalidatesTags: ['jobTitle'],
+}),
+
 
 
     // 5. Delete job title

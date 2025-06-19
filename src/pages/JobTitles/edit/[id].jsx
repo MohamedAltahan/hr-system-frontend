@@ -31,30 +31,31 @@ const EditJobTitle = () => {
     }
   }, [data]);
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+ const handleSubmit = async (e) => {
+  e.preventDefault();
 
-    if (!nameAr.trim() ) {
-      toast.error(t("all_fields_required"));
-      return;
-    }
+  if (!nameAr.trim()) {
+    toast.error(t("all_fields_required"));
+    return;
+  }
 
-    try {
-      const res = await updateJobTitle({
-        id,
-        body: {
-          'name[ar]': nameAr,
-          'name[en]': nameAr,
-          
-        },
-      }).unwrap();
+  const formData = new FormData();
+  formData.append("name[ar]", nameAr);
+  formData.append("name[en]", nameAr); // or use nameEn if separate
 
-      toast.success(res?.message || t("updated_successfully"));
-      navigate("/app/job-titles");
-    } catch (err) {
-      toast.error(err?.data?.message || t("something_went_wrong"));
-    }
-  };
+  try {
+    const res = await updateJobTitle({
+      id,
+      formData,
+    }).unwrap();
+
+    toast.success(res?.message || t("updated_successfully"));
+    navigate("/app/job-titles");
+  } catch (err) {
+    toast.error(err?.data?.message || t("something_went_wrong"));
+  }
+};
+
 
   if (isLoading) {
     return (
