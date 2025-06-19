@@ -255,7 +255,12 @@
   "note": "ملاحظة",
   "enter_note": "أدخل الملاحظة",
   "edit_employee_contract": "تعديل عقد الموظف",
-  "show_employee_contract": "عرض عقد الموظف"
+  "show_employee_contract": "عرض عقد الموظف",
+  "asset_types": "أنواع العهد",
+  "employee_asset_types": "أنواع العهد الموظفين",
+  "add_asset_type": "إضافة نوع العهد",
+  "edit_asset_type": "تعديل نوع العهد",
+  "are_you_sure_you_want_to_delete_this_asset_type": "هل أنت متأكد أنك تريد حذف هذا النوع العهد؟"
 
 
  

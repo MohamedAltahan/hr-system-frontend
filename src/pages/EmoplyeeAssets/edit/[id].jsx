@@ -57,7 +57,7 @@ const EditEmployeeAsset = () => {
       const asset = assetData.body;
       setEmployeeId({ value: asset.employee_id, label: asset.employee?.name });
       setManagerId({ value: asset.manager_id, label: asset.manager?.name });
-      setDepartmentId({ value: asset.department_id, label: asset.department?.name });
+      setDepartmentId({ value: asset.department_id, label: asset?.employee?.department_name?.name });
       setAssetTypeId({ value: asset.employee_asset_type_id, label: asset.asset_type?.name });
       setIssueDate(asset.issue_date?.date);
       setReturnDate(asset.return_date?.date);

@@ -53,7 +53,7 @@ const ShowEmployeeAsset = () => {
 
           <div className="flex items-center px-4 py-2">
             <span className="font-semibold text-gray-600 w-28">{t('department')}:</span>
-            <p className="text-gray-900">{asset?.department?.name || '-'}</p>
+            <p className="text-gray-900">{asset?.employee?.department_name?.name || '-'}</p>
           </div>
 
           <div className="flex items-center px-4 py-2">
@@ -73,7 +73,7 @@ const ShowEmployeeAsset = () => {
 
           <div className="flex items-center px-4 py-2">
             <span className="font-semibold text-gray-600 w-28">{t('status')}:</span>
-            <p className="text-gray-900">{t(asset?.status) || '-'}</p>
+            <p className="text-gray-900">{asset?.employee?.is_active == 1 ? t('active') : t('inactive') || '-'}</p>
           </div>
         </div>
       </div>

@@ -259,7 +259,12 @@
   "note": "Note",
   "enter_note": "Enter Note",
   "edit_employee_contract": "Edit Employee Contract",
-  "show_employee_contract": "Show Employee Contract"
+  "show_employee_contract": "Show Employee Contract",
+  "asset_types": "Asset Types",
+  "employee_asset_types": "Employee Asset Types",
+  "add_asset_type": "Add Asset Type",
+  "edit_asset_type": "Edit Asset Type",
+  "are_you_sure_you_want_to_delete_this_asset_type":"Are you sure you want to delete this asset type ?"
   
 
 }

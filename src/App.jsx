@@ -111,6 +111,12 @@ import ShowEmployeeContract from './pages/EmployeeContracts/[id]';
 import EditEmployeeContract from './pages/EmployeeContracts/edit/[id]';
 import AddEmployeeContract from './pages/EmployeeContracts/add';
 
+import EmployeeAssetsTypes from './pages/EmployeeAssetsTypes/EmployeeAssetsTypes';
+import ShowEmployeeAssetsType from './pages/EmployeeAssetsTypes/[id]';
+import EditEmployeeAssetsType from './pages/EmployeeAssetsTypes/edit/[id]';
+import AddEmployeeAssetsType from './pages/EmployeeAssetsTypes/add'
+
+
 
 const App = () => {
   return (
@@ -404,6 +410,44 @@ const App = () => {
   />
   
 </Route>
+
+<Route path="employee-asset-types">
+  <Route
+    index
+    element={
+      <AuthGuard>
+        <EmployeeAssetsTypes />
+      </AuthGuard>
+    }
+  />
+  <Route
+    path="add"
+    element={
+      <AuthGuard>
+        <AddEmployeeAssetsType/>
+      </AuthGuard>
+    }
+  />
+  <Route
+    path="edit/:id"
+    element={
+      <AuthGuard>
+        <EditEmployeeAssetsType />
+      </AuthGuard>
+    }
+  />
+
+  <Route
+    path=":id"
+    element={
+      <AuthGuard>
+        <ShowEmployeeAssetsType />
+      </AuthGuard>
+    }
+  />
+  
+</Route>
+
 
 
 
