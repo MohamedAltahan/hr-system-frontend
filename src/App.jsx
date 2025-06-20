@@ -117,7 +117,10 @@ import ShowEmployeeAssetsType from './pages/EmployeeAssetsTypes/[id]';
 import EditEmployeeAssetsType from './pages/EmployeeAssetsTypes/edit/[id]';
 import AddEmployeeAssetsType from './pages/EmployeeAssetsTypes/add'
 
-
+import AttendanceRules from './pages/AttendanceRules/AttendanceRules';
+import AddAttendanceRule from './pages/AttendanceRules/add';
+import EditAttendanceRule from './pages/AttendanceRules/edit/[id]';
+import ShowAttendanceRule from './pages/AttendanceRules/[id]'
 
 const App = () => {
   return (
@@ -447,6 +450,39 @@ const App = () => {
     }
   />
   
+</Route>
+
+<Route path='attendance-rules'>
+  <Route
+    index
+    element={
+      <AuthGuard>
+        <AttendanceRules />
+      </AuthGuard>
+    } 
+    />
+    <Route
+    path="add"
+    element={
+      <AuthGuard>
+        <AddAttendanceRule />
+      </AuthGuard>
+    }
+    />
+    <Route
+    path="edit/:id"    element={
+      <AuthGuard>
+        <EditAttendanceRule />
+      </AuthGuard>
+    }
+    />
+    <Route
+    path=":id"    element={
+      <AuthGuard>
+        <ShowAttendanceRule />
+      </AuthGuard>
+    }
+    />
 </Route>
 
 

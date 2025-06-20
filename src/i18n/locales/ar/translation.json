@@ -269,7 +269,32 @@
   "are_you_sure_you_want_to_delete_this_job_title": "هل أنت متأكد أنك تريد حذف هذا المسمى الوظيفي؟",
   "issued":"تم التسليم",
   "returned":"تم الإرجاع",
-  "lost":"مفقود"
+  "lost":"مفقود",
+  "rule_name": "اسم القاعدة",
+  "entry_time": "وقت الدخول",
+  "exit_time": "وقت الخروج",
+  "attendance_rules": "قواعد الحضور والانصراف",
+  "add_rule": "إضافة قاعدة",
+  "edit_rule": "تعديل القاعدة",
+  "add_attendance_rule": "إضافة قاعدة الحضور",
+  "edit_attendance_rule": "تعديل قاعدة الحضور",
+  "grace_period_minutes": "فترة السماح (بالدقائق)",
+  "break_time": "وقت الاستراحة",
+  "shift_time": "وقت الدوام",
+  "work_type": "نوع العمل",
+  "weekly_days_count": "عدد أيام العمل أسبوعيًا",
+"weekly_days_count_hint": "أدخل رقمًا من 1 إلى 7"
+,"choose_shift_time": "اختر وقت المناوبة",
+"choose_work_type": "اختر نوع العمل",
+"morning": "صباحي",
+"evening": "مسائي",
+"night": "ليلي",
+"full_time": "دوام كامل",
+"part_time": "دوام جزئي",
+"confirm_delete_message_attendance_rules":"هل أنت متأكد أنك تريد حذف هذه القاعدة الحضور والانصراف؟",
+"attendance_rule_details":"تفاصيل القاعدة الحضور والانصراف",
+"show_attendance_rule":"عرض القاعدة الحضور والانصراف"
+
 
 
  
