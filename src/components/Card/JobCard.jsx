@@ -12,7 +12,7 @@ const JobCard = ({ data, onTogglePublish, onDelete }) => {
     number_of_all_applications,
     number_of_new_applications,
     is_published,
-    website,
+    website ,
     id,
   } = data;
 

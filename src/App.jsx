@@ -127,6 +127,9 @@ import AddOpeningPosition from './pages/OpningPositions/add';
 import EditOpeningPosition from './pages/OpningPositions/edit/[id]';
 import ShowOpeningPosition from './pages/OpningPositions/[id]';
 
+
+import ApplyJob from './pages/ApplyJob/ApplyJob';
+
 const App = () => {
   return (
     
@@ -134,6 +137,7 @@ const App = () => {
       <Routes >
         {/* Landing Page */}
         <Route path="/" element={<Landing />} />
+        <Route path='/apply-job' element={<ApplyJob />}/>
 
         {/* Authentication Routes */}
         <Route
