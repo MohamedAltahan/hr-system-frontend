@@ -122,6 +122,11 @@ import AddAttendanceRule from './pages/AttendanceRules/add';
 import EditAttendanceRule from './pages/AttendanceRules/edit/[id]';
 import ShowAttendanceRule from './pages/AttendanceRules/[id]'
 
+import OpeningPositions from './pages/OpningPositions/OpningPositions';
+import AddOpeningPosition from './pages/OpningPositions/add';
+import EditOpeningPosition from './pages/OpningPositions/edit/[id]';
+import ShowOpeningPosition from './pages/OpningPositions/[id]';
+
 const App = () => {
   return (
     
@@ -480,6 +485,41 @@ const App = () => {
     path=":id"    element={
       <AuthGuard>
         <ShowAttendanceRule />
+      </AuthGuard>
+    }
+    />
+</Route>
+<Route path='opening-positions'>
+  <Route
+    index
+    element={
+      <AuthGuard>
+        <OpeningPositions />
+      </AuthGuard>
+    } 
+    />
+    <Route
+    path="add"
+    element={
+      <AuthGuard>
+        <AddOpeningPosition />
+      </AuthGuard>
+    }
+    />
+
+        <Route
+    path="edit/:id"
+    element={
+      <AuthGuard>
+        <EditOpeningPosition />
+      </AuthGuard>
+    }
+    />
+  <Route
+    path=":id"
+    element={
+      <AuthGuard>
+        <ShowOpeningPosition />
       </AuthGuard>
     }
     />

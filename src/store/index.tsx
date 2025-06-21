@@ -24,6 +24,7 @@ import employeeAssetTypesApi from '../api/EmployeeAssetTypesApi';
 import EmployeeContractsApi from '../api/EmployeeContractsApi'
 import EmployeeClearancesApi from '../api/EmployeeClearancesApi'
 import AttendanceRulesApi from '../api/AttendanceRulesApi';
+import OpeningPositionsApi from '../api/OpningPositionsApi';
 
 const rootReducer = combineReducers({
     [authApi.reducerPath]: authApi.reducer,
@@ -51,6 +52,7 @@ const rootReducer = combineReducers({
     [employeeAssetTypesApi.reducerPath]: employeeAssetTypesApi.reducer,
     [EmployeeClearancesApi.reducerPath]: EmployeeClearancesApi.reducer,
     [EmployeeContractsApi.reducerPath]: EmployeeContractsApi.reducer,
+    [OpeningPositionsApi.reducerPath]:OpeningPositionsApi.reducer
 
 
 
@@ -86,6 +88,7 @@ export default configureStore({
             EmployeeClearancesApi.middleware,
             EmployeeContractsApi.middleware,
             AttendanceRulesApi.middleware,
+            OpeningPositionsApi.middleware
 
         ),
 });

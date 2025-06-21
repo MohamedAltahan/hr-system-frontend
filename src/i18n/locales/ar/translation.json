@@ -293,7 +293,27 @@
 "part_time": "دوام جزئي",
 "confirm_delete_message_attendance_rules":"هل أنت متأكد أنك تريد حذف هذه القاعدة الحضور والانصراف؟",
 "attendance_rule_details":"تفاصيل القاعدة الحضور والانصراف",
-"show_attendance_rule":"عرض القاعدة الحضور والانصراف"
+"show_attendance_rule":"عرض القاعدة الحضور والانصراف",
+ 
+  "share": "مشاركة",
+  "delete": "حذف",
+  "published": "منشور",
+  "unpublished": "غير منشور",
+  "applications": "التطبيقات",
+  "to_hire": "للتوظيف",
+  "new_applications": "طلبات التقديم الجديدة",
+  "job_page": "صفحة الوظيفة",
+  "opening_positions":"الوظائف المتاحة",
+  "add_position":"إضافة وظيفة",
+  "select_position":"اختر الوظيفة",
+  "select_department":"اختر القسم",
+"number_of_vacancies": "عدد الوظائف الشاغرة",
+"add_opening_position":"إضافة وظيفة متاحة",
+"edit_opening_position":"تعديل الوظيفة المتاحة",
+"position":"وظيفة",
+"show_opening_position":"عرض الوظيفة المتاحة",
+"position_details":"تفاصيل الوظيفة",
+"confirm_delete_message_opening_position":"هل أنت متأكد أنك تريد حذف هذه الوظيفة المتاحة؟"
 
 
 

@@ -297,6 +297,25 @@
 "part_time": "Part-time",
 "confirm_delete_message_attendance_rules":"Are you sure you want to delete this attendance rule?",
 "attendance_rule_details":"Attendance Rule Details",
-"show_attendance_rule":"Show Attendance Rule"
+"show_attendance_rule":"Show Attendance Rule",
+ "share": "Share",
+  "delete": "Delete",
+  "published": "Published",
+  "unpublished": "Unpublished",
+  "applications": "Applications",
+  "to_hire": "To Hire",
+  "new_applications": "New Applications",
+  "job_page": "Job Page",
+  "opening_positions": "Opening Positions",
+  "add_position": "Add Position",
+  "select_position": "Select Position",
+  "select_department": "Select Department",
+  "number_of_vacancies": "Number of Vacancies",
+  "add_opening_position":"Add Opening Position",
+  "edit_opening_position":"Edit Opening Position",
+  "position":"Position",
+  "show_opening_position":"Show Opening Position",
+  "position_details":"Position Details",
+  "confirm_delete_message_opening_position":"Are you sure you want to delete this opening position?"
 
 }
