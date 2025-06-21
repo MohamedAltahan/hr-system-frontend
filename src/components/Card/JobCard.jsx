@@ -76,7 +76,7 @@ const JobCard = ({ data, onTogglePublish, onDelete }) => {
 
       <button
         onClick={() => navigator.clipboard.writeText(website)}
-        className="flex items-center gap-2 px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-all duration-150"
+        className="flex items-center gap-2 px-4 py-2 text-gray-700 hover:bg-purple-50 hover:text-purple-600 transition-all duration-150"
       >
         <span className="bg-purple-100 text-purple-600 p-1 rounded-full">
           <FiShare2 size={12} />
