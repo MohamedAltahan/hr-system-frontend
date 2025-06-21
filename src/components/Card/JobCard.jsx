@@ -36,7 +36,7 @@ const JobCard = ({ data, onTogglePublish, onDelete }) => {
   };
 
   return (
-    <div className="bg-white rounded-xl shadow-md border text-sm w-full max-w-sm relative min-h-[340px]">
+    <div className="bg-white rounded-xl shadow-md border text-sm w-full max-w-sm relative min-h-[320px]">
       {/* Header */}
       <div className="flex items-center justify-between p-4">
         <span className="font-semibold text-base text-[#1D2026]" style={{ fontSize: '14px', lineHeight: '24px', fontWeight: '600' }}>
@@ -142,7 +142,7 @@ const JobCard = ({ data, onTogglePublish, onDelete }) => {
       <div style={{ height: '1px', background: '#E9EAF0' }}></div>
 
       {/* Footer */}
-      <div className="flex justify-between items-center text-xs text-gray-500 p-4">
+      <div className="flex justify-between items-center text-xs text-gray-500  p-4">
         <div className="flex items-center gap-1">
           <span>{is_published ? t('published') : t('unpublished')}</span>
           <Switch size="small" checked={is_published === 1} onChange={() => onTogglePublish?.(id)} />
