@@ -110,7 +110,7 @@ const JobCard = ({ data, onTogglePublish, onDelete }) => {
       </div>
 
       {/* Counters */}
-      <div className="grid grid-cols-3 gap-2 text-center p-4">
+      <div className="grid grid-cols-3 gap-2 text-center pt-2 pb-2 pl-4 pr-4">
         <div style={{ border: '1px solid #E9EAF0', borderRadius: '8px', height: '36px' }}>
           <p className="text-xs text-[#131313]" style={{ fontSize: '10px', fontWeight: '400', lineHeight: '24px' }}>
             {number_of_vacancies} {t('to_hire')}
