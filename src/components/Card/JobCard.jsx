@@ -105,7 +105,7 @@ const JobCard = ({ data, onTogglePublish, onDelete }) => {
       <div style={{ height: '1px', background: '#E9EAF0' }}></div>
 
       {/* Description */}
-      <div className="p-4 mt-0">
+      <div className="p-4 mt-0" style={{height:"90px"}}>
         <p className="text-gray-500 text-xs leading-relaxed">{truncateDescription(description)}</p>
       </div>
 
@@ -124,20 +124,24 @@ const JobCard = ({ data, onTogglePublish, onDelete }) => {
       </div>
 
       {/* New requests */}
-      <div
-        className="text-center py-1 text-xs m-4"
-        style={{
-          fontWeight: '700',
-          borderRadius: '8px',
-          background: '#0553931A',
-          height: '32px',
-          lineHeight: '2.3',
-          color: '#055393',
-          fontSize: '10px',
-        }}
-      >
-        {number_of_new_applications} {t('new_applications')}
-      </div>
+    <div
+  onClick={() => navigate(`/app/hiring-applications?opening_position_id=${id}`)}
+  className="text-center py-1 text-xs m-4 hover:bg-[#0553932A]"
+  style={{
+    fontWeight: '700',
+    borderRadius: '8px',
+    background: '#0553931A',
+    height: '32px',
+    lineHeight: '2.3',
+    color: '#055393',
+    fontSize: '10px',
+    cursor: 'pointer',
+    transition: 'background 0.2s ease',
+  }}
+>
+  {number_of_new_applications} {t('new_applications')}
+</div>
+
 
       <div style={{ height: '1px', background: '#E9EAF0' }}></div>
 

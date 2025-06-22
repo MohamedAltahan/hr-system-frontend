@@ -72,7 +72,7 @@ const pathname = location.pathname.replace(/^\/app\//, '');
       {/* Navbar */}
       <nav className="bg-white shadow-md py-6 px-6 flex justify-between items-center"
            style={{ height: "61px", borderInlineStart: "1px solid #1E1E1E1A", position: "relative", zIndex: 30, marginInlineStart: "13px" }}>
-        <div className="text-xl font-bold">{currentTitle}</div>
+        <div className=" font-bold" style={{fontSize:"17px"}}>{currentTitle}</div>
         <div className="flex items-center gap-8">
           <div className="flex gap-4">
             <img src={celenderIcon} alt="calendar" className="w-10 h-10" />

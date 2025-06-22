@@ -40,7 +40,7 @@ const ShowEmployeeRequest = () => {
           </button>
         </div>
 
-        <div className="grid grid-cols-2 gap-2">
+        <div className="grid grid-cols-2 gap-2 pt-2 pb-2" style={{ fontSize: '14px' }}>
           <div className="flex items-center px-4 py-2">
             <span className="font-semibold text-gray-600 w-28">{t('employee_name')}:</span>
             <p className="text-gray-900">{request?.employee?.name || '-'}</p>
