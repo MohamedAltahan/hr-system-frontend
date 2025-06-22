@@ -44,14 +44,14 @@ const ShowPosition = () => {
         <div className="flex items-center justify-between px-4 py-4 border-b border-gray-200">
           <h2 className="text-base font-bold">{t('position_details')}</h2>
           <button className="EditPermissionBtn">
-            <CancelButton type="button" onClick={() => navigate(`/app/positions/edit/${id}`)}>
+            <CancelButton type="button" onClick={() => navigate(`/app/position/edit/${id}`)}>
               <LuPencil className="mr-1" />
               {t('edit')}
             </CancelButton>
           </button>
         </div>
 
-        <div className="grid grid-cols-2 gap-2 p-4">
+        <div className="grid grid-cols-2 gap-2 p-4" style={{ fontSize: '14px' }}>
           <div className="flex items-center">
             <span className="font-semibold text-gray-600 w-40">{t('position')} :</span>
             <p className="text-gray-900">{position?.name || '-'}</p>
@@ -60,7 +60,7 @@ const ShowPosition = () => {
       </div>
 
       <div className="flex justify-end mt-6">
-        <CancelButton onClick={() => navigate('/app/positions')} type="button">
+        <CancelButton onClick={() => navigate('/app/position')} type="button">
           {t('back')}
         </CancelButton>
       </div>

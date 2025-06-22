@@ -39,33 +39,33 @@ const ShowBranch = () => {
           </button>
         </div>
 
-        <div className="grid grid-cols-2 gap-2">
-          <div className="flex items-center px-4 py-2">
+        <div className="grid grid-cols-2 gap-2" >
+          <div className="flex items-center px-4 py-2" style={{ fontSize: '14px' }}>
             <span className="font-semibold text-gray-600 w-40">{t('branch_name')}:</span>
             <p className="text-gray-900">{branch?.name || '-'}</p>
           </div>
 
-          <div className="flex items-center px-4 py-2">
+          <div className="flex items-center px-4 py-2" style={{ fontSize: '14px' }}>
             <span className="font-semibold text-gray-600 w-40">{t('phone')} :</span>
             <p className="text-gray-900">{branch?.phone || '-'}</p>
           </div>
-   <div className="flex items-center px-4 py-2">
+   <div className="flex items-center px-4 py-2" style={{ fontSize: '14px' }}>
             <span className="font-semibold text-gray-600 w-40">{t('description')}:</span>
             <p className="text-gray-900">{branch?.description || '-'}</p>
           </div>
-          <div className="flex items-center px-4 py-2 ">
+          <div className="flex items-center px-4 py-2 " style={{ fontSize: '14px' }}>
             <span className="font-semibold text-gray-600 w-40">{t('address')}:</span>
             <p className="text-gray-900">{branch?.address || '-'}</p>
           </div>
 
        
 
-          <div className="flex items-center p-4">
+          <div className="flex items-center p-4" style={{ fontSize: '14px' }}>
             <span className="font-semibold text-gray-600 w-40">{t('status')}:</span>
             <p className="text-gray-900">{statusOptions[branch?.is_active] || '-'}</p>
           </div>
 
-          <div className="flex items-center p-4">
+          <div className="flex items-center p-4" style={{ fontSize: '14px' }}>
             <span className="font-semibold text-gray-600 w-40">{t('created_at')} :</span>
             <p className="text-gray-900">{branch?.created_at?.datetime || '-'}</p>
           </div>

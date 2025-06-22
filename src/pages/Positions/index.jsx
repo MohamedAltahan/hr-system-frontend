@@ -63,7 +63,7 @@ const Positions = () => {
           <ProductTable
             headers={headers}
             data={positions}
-            baseRoute="/app/positions"
+            baseRoute="/app/position"
             pagination={pagination}
             onPageChange={(newPage) => setPage(Number(newPage))}
             rowKey="id"

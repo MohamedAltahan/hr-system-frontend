@@ -91,28 +91,28 @@ const ShowEmployeeClearance = () => {
           </button>
         </div>
 
-        <div className="grid grid-cols-2 gap-2">
-          <div className="flex items-center px-4 py-2">
+        <div className="grid grid-cols-2 gap-2 pb-3">
+          <div className="flex items-center px-4 py-2" style={{ fontSize: '14px' }}>
             <span className="font-semibold text-gray-600 w-28">{t('employee_name')}:</span>
             <p className="text-gray-900">{clearance?.employee?.name || '-'}</p>
           </div>
 
-          <div className="flex items-center px-4 py-2">
+          <div className="flex items-center px-4 py-2" style={{ fontSize: '14px' }}>
             <span className="font-semibold text-gray-600 w-28">{t('last_working_day')}:</span>
             <p className="text-gray-900">{clearance?.last_working_day?.date || '-'}</p>
           </div>
 
-          <div className="flex items-center px-4 py-2 col-span-2">
+          <div className="flex items-center px-4 py-2 " style={{ fontSize: '14px' }}>
             <span className="font-semibold text-gray-600 w-28">{t('reason')}:</span>
             <p className="text-gray-900">{clearance?.reason || '-'}</p>
           </div>
 
-          <div className="flex items-center px-4 py-2">
+          <div className="flex items-center px-4 py-2" style={{ fontSize: '14px' }}>
             <span className="font-semibold text-gray-600 w-28">{t('notice_period')}:</span>
             <p className="text-gray-900">{clearance?.notice_period || '-'} {t('days')}</p>
           </div>
 
-          <div className="flex items-center px-4 py-2">
+          <div className="flex items-center px-4 py-2" style={{ fontSize: '14px' }}>
             <span className="font-semibold text-gray-600 w-24">{t('status')}:</span>
              <StatusChip status={clearance?.status} />
 

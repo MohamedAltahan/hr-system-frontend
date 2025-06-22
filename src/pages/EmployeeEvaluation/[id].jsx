@@ -45,28 +45,28 @@ const ShowEmployeeEvaluation = () => {
           </button>
         </div>
 
-        <div className="grid grid-cols-2 gap-2">
-          <div className="flex items-center px-4 py-2">
+        <div className="grid grid-cols-2 gap-2 pb-2">
+          <div className="flex items-center px-4 py-2" style={{ fontSize: '14px' }}>
             <span className="font-semibold text-gray-600 w-40">{t('employee_name')}:</span>
             <p className="text-gray-900">{evaluation?.employee?.name || '-'}</p>
           </div>
 
-          <div className="flex items-center px-4 py-2">
+          <div className="flex items-center px-4 py-2" style={{ fontSize: '14px' }}>
             <span className="font-semibold text-gray-600 w-40">{t('evaluator_name')}:</span>
             <p className="text-gray-900">{evaluation?.evaluator?.name || '-'}</p>
           </div>
 
-          <div className="flex items-center px-4 py-2">
+          <div className="flex items-center px-4 py-2" style={{ fontSize: '14px' }}>
             <span className="font-semibold text-gray-600 w-40">{t('evalution_from_date')}:</span>
             <p className="text-gray-900">{evaluation?.evaluation_from || '-'}</p>
           </div>
 
-          <div className="flex items-center px-4 py-2">
+          <div className="flex items-center px-4 py-2" style={{ fontSize: '14px' }}>
             <span className="font-semibold text-gray-600 w-40">{t('evalution_to_date')}:</span>
             <p className="text-gray-900">{evaluation?.evaluation_to || '-'}</p>
           </div>
 
-          <div className="flex items-center px-4 py-2">
+          <div className="flex items-center px-4 py-2" style={{ fontSize: '14px' }}>
             <span className="font-semibold text-gray-600 w-40">{t('score')}:</span>
             <p className="text-gray-900">{evaluation?.score || '-'}</p>
           </div>

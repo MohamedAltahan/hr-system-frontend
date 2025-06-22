@@ -51,32 +51,32 @@ const ShowEmployeeContract = () => {
         </div>
 
         <div className="grid grid-cols-2 gap-2">
-          <div className="flex items-center px-4 py-2">
+          <div className="flex items-center px-4 py-2" style={{ fontSize: '14px' }}>
             <span className="font-semibold text-gray-600 w-40">{t('employee_name')}:</span>
             <p className="text-gray-900">{contract?.employee?.name || '-'}</p>
           </div>
 
-          <div className="flex items-center px-4 py-2">
+          <div className="flex items-center px-4 py-2" style={{ fontSize: '14px' }}>
             <span className="font-semibold text-gray-600 w-40">{t('attendance_rule')}:</span>
             <p className="text-gray-900">{contract?.attendance_rule?.name || '-'}</p>
           </div>
 
-          <div className="flex items-center px-4 py-2">
+          <div className="flex items-center px-4 py-2" style={{ fontSize: '14px' }}>
             <span className="font-semibold text-gray-600 w-40">{t('salary')}:</span>
             <p className="text-gray-900">{contract?.salary || '-'}</p>
           </div>
 
-          <div className="flex items-center px-4 py-2">
+          <div className="flex items-center px-4 py-2" style={{ fontSize: '14px' }}>
             <span className="font-semibold text-gray-600 w-40">{t('start_date')}:</span>
             <p className="text-gray-900">{contract?.start_date?.date || '-'}</p>
           </div>
 
-          <div className="flex items-center px-4 py-2">
+          <div className="flex items-center px-4 py-2" style={{ fontSize: '14px' }}>
             <span className="font-semibold text-gray-600 w-40">{t('end_date')}:</span>
             <p className="text-gray-900">{contract?.end_date?.date || '-'}</p>
           </div>
 
-          <div className="flex items-center px-4 py-2">
+          <div className="flex items-center px-4 py-2" style={{ fontSize: '14px' }}>
             <span className="font-semibold text-gray-600 w-40">{t('status')}:</span>
             <p className="text-gray-900">{contract?.is_active === '1' ? t('active') : t('inactive')}</p>
           </div>

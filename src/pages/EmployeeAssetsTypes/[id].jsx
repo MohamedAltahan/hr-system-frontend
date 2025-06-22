@@ -54,18 +54,18 @@ const ShowEmployeeAssetType = () => {
           </button>
         </div>
 
-        <div className="grid grid-cols-2 gap-2">
-          <div className="flex items-center px-4 py-2">
+        <div className="grid grid-cols-2 gap-2 pb-2">
+          <div className="flex items-center px-4 py-2" style={{ fontSize: '14px' }}>
             <span className="font-semibold text-gray-600 w-28">{t('name')}:</span>
             <p className="text-gray-900">{assetType?.name || '-'}</p>
           </div>
 
-          <div className="flex items-center px-4 py-2">
+          <div className="flex items-center px-4 py-2" style={{ fontSize: '14px' }}>
             <span className="font-semibold text-gray-600 w-28">{t('description')}:</span>
             <p className="text-gray-900">{assetType?.description || '-'}</p>
           </div>
 
-          <div className="flex items-center px-4 py-2">
+          <div className="flex items-center px-4 py-2" style={{ fontSize: '14px' }}>
             <span className="font-semibold text-gray-600 w-28">{t('branch')}:</span>
             <p className="text-gray-900">{assetType?.branch?.name || '-'}</p>
           </div>

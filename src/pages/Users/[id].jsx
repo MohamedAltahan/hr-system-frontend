@@ -72,9 +72,9 @@ const ShowEmployee = () => {
           </div>
         )}
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 p-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 p-4" style={{ fontSize: '14px' }}>
           {/* Personal Information */}
-          <div className="col-span-full mb-2 font-semibold text-gray-700"> {t('personal_data')} </div>
+          <div className="col-span-full mb-2 font-semibold text-gray-700" style={{ fontSize: '16px' }}> {t('personal_data')} </div>
           {renderField(t('name'), employee?.translations?.name?.ar)}
           {renderField(t('username'), employee?.username)}
           {renderField(t('email'), employee?.email)}
@@ -88,7 +88,7 @@ const ShowEmployee = () => {
 
           {/* Work Info */}
 
-          <div className="col-span-full mt-4 mb-2 font-semibold text-gray-700">{t('job_data')} </div>
+          <div className="col-span-full mt-4 mb-2 font-semibold text-gray-700" style={{ fontSize: '16px' }}>{t('job_data')} </div>
           {renderField(t('hire_date'), (employee?.hire_date))}
           {renderField(t('direct_manager'), managerName)}
           {renderField(t('branch'), employee?.branch?.name)}

@@ -54,7 +54,7 @@ const ShowJobTitle = () => {
           </button>
         </div>
 
-        <div className="grid grid-cols-2 gap-2 p-4">
+        <div className="grid grid-cols-2 gap-2 p-4" style={{ fontSize: '14px' }}>
           <div className="flex items-center">
             <span className="font-semibold text-gray-600 w-40">{t('job_title')} :</span>
             <p className="text-gray-900">{jobTitle?.name || '-'}</p>
