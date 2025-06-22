@@ -130,6 +130,14 @@ import ShowOpeningPosition from './pages/OpningPositions/[id]';
 
 import ApplyJob from './pages/ApplyJob/ApplyJob';
 
+
+
+
+import Positions from './pages/Positions';
+import EditPosition from './pages/Positions/edit/[id]';
+import ShowPosition from './pages/Positions/[id]';
+import AddPosition from './pages/Positions/add';
+
 const App = () => {
   return (
     
@@ -529,6 +537,44 @@ const App = () => {
     />
 </Route>
 
+
+
+
+<Route path='position'>
+  <Route
+    index
+    element={
+      <AuthGuard>
+        <Positions />
+      </AuthGuard>
+    } 
+    />
+    <Route
+    path="add"
+    element={
+      <AuthGuard>
+        <AddPosition />
+      </AuthGuard>
+    }
+    />
+
+        <Route
+    path="edit/:id"
+    element={
+      <AuthGuard>
+        <EditPosition />
+      </AuthGuard>
+    }
+    />
+  <Route
+    path=":id"
+    element={
+      <AuthGuard>
+        <ShowPosition />
+      </AuthGuard>
+    }
+    />
+</Route>
 
 
 

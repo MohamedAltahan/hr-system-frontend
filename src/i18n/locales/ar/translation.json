@@ -313,7 +313,12 @@
 "position":"وظيفة",
 "show_opening_position":"عرض الوظيفة المتاحة",
 "position_details":"تفاصيل الوظيفة",
-"confirm_delete_message_opening_position":"هل أنت متأكد أنك تريد حذف هذه الوظيفة المتاحة؟"
+"confirm_delete_message_opening_position":"هل أنت متأكد أنك تريد حذف هذه الوظيفة المتاحة؟",
+"the_position":"الوظيفة",
+"are_you_sure_you_want_to_delete_this_position":"هل أنت متأكد أنك تريد حذف هذه الوظيفة؟",
+"enter_position":"ادخل الوظيفة",
+"positions":"الوظائف",
+"edit_position":"تعديل الوظيفة"
 
 
 

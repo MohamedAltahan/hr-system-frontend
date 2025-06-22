@@ -316,6 +316,11 @@
   "position":"Position",
   "show_opening_position":"Show Opening Position",
   "position_details":"Position Details",
-  "confirm_delete_message_opening_position":"Are you sure you want to delete this opening position?"
+  "confirm_delete_message_opening_position":"Are you sure you want to delete this opening position?",
+  "the_position":"The Position",
+  "are_you_sure_you_want_to_delete_this_position":"Are you sure you want to delete this position?",
+  "enter_position":"Enter Position",
+  "positions":"Positions",
+  "edit_position":"Edit Position"
 
 }
