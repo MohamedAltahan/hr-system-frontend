@@ -1,48 +1,45 @@
 import { useEffect, useState } from "react";
+import {
+  useGetOpeningPositionsQuery,
+  useSubmitApplicationMutation,
+} from "../../api/applyJobApi";
 
 export default function ApplyJob() {
-  const [positions, setPositions] = useState([]);
+  const companyName = new URLSearchParams(window.location.search).get("c") || "owner";
+const { data, isLoading } = useGetOpeningPositionsQuery(companyName);
+const positions = data?.body || [];
+  const [submitApplication] = useSubmitApplicationMutation();
+
   const [fileName, setFileName] = useState("لم يتم اختيار ملف");
   const [toastVisible, setToastVisible] = useState(false);
-  const companyName = new URLSearchParams(window.location.search).get("c") || "owner";
+  const [selectedDescription, setSelectedDescription] = useState("");
 
   useEffect(() => {
-    fetch("https://backend.alkholoudhr.com/api/v1/get-opening-positions-list", {
-      headers: {
-        Accept: "application/json",
-        Lang: "ar",
-        "X-Company": companyName,
-      },
-    })
-      .then((res) => res.json())
-      .then((data) => setPositions(data.body || []))
-      .catch(() => setPositions([]));
-  }, [companyName]);
+    const style = document.createElement("style");
+    style.innerHTML = `
+      input:-webkit-autofill {
+        box-shadow: 0 0 0px 1000px white inset !important;
+        -webkit-box-shadow: 0 0 0px 1000px white inset !important;
+        background-color: white !important;
+        transition: background-color 5000s ease-in-out 0s;
+      }
+    `;
+    document.head.appendChild(style);
+  }, []);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData(e.target);
 
-    fetch("https://backend.alkholoudhr.com/api/v1/hiring-applications", {
-      method: "POST",
-      headers: {
-        Accept: "application/json",
-        Lang: "ar",
-        "X-Company": companyName,
-      },
-      body: formData,
-    })
-      .then((res) => {
-        if (!res.ok) throw new Error("Failed");
-        return res.json();
-      })
-      .then(() => {
-        e.target.reset();
-        setFileName("لم يتم اختيار ملف");
-        setToastVisible(true);
-        setTimeout(() => setToastVisible(false), 4000);
-      })
-      .catch(() => alert("حدث خطأ أثناء الإرسال، حاول مرة أخرى."));
+    try {
+      await submitApplication({ formData, companyName }).unwrap();
+      e.target.reset();
+      setFileName("لم يتم اختيار ملف");
+      setToastVisible(true);
+      setTimeout(() => setToastVisible(false), 4000);
+    } catch (error) {
+      alert("حدث خطأ أثناء الإرسال، حاول مرة أخرى.");
+    }
   };
 
   return (
@@ -51,7 +48,15 @@ export default function ApplyJob() {
         <h2 style={styles.title}>نموذج التقديم على الوظائف</h2>
         <form onSubmit={handleSubmit}>
           <FormField label="الوظيفة">
-            <select name="opening_position_id" required style={styles.input}>
+            <select
+              name="opening_position_id"
+              required
+              style={styles.input}
+              onChange={(e) => {
+                const selected = positions.find((p) => p.id === parseInt(e.target.value));
+                setSelectedDescription(selected?.description || "");
+              }}
+            >
               <option value="">اختر الوظيفة</option>
               {positions.map((pos) => (
                 <option key={pos.id} value={pos.id}>
@@ -60,6 +65,12 @@ export default function ApplyJob() {
               ))}
             </select>
           </FormField>
+
+          {selectedDescription && (
+            <div style={styles.descriptionBox}>
+              <p>{selectedDescription}</p>
+            </div>
+          )}
 
           <FormInput name="name" label="الاسم" required />
           <FormInput name="email" label="البريد الإلكتروني" type="email" required />
@@ -79,16 +90,15 @@ export default function ApplyJob() {
                 accept=".pdf,.doc,.docx"
                 required
                 style={{ display: "none" }}
-                onChange={(e) =>
-                  setFileName(e.target.files[0]?.name || "لم يتم اختيار ملف")
-                }
+                onChange={(e) => setFileName(e.target.files[0]?.name || "لم يتم اختيار ملف")}
               />
             </label>
             <span>{fileName}</span>
           </FormField>
-          
 
-          <button type="submit" style={styles.button}>إرسال الطلب</button>
+          <button type="submit" style={styles.button}>
+            إرسال الطلب
+          </button>
         </form>
       </div>
 
@@ -141,7 +151,7 @@ const styles = {
     fontWeight: "600",
     color: "#374151",
     display: "block",
-    fontSize:"15px",
+    fontSize: "15px",
     marginBottom: "0.5rem",
   },
   input: {
@@ -150,6 +160,9 @@ const styles = {
     border: "1px solid #cbd5e1",
     borderRadius: "5px",
     fontFamily: "'Cairo', sans-serif",
+    outline: "none",
+    boxShadow: "none",
+    transition: "none",
   },
   button: {
     marginTop: "2rem",
@@ -163,7 +176,6 @@ const styles = {
     cursor: "pointer",
     fontFamily: "'Cairo', sans-serif",
   },
- 
   uploadLabel: {
     backgroundColor: "rgb(119 153 171)",
     color: "white",
@@ -172,6 +184,15 @@ const styles = {
     cursor: "pointer",
     display: "inline-block",
     marginInlineEnd: "1rem",
+  },
+  descriptionBox: {
+    marginTop: "0.5rem",
+    padding: "0.75rem",
+    backgroundColor: "#f1f5f9",
+    borderRadius: "5px",
+    color: "#334155",
+    fontSize: "14px",
+    lineHeight: "1.6",
   },
   toast: {
     position: "fixed",
