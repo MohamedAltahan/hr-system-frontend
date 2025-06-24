@@ -138,6 +138,14 @@ import EditPosition from './pages/Positions/edit/[id]';
 import ShowPosition from './pages/Positions/[id]';
 import AddPosition from './pages/Positions/add';
 
+
+import HiringApplications from './pages/HiringApplications/HiringApplications';
+import ShowHiringApplication from './pages/HiringApplications/[id]';
+import ChangeApplicationStatus from './pages/HiringApplications/ChangeApplicationStatus/[id]';
+
+
+
+
 const App = () => {
   return (
     
@@ -537,6 +545,32 @@ const App = () => {
     />
 </Route>
 
+<Route path='hiring-applications'>
+  <Route
+    index
+    element={
+      <AuthGuard>
+        <HiringApplications />
+      </AuthGuard>
+    } 
+    />
+
+       <Route
+    path=":id"    element={
+      <AuthGuard>
+        <ShowHiringApplication />
+      </AuthGuard>
+    }
+    />
+    <Route
+    path='change-application-status/:id'
+    element={<ChangeApplicationStatus />}
+    />
+ 
+
+
+
+</Route>
 
 
 

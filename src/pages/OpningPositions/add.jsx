@@ -9,6 +9,7 @@ import TextAreaInput from '../../components/reusable_components/TextAreaInput';
 import ToggleInput from '../../components/reusable_components/ToggleInput';
 import { useGetAllDepartmentsQuery } from '../../api/DepartmentsApi';
 import { useGetAllPositionsQuery } from '../../api/positionsApi';
+import {useGetAllJobTitlesQuery} from "../../api/jobTitlesApi";
 import Select from 'react-select';
 import { toast } from 'react-toastify';
 import { t } from 'i18next';
@@ -18,6 +19,7 @@ const AddOpeningPosition = ({ departments = [], positions = [] }) => {
   const [createPosition, { isLoading }] = useCreateOpeningPositionMutation();
   const { data: departmentData } = useGetAllDepartmentsQuery({ id: 0 });
   const { data: positionsData } = useGetAllPositionsQuery({ id: 0 });
+  const { data: JobTitlesData } = useGetAllJobTitlesQuery({ id: 0 });
   const [formData, setFormData] = useState({
     position_id: '',
     number_of_vacancies: '',
@@ -27,6 +29,7 @@ const AddOpeningPosition = ({ departments = [], positions = [] }) => {
   });
     const departmentOptions = departmentData?.body?.data?.map(d => ({ value: d.id, label: d.name })) || [];
   const positionOptions = positionsData?.body?.data?.map(p => ({ value: p.id, label: p.name })) || [];
+  const JobTitlesOptions = JobTitlesData?.body?.data?.map(p => ({ value: p.id, label: p.name })) || [];
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -70,9 +73,9 @@ const AddOpeningPosition = ({ departments = [], positions = [] }) => {
         </div>
         <div className="grid grid-cols-2 gap-4">
         <div>
-          <label className="label-md mb-3 block">{t('position')}</label>
+          <label className="label-md mb-3 block">{t('the_position')}</label>
           <Select
-            options={positionOptions}
+            options={JobTitlesOptions}
             onChange={(selected) => setFormData({ ...formData, position_id: selected.value })}
             placeholder={t('select_position')}
           />

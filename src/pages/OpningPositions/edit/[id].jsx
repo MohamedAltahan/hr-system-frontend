@@ -20,7 +20,7 @@ import {
   useGetOpeningPositionByIdQuery,
   useUpdateOpeningPositionMutation
 } from '../../../api/OpningPositionsApi';
-
+import {useGetAllJobTitlesQuery} from "../../../api/jobTitlesApi";
 const EditOpeningPosition = () => {
   const { id } = useParams();
   const navigate = useNavigate();
@@ -29,9 +29,11 @@ const EditOpeningPosition = () => {
   const [updatePosition, { isLoading }] = useUpdateOpeningPositionMutation();
   const { data: departmentData } = useGetAllDepartmentsQuery({ id: 0 });
   const { data: positionsData } = useGetAllPositionsQuery({ id: 0 });
+  const { data: JobTitlesData } = useGetAllJobTitlesQuery({ id: 0 });
 
   const departmentOptions = departmentData?.body?.data?.map(d => ({ value: d.id, label: d.name })) || [];
   const positionOptions = positionsData?.body?.data?.map(p => ({ value: p.id, label: p.name })) || [];
+  const JobTitlesOptions = JobTitlesData?.body?.data?.map(p => ({ value: p.id, label: p.name })) || [];
 
   const [formData, setFormData] = useState({
     position_id: '',
@@ -99,10 +101,10 @@ const EditOpeningPosition = () => {
 
         <div className="grid grid-cols-2 gap-4">
           <div>
-            <label className="label-md mb-3 block">{t('position')}</label>
+            <label className="label-md mb-3 block">{t('the_position')}</label>
             <Select
-              options={positionOptions}
-              value={positionOptions.find((opt) => opt.value === formData.position_id)}
+              options={JobTitlesOptions}
+              value={JobTitlesOptions.find((opt) => opt.value === formData.position_id)}
               onChange={(selected) => setFormData((prev) => ({ ...prev, position_id: selected.value }))}
               placeholder={t('select_position')}
             />

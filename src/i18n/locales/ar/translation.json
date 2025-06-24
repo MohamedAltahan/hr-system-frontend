@@ -318,7 +318,24 @@
 "are_you_sure_you_want_to_delete_this_position":"هل أنت متأكد أنك تريد حذف هذه الوظيفة؟",
 "enter_position":"ادخل الوظيفة",
 "positions":"الوظائف",
-"edit_position":"تعديل الوظيفة"
+"edit_position":"تعديل الوظيفة",
+"hiring_applications":"طلبات التوظيف",
+"current_salary":"الراتب الحالي",
+"expected_salary":"الراتب المتوقع",
+"confirm_delete_message_hiring_application":"هل أنت متأكد أنك تريد حذف هذه الطلب؟",
+"view_cv":"عرض  cv",
+"cv":"السيرة الذاتية",
+"nationality": "الجنسية",
+  "birthdate": "تاريخ الميلاد",
+  "religion": "الديانة",
+  "application_details": "تفاصيل الطلب",
+  "show_hiring_application": "عرض طلب التوظيف",
+  "write_reason_if_any": "اكتب السبب إن وُجد",
+"change_application_status": "تغيير حالة الطلب",
+"select_status": "اختر الحالة",
+"notes": "ملاحظات",
+"accepted":"تم التأكد"
+
 
 
 
