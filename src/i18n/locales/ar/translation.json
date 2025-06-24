@@ -334,7 +334,8 @@
 "change_application_status": "تغيير حالة الطلب",
 "select_status": "اختر الحالة",
 "notes": "ملاحظات",
-"accepted":"تم التأكد"
+"accepted":"تم التأكد",
+"change_status":"تغيير حالة الطلب"
 
 
 

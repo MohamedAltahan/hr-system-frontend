@@ -110,7 +110,7 @@ const { data: applicationsData } = useGetAllHiringApplicationsQuery({ opening_po
                       <div className="flex gap-2 items-center">
   <a
     href={`/app/hiring-applications/change-application-status/${item.id}`}
-    className="text-blue-600 hover:underline editIcon"
+    className="text-blue-600  editIcon"
           title={t("change_status")}
 
   >

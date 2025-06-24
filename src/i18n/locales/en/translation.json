@@ -337,6 +337,7 @@
   "change_application_status":"Change Application Status",
   "select_status":"Select Status",
   "notes":"Notes",
-  "accepted":"Accepted"
+  "accepted":"Accepted",
+  "change_status":"Change Status"
 
 }
