@@ -17,8 +17,7 @@ export const applyJobApi = createApi({
     getOpeningPositions: builder.query<any[], string>({
       // `companyName` will be passed in as argument
       query: (companyName: string) => ({
-        url: '/get-opening-positions-list',
-        method: 'GET',
+ url: `/get-opening-positions-list?company_name=${companyName}`,
         headers: {
           'X-Company': companyName,
         },
