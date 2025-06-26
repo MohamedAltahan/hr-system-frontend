@@ -19,9 +19,15 @@ import { useGetAllbranchesQuery } from '../../../api/Branches';
 import { useGetAllDepartmentsQuery } from '../../../api/DepartmentsApi';
 import { useGetAllPositionsQuery } from '../../../api/positionsApi';
 import { useGetAllJobTitlesQuery } from '../../../api/jobTitlesApi';
-import { t } from 'i18next';
+import { useTranslation } from 'react-i18next';
 
-const genderOptions = [
+
+
+export default function EditUser() {
+  const navigate = useNavigate();
+  const { id } = useParams();
+      const { t } = useTranslation();
+  const genderOptions = [
   { value: 'male', label: t('male') },
   { value: 'female', label: t('female') },
 ];
@@ -35,10 +41,6 @@ const statusOptions = [
   { value: 1, label: t('active') },
   { value: 0, label: t('inactive') },
 ];
-
-export default function EditUser() {
-  const navigate = useNavigate();
-  const { id } = useParams();
 
   const [formData, setFormData] = useState({
     name_ar: '',

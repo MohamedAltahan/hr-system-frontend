@@ -20,9 +20,14 @@ import { useGetAllPositionsQuery } from '../../api/positionsApi';
 import { useGetAllJobTitlesQuery } from '../../api/jobTitlesApi';
 import { useGetAllEmployeeQuery } from '../../api/Employee'; // <- use the correct path to the API file
 import NewPhoneInput from '../../components/reusable_components/NewPhoneInput';
-import { t } from 'i18next';
 
-const genderOptions = [
+
+
+export default function AddUser() {
+    const { t } = useTranslation();
+
+  const navigate = useNavigate();
+  const genderOptions = [
   { value: 'male', label: t('male')},
   { value: 'female', label: t('female')},
 ];
@@ -36,10 +41,6 @@ const statusOptions = [
   { value: 1, label: t('active') },
   { value: 0, label: t('inactive') },
 ];
-
-export default function AddUser() {
-  const { t } = useTranslation();
-  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     name_ar: '',
     name_en: '',
