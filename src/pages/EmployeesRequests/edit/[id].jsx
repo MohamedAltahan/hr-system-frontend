@@ -12,6 +12,8 @@ import {
   useUpdateEmployeeRequestMutation,
   useGetEmployeeRequestTypesQuery
 } from "../../../api/EmployeeRequestsApi";
+import { useGetAllLeaveTypesQuery } from "../../../api/leaveTypesApi";
+
 import { toast } from "react-toastify";
 import { useTranslation } from "react-i18next";
 
@@ -25,6 +27,8 @@ const EditEmployeeRequest = () => {
     const { data: requestTypesData, isLoading: loadingTypes } = useGetEmployeeRequestTypesQuery();
   
   const [updateRequest, { isLoading }] = useUpdateEmployeeRequestMutation();
+const { data: leaveTypesData, isLoading: loadingLeaveTypes } = useGetAllLeaveTypesQuery();
+const [leaveType, setLeaveType] = useState(null);
 
 
   const [employeeId, setEmployeeId] = useState(null);
@@ -45,7 +49,13 @@ const EditEmployeeRequest = () => {
         label: value,
       }))
     : [];
-
+ const leaveTypeOptions =
+  leaveTypesData?.body
+    ? Object.entries(leaveTypesData.body).map(([key, value]) => ({
+        value: key,
+        label: value,
+      }))
+    : [];
   useEffect(() => {
     if (requestData?.body) {
       const req = requestData.body;
@@ -117,15 +127,30 @@ const EditEmployeeRequest = () => {
             />
           </div>
 
-          <div>
-            <label className="block mb-2 text-gray-900 label-md">{t("request_type")}</label>
-            <Select
-              value={type}
-              onChange={setType}
-              options={typeOptions}
-              placeholder={t("choose_type")}
-            />
-          </div>
+            {/* Request Type */}
+<div>
+  <label className="block mb-2 text-gray-900 label-md">{t("request_type")}</label>
+  <Select
+    value={type}
+    onChange={setType}
+    options={typeOptions}
+    placeholder={t("choose_type")}
+  />
+</div>
+
+{/* Leave Type - only if type is "leave" */}
+{type?.value === 'leave' && (
+  <div>
+    <label className="block mb-2 text-gray-900 label-md">{t("leave_type")}</label>
+    <Select
+      value={leaveType}
+      onChange={setLeaveType}
+      options={leaveTypeOptions}
+      placeholder={t("choose_leave_type")}
+      isLoading={loadingLeaveTypes}
+    />
+  </div>
+)}
 
           <DateInput
             label={t("from_date")}

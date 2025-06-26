@@ -335,7 +335,9 @@
 "select_status": "اختر الحالة",
 "notes": "ملاحظات",
 "accepted":"تم التأكد",
-"change_status":"تغيير حالة الطلب"
+"change_status":"تغيير حالة الطلب",
+"leave_type": "نوع الإجازة",
+  "choose_leave_type": "اختر نوع الإجازة"
 
 
 

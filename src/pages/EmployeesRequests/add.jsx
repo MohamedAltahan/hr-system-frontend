@@ -8,12 +8,15 @@ import DateInput from "../../components/reusable_components/DateInput";
 import TextAreaInput from "../../components/reusable_components/TextAreaInput"; // or use a normal textarea
 import { useGetAllEmployeeQuery } from "../../api/Employee";
 import { useCreateEmployeeRequestMutation ,useGetEmployeeRequestTypesQuery} from "../../api/EmployeeRequestsApi";
+
+import { useGetAllLeaveTypesQuery } from "../../api/leaveTypesApi";
 import { toast } from "react-toastify";
 import { useTranslation } from "react-i18next";
 
 const AddEmployeeRequest = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
+const [leaveType, setLeaveType] = useState(null);
 
   const [employeeId, setEmployeeId] = useState(null);
   const [type, setType] = useState(null);
@@ -23,6 +26,7 @@ const AddEmployeeRequest = () => {
 
   const { data: employeesData } = useGetAllEmployeeQuery({ id: 0 });
   const { data: requestTypesData, isLoading: loadingTypes } = useGetEmployeeRequestTypesQuery();
+const { data: leaveTypesData, isLoading: loadingLeaveTypes } = useGetAllLeaveTypesQuery();
 
 
   const employeeOptions = employeesData?.body?.data?.map(e => ({
@@ -37,6 +41,14 @@ const AddEmployeeRequest = () => {
         label: value,
       }))
     : [];
+ const leaveTypeOptions =
+  leaveTypesData?.body
+    ? Object.entries(leaveTypesData.body).map(([key, value]) => ({
+        value: key,
+        label: value,
+      }))
+    : [];
+   
 
 
   const [createEmployeeRequest, { isLoading }] = useCreateEmployeeRequestMutation();
@@ -53,16 +65,21 @@ const AddEmployeeRequest = () => {
       toast.error(t("from_date_cannot_be_after_to_date") || "تاريخ البداية لا يمكن أن يكون بعد تاريخ النهاية");
       return;
     }
-
+if (type?.value === 'leave' && !leaveType) {
+  toast.error(t("choose_leave_type"));
+  return;
+}
     try {
       const payload = {
-        employee_id: employeeId.value,
-        type: type.value,
-        from_date: fromDate,
-        to_date: toDate,
-        reason,
-      };
-
+    employee_id: employeeId.value,
+  type: type.value,
+  from_date: fromDate,
+  to_date: toDate,
+  reason,
+  ...(type.value === 'leave' && {
+    leave_type: leaveType.value,
+  }),
+};
       const res = await createEmployeeRequest(payload).unwrap();
       toast.success(res?.message || t("created_successfully"));
       navigate("/app/employee-requests");
@@ -88,15 +105,31 @@ const AddEmployeeRequest = () => {
         </div>
 
         {/* Type */}
-        <div>
-          <label className="block mb-2 text-gray-900 label-md">{t("request_type")}</label>
-          <Select
-            value={type}
-            onChange={setType}
-            options={typeOptions}
-            placeholder={t("choose_type")}
-          />
-        </div>
+       {/* Request Type */}
+<div>
+  <label className="block mb-2 text-gray-900 label-md">{t("request_type")}</label>
+  <Select
+    value={type}
+    onChange={setType}
+    options={typeOptions}
+    placeholder={t("choose_type")}
+  />
+</div>
+
+{/* Leave Type - only if type is "leave" */}
+{type?.value === 'leave' && (
+  <div>
+    <label className="block mb-2 text-gray-900 label-md">{t("leave_type")}</label>
+    <Select
+      value={leaveType}
+      onChange={setLeaveType}
+      options={leaveTypeOptions}
+      placeholder={t("choose_leave_type")}
+      isLoading={loadingLeaveTypes}
+    />
+  </div>
+)}
+
 
         {/* From Date */}
         <DateInput

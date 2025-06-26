@@ -71,7 +71,7 @@ const ApproveEmployeeRequest = () => {
 
         <div className="flex justify-end gap-4">
           <AddingButton type="submit" disabled={isLoading}>
-            {isLoading ? t("loading") : t("submit")}
+            {isLoading ? t("loading") : t("confirm")}
           </AddingButton>
           <CancelButton onClick={() => navigate("/app/employee-requests")} type="button">
             {t("cancel")}

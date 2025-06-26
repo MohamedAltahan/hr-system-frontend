@@ -27,6 +27,8 @@ import AttendanceRulesApi from '../api/AttendanceRulesApi';
 import OpeningPositionsApi from '../api/OpningPositionsApi';
 import ApplyJobApi from '../api/applyJobApi';
 import hiringApplicationsApi from '../api/hiringApplicationsApi';
+import overtimeApi from '../api/overtimeApi';
+import leaveTypesApi from '../api/leaveTypesApi';
 
 const rootReducer = combineReducers({
     [authApi.reducerPath]: authApi.reducer,
@@ -57,6 +59,8 @@ const rootReducer = combineReducers({
     [OpeningPositionsApi.reducerPath]:OpeningPositionsApi.reducer,
     [ApplyJobApi.reducerPath]: ApplyJobApi.reducer,
     [hiringApplicationsApi.reducerPath]: hiringApplicationsApi.reducer,
+    [overtimeApi.reducerPath]: overtimeApi.reducer,
+    [leaveTypesApi.reducerPath]: leaveTypesApi.reducer,
 
 
 
@@ -95,6 +99,8 @@ export default configureStore({
             OpeningPositionsApi.middleware,
             ApplyJobApi.middleware,
             hiringApplicationsApi.middleware,
+            overtimeApi.middleware,
+            leaveTypesApi.middleware,
 
         ),
 });

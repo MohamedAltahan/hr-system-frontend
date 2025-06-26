@@ -338,6 +338,8 @@
   "select_status":"Select Status",
   "notes":"Notes",
   "accepted":"Accepted",
-  "change_status":"Change Status"
+  "change_status":"Change Status",
+    "leave_type": "Leave Type",
+  "choose_leave_type": "Choose leave type"
 
 }
