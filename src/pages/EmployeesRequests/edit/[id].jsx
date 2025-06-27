@@ -56,27 +56,41 @@ const [leaveType, setLeaveType] = useState(null);
         label: value,
       }))
     : [];
-  useEffect(() => {
-    if (requestData?.body) {
-      const req = requestData.body;
-      setEmployeeId({
-        value: req.employee?.id,
-        label: req.employee?.name,
+useEffect(() => {
+  if (requestData?.body) {
+    const req = requestData.body;
+
+    setEmployeeId({
+      value: req.employee?.id,
+      label: req.employee?.name,
+    });
+
+    // Type
+    const reqTypeKey = Object.keys(req.type)?.[0]; // e.g., "leave"
+    const reqTypeLabel = req.type?.[reqTypeKey];   // e.g., "إجازة"
+
+    setType({
+      value: reqTypeKey,
+      label: reqTypeLabel,
+    });
+
+    // Leave Type (if exists)
+    if (req.leave_type) {
+      const reqLeaveTypeKey = Object.keys(req.leave_type)?.[0]; // e.g., "3"
+      const reqLeaveTypeLabel = req.leave_type?.[reqLeaveTypeKey]; // e.g., "Annual Leave"
+
+      setLeaveType({
+        value: reqLeaveTypeKey,
+        label: reqLeaveTypeLabel,
       });
-
-      const reqTypeKey = Object.keys(req.type)?.[0]; // e.g., "loan"
-      const reqTypeLabel = req.type?.[reqTypeKey];   // e.g., "سلفة"
-
-      setType({
-        value: reqTypeKey,
-        label: reqTypeLabel,
-      });
-
-      setFromDate(req.from_date?.date || '');
-      setToDate(req.to_date?.date || '');
-      setReason(req.reason || '');
     }
-  }, [requestData]);
+
+    setFromDate(req.from_date?.date || '');
+    setToDate(req.to_date?.date || '');
+    setReason(req.reason || '');
+  }
+}, [requestData]);
+
 
  const handleSubmit = async (e) => {
   e.preventDefault();
@@ -98,6 +112,9 @@ const [leaveType, setLeaveType] = useState(null);
       from_date: fromDate,
       to_date: toDate,
       reason,
+      ...(type.value === 'leave' && {
+        leave_type: leaveType.value,
+      }),
     };
 
     const res = await updateRequest({ id, body: payload }).unwrap(); // ✅ FIXED
