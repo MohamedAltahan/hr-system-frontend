@@ -34,11 +34,12 @@ const employeeRequestsApi = createApi({
     createEmployeeRequest: builder.mutation<any, {
       employee_id: number;
       reason: string;
+      leave_type:string,
       type: string; // e.g., 'leave', 'vacation'
       from_date: string; // format: YYYY-MM-DD
       to_date: string;   // format: YYYY-MM-DD
     }>({
-      query: ({ employee_id, reason, type, from_date, to_date }) => ({
+      query: ({ employee_id, reason, type, from_date, to_date,leave_type }) => ({
         url: `/employee-requests`,
         method: 'POST',
         body: {
@@ -47,6 +48,7 @@ const employeeRequestsApi = createApi({
           type,
           from_date,
           to_date,
+          leave_type,
         },
       }),
       invalidatesTags: ['employeeRequest'],
@@ -61,6 +63,7 @@ const employeeRequestsApi = createApi({
         type: string;
         from_date: string;
         to_date: string;
+        leave_type:string
       };
     }>({
       query: ({ id, body }) => ({

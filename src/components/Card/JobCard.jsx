@@ -74,7 +74,7 @@ const JobCard = ({ data, onTogglePublish, onDelete }) => {
         <span>{t('edit')}</span>
       </button>
 
-      <button
+      {/* <button
         onClick={() => navigator.clipboard.writeText(website)}
         className="flex items-center gap-2 px-4 py-2 text-gray-700 hover:bg-purple-50 hover:text-purple-600 transition-all duration-150"
       >
@@ -82,7 +82,7 @@ const JobCard = ({ data, onTogglePublish, onDelete }) => {
           <FiShare2 size={12} />
         </span>
         <span>{t('share')}</span>
-      </button>
+      </button> */}
 
       <button
         onClick={() => onDelete?.(id)}

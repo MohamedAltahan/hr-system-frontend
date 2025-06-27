@@ -339,7 +339,13 @@
   "notes":"Notes",
   "accepted":"Accepted",
   "change_status":"Change Status",
-    "leave_type": "Leave Type",
-  "choose_leave_type": "Choose leave type"
+  "leave_type": "Leave Type",
+  "choose_leave_type": "Choose leave type",
+  "duration_in_hours": "Duration (Hours)",
+  "amount": "Amount",
+  "approved_at": "Approval Date",
+  "overtime_requests": "Overtime Requests",
+  "add_overtime_request": "Add Overtime Request",
+  "are_you_sure_you_want_to_delete_this_overtime": "Are you sure you want to delete this request?"
 
 }

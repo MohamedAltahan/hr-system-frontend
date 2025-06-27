@@ -337,7 +337,13 @@
 "accepted":"تم التأكد",
 "change_status":"تغيير حالة الطلب",
 "leave_type": "نوع الإجازة",
-  "choose_leave_type": "اختر نوع الإجازة"
+"choose_leave_type": "اختر نوع الإجازة",
+"duration_in_hours": "المدة بالساعات",
+"amount": "المبلغ",
+"approved_at": "تاريخ الموافقة",
+"overtime_requests": "طلبات العمل الإضافي",
+"add_overtime_request": "إضافة طلب",
+"are_you_sure_you_want_to_delete_this_overtime": "هل أنت متأكد أنك تريد حذف هذا الطلب؟"
 
 
 

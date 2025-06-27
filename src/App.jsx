@@ -143,6 +143,11 @@ import HiringApplications from './pages/HiringApplications/HiringApplications';
 import ShowHiringApplication from './pages/HiringApplications/[id]';
 import ChangeApplicationStatus from './pages/HiringApplications/ChangeApplicationStatus/[id]';
 
+import Overtime from './pages/Overtime/Overtime';
+import AddOvertime from './pages/Overtime/add';
+import ShowOvertime from './pages/Overtime/[id]'
+import EditOvertime from './pages/Overtime/edit/[id]'
+
 
 
 
@@ -540,6 +545,45 @@ const App = () => {
     element={
       <AuthGuard>
         <ShowOpeningPosition />
+      </AuthGuard>
+    }
+    />
+</Route>
+
+
+
+
+<Route path='overtime'>
+  <Route
+    index
+    element={
+      <AuthGuard>
+        <Overtime />
+      </AuthGuard>
+    } 
+    />
+    <Route
+    path="add"
+    element={
+      <AuthGuard>
+        <AddOvertime />
+      </AuthGuard>
+    }
+    />
+
+        <Route
+    path="edit/:id"
+    element={
+      <AuthGuard>
+        <EditOvertime />
+      </AuthGuard>
+    }
+    />
+  <Route
+    path=":id"
+    element={
+      <AuthGuard>
+        <ShowOvertime />
       </AuthGuard>
     }
     />
