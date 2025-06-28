@@ -153,6 +153,16 @@ import EditDisciplinaryAction from './pages/DisciplinaryActions/edit/[id]';
 
 import AttendanceDepartmentRequests from './pages/AttendanceDepartmentRequests/AttendanceDepartmentRequests';
 import ShowAttendanceDepartureRequests from './pages/AttendanceDepartmentRequests/[id]';
+
+
+
+import LeavesIndex from './pages/LeavesManagment/LeavesManagment';
+import ShowLeave from './pages/LeavesManagment/[id]';
+
+import CarriedForwardLeaves from './pages/CarriedForwardLeaves/CarriedForwardLeaves';
+import AddCarriedForwardLeave from './pages/CarriedForwardLeaves/add';
+import ShowCarriedForwardLeave from './pages/CarriedForwardLeaves/[id]';
+import EditCarriedForwardLeave from './pages/CarriedForwardLeaves/edit/[id]';
 const App = () => {
   return (
     
@@ -644,6 +654,68 @@ const App = () => {
     }
     />
 </Route>
+
+
+
+<Route path='leaves'>
+  <Route
+    index
+    element={
+      <AuthGuard>
+        <LeavesIndex />
+      </AuthGuard>
+    } 
+    />
+  
+     
+  <Route
+    path=":id"
+    element={
+      <AuthGuard>
+        <ShowLeave />
+      </AuthGuard>
+    }
+    />
+</Route>
+
+
+
+<Route path='carried_forward_leaves'>
+  <Route
+    index
+    element={
+      <AuthGuard>
+        <CarriedForwardLeaves />
+      </AuthGuard>
+    } 
+    />
+      <Route
+    path="add"
+    element={
+      <AuthGuard>
+        <AddCarriedForwardLeave />
+      </AuthGuard>
+    }
+    />
+  
+        <Route
+    path="edit/:id"
+    element={
+      <AuthGuard>
+        <EditCarriedForwardLeave />
+      </AuthGuard>
+    }
+    />
+  <Route
+    path=":id"
+    element={
+      <AuthGuard>
+        <ShowCarriedForwardLeave />
+      </AuthGuard>
+    }
+    />
+</Route>
+
 
 
 <Route path='disciplinary-actions'>

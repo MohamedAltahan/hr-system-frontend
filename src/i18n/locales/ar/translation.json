@@ -373,7 +373,20 @@
   "please_select_time": "يرجى اختيار الوقت",
   "attendance_department_request":"طلب سجل الحضور والانصراف",
   "attendance_department_requests":"طلبات سجل الحضور والانصراف",
-  "reviewed_at":"تاريخ المراجعه"
+  "reviewed_at":"تاريخ المراجعه",
+  "are_you_sure_you_want_to_delete_this_leave":"هل أنت متأكد أنك تريد حذف هذه الإجازة؟",
+  "leaves":"الإجازات",
+  "days_num":"عدد أيام",
+  "leave_details":"تفاصيل الإجازة",
+  "days_balance": "رصيد الأيام",
+  "year": "السنة",
+  "carried_forward_leaves": "الإجازات المرحلة",
+  "add_leave": "إضافة إجازة",
+  "carried_forward_leave": "إجازة مرحلة",
+  "add_carried_forward_leave": "إضافة إجازة مرحلة",
+  "edit_carried_forward_leave": "تعديل إجازة مرحلة",
+   "enter_year": "أدخل السنة",
+  "enter_days_balance": "أدخل رصيد الأيام"
 
 
 

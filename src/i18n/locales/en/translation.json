@@ -379,7 +379,20 @@
   "please_select_time": "Please select a time",
   "attendance_department_request":"Attendance Department Request",
   "attendance_department_requests":"Attendance Department Requests",
-  "reviewed_at":"Reviewed At"
+  "reviewed_at":"Reviewed At",
+  "are_you_sure_you_want_to_delete_this_leave":"Are you sure you want to delete this leave?",
+  "leaves":"Leaves",
+  "days_num":"Days Num",
+  "leave_details":"Leave Details",
+  "days_balance":"Days Balance",
+  "year":"Year",
+  "carried_forward_leaves":"Carried Forward Leaves",
+  "add_leave":"Add Leave",
+  "carried_forward_leave":"Carried Forward Leave",
+  "add_carried_forward_leave":"Add Carried Forward Leave",
+  "edit_carried_forward_leave":"Edit Carried Forward Leave",
+  "enter_year":"Enter Year",
+  "enter_days_balance":"Enter Days Balance"
 
 
 }
