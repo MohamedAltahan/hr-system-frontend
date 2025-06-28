@@ -343,7 +343,16 @@
 "approved_at": "تاريخ الموافقة",
 "overtime_requests": "طلبات العمل الإضافي",
 "add_overtime_request": "إضافة طلب",
-"are_you_sure_you_want_to_delete_this_overtime": "هل أنت متأكد أنك تريد حذف هذا الطلب؟"
+"are_you_sure_you_want_to_delete_this_overtime": "هل أنت متأكد أنك تريد حذف هذا الطلب؟",
+  "show_attendance_departure": "عرض سجل الحضور والانصراف",
+  "date": "التاريخ",
+  "check_in": "وقت الحضور",
+  "check_out": "وقت الانصراف",
+  "not_found": "لا توجد بيانات",
+  "edit_attendance_record":"تعديل سجل الحضور والانصراف",
+  "are_you_sure_you_want_to_delete_this_attendance_department":"هل أنت متأكد أنك تريد الحذف ؟",
+  "attendance_departure":"سجل الحضور والانصراف"
+
 
 
 

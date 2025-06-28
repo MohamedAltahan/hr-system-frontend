@@ -28,19 +28,11 @@ import Branches from './pages/Branch/branches';
 import Financial from './pages/Financial/Financial';
 import Reports from './pages/Reports/Reports';
 import Documents from './pages/Documents/Documents';
-import Attendance from './pages/Attendance/Attendance';
 import Holidays from './pages/Holidays/Holidays';
 import Order from './pages/Order/Order';
 import Others from './pages/Others/Others';
 import Landing from './pages/Landing/Landing';
-import AttendeceLayout from './components/layout/AttendeceLayout';
-import PreparingAttendanceAndDeparture from './pages/Attendance/PreparingAttendanceAndDeparture';
-import AnalyzingEmployeePerformance from './pages/Attendance/AnalyzingEmployeePerformance';
-import AttendanceAndDepartureRequests from './pages/Attendance/AttendanceAndDepartureRequests';
-import Departuremanagement from './pages/Attendance/Departuremanagement';
-import DisciplinaryProcedures from './pages/Attendance/DisciplinaryProcedures';
-import AddDisciplinaryProcedures from './pages/Attendance/AddDisciplinaryProcedures';
-import AttendanceAndDepartureRegistration from './pages/Attendance/AttendanceAndDepartureRegistration';
+
 
 import AddUser from './pages/Users/add';
 import EditUser from './pages/Users/edit/[id]';
@@ -147,6 +139,11 @@ import Overtime from './pages/Overtime/Overtime';
 import AddOvertime from './pages/Overtime/add';
 import ShowOvertime from './pages/Overtime/[id]'
 import EditOvertime from './pages/Overtime/edit/[id]'
+
+
+import AttendanceDeparture from './pages/AttendanceDepartment/AttendanceDepartmnets';
+import ShowAttendanceDeparture from './pages/AttendanceDepartment/[id]';
+import EditAttendanceDeparture from './pages/AttendanceDepartment/edit/[id]';
 
 
 
@@ -589,6 +586,37 @@ const App = () => {
     />
 </Route>
 
+
+
+
+<Route path='attendance-departure'>
+  <Route
+    index
+    element={
+      <AuthGuard>
+        <AttendanceDeparture />
+      </AuthGuard>
+    } 
+    />
+  
+        <Route
+    path="edit/:id"
+    element={
+      <AuthGuard>
+        <EditAttendanceDeparture />
+      </AuthGuard>
+    }
+    />
+  <Route
+    path=":id"
+    element={
+      <AuthGuard>
+        <ShowAttendanceDeparture />
+      </AuthGuard>
+    }
+    />
+</Route>
+
 <Route path='hiring-applications'>
   <Route
     index
@@ -918,78 +946,7 @@ const App = () => {
               </AuthGuard>
             }
           />
-        <Route
-            path="Attendance"
-            element={
-              <AuthGuard>
-                <AttendeceLayout />
-              </AuthGuard>
-            }
-          >
-            {/* Attendance Children */}
-            <Route
-            index
-              element={
-                <AuthGuard>
-                  <Attendance />
-                </AuthGuard>
-              }
-            />
-            <Route
-           
-              path="PreparingAttendanceAndDeparture"
-              element={
-                <AuthGuard>
-                  <PreparingAttendanceAndDeparture />
-                </AuthGuard>
-              }
-            />
-            <Route
-           
-              path="DisciplinaryProcedures"
-              element={
-                <AuthGuard>
-                  <DisciplinaryProcedures />
-                </AuthGuard>
-              }
-            />
-            <Route
-           
-              path="AnalyzingEmployeePerformance"
-              element={
-                <AuthGuard>
-                  <AnalyzingEmployeePerformance />
-                </AuthGuard>
-              }
-            />
-            <Route
-           
-              path="AttendanceAndDepartureRegistration"
-              element={
-                <AuthGuard>
-                  <AttendanceAndDepartureRegistration />
-                </AuthGuard>
-              }
-            />
-            <Route
-           
-              path="AttendanceAndDepartureRequests"
-              element={
-                <AuthGuard>
-                  <AttendanceAndDepartureRequests />
-                </AuthGuard>
-              }
-            />
-            <Route
-           
-              path="Departuremanagement"
-              element={
-                <AuthGuard>
-                  <Departuremanagement />
-                </AuthGuard>
-              }
-            />
-          </Route>
+       
 
           <Route
             path="Holidays"
@@ -1130,22 +1087,7 @@ const App = () => {
               </AuthGuard>
             }
           />
-          <Route
-            path="AddDisciplinaryProcedures"
-            element={
-              <AuthGuard>
-                <AddDisciplinaryProcedures />
-              </AuthGuard>
-            }
-          />
-          <Route
-            path="updateDisciplinaryProcedures/:id"
-            element={
-              <AuthGuard>
-                <AddDisciplinaryProcedures />
-              </AuthGuard>
-            }
-          />
+        
           <Route path="*" element={<Maintenence />} />
           
         </Route>

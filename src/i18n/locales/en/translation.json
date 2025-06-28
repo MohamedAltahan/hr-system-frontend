@@ -346,6 +346,14 @@
   "approved_at": "Approval Date",
   "overtime_requests": "Overtime Requests",
   "add_overtime_request": "Add Overtime Request",
-  "are_you_sure_you_want_to_delete_this_overtime": "Are you sure you want to delete this request?"
+  "are_you_sure_you_want_to_delete_this_overtime": "Are you sure you want to delete this request?",
+    "show_attendance_departure": "Show Attendance Record",
+  "date": "Date",
+  "check_in": "Check In",
+  "check_out": "Check Out",
+  "not_found": "No data found",
+  "are_you_sure_you_want_to_delete_this_attendance_department":"Are you sure you want to delete this attendance department?",
+  "attendance_departure":"Attendance Departure",
+  "edit_attendance_record":"Edit Attendance Record"
 
 }
