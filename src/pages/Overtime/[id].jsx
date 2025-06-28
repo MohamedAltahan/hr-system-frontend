@@ -52,19 +52,29 @@ const ShowOvertime = () => {
 
         <div className="grid grid-cols-2 gap-2">
           <div className="flex items-center px-4 py-2 text-sm">
-            <span className="font-semibold text-gray-600 w-40">{t('employee_id')}:</span>
-            <p className="text-gray-900">{overtime?.employee_id || '-'}</p>
+            <span className="font-semibold text-gray-600 w-40">{t('employee_name')}:</span>
+            <p className="text-gray-900">{overtime?.empoloyee?.name || '-'}</p>
           </div>
 
-          <div className="flex items-center px-4 py-2 text-sm">
-            <span className="font-semibold text-gray-600 w-40">{t('status')}:</span>
-            <p className="text-gray-900">{statusOptions[overtime?.status] || '-'}</p>
-          </div>
+       <div className="flex items-center px-4 py-2 text-sm">
+  <span className="font-semibold text-gray-600 w-40">{t('status')}:</span>
+  <span
+    className={`px-3 py-1 rounded-full text-sm font-medium
+      ${
+        overtime?.status === 'accepted'
+          ? 'bg-green-100 text-green-800'
+          : overtime?.status === 'rejected'
+          ? 'bg-red-100 text-red-800'
+          : 'bg-yellow-100 text-yellow-800'
+      }
+    `}
+  >
+    {statusOptions[overtime?.status] || '-'}
+  </span>
+</div>
 
-          <div className="flex items-center px-4 py-2 text-sm col-span-2">
-            <span className="font-semibold text-gray-600 w-40">{t('reason')}:</span>
-            <p className="text-gray-900">{overtime?.reason || '-'}</p>
-          </div>
+
+         
 
           <div className="flex items-center px-4 py-2 text-sm">
             <span className="font-semibold text-gray-600 w-40">{t('duration_in_hours')}:</span>
@@ -75,10 +85,14 @@ const ShowOvertime = () => {
             <span className="font-semibold text-gray-600 w-40">{t('amount')}:</span>
             <p className="text-gray-900">{overtime?.amount || '-'}</p>
           </div>
+           <div className="flex items-center px-4 py-2 text-sm col-span-2">
+            <span className="font-semibold text-gray-600 w-40">{t('reason')}:</span>
+            <p className="text-gray-900">{overtime?.reason || '-'}</p>
+          </div>
 
           <div className="flex items-center px-4 py-2 text-sm">
-            <span className="font-semibold text-gray-600 w-40">{t('created_at')}:</span>
-            <p className="text-gray-900">{overtime?.created_at?.datetime || '-'}</p>
+            <span className="font-semibold text-gray-600 w-40">{t('approved_at')}:</span>
+            <p className="text-gray-900">{overtime?.approved_at?.datetime || '-'}</p>
           </div>
         </div>
       </div>

@@ -363,7 +363,12 @@
   "show_disciplinary_action": "عرض الإجراء التأديبي",
   "add_disciplinary_action":"إضافة إجراء التأديبي",
   "edit_disciplinary_action":"تعديل إجراء التأديبي",
-  "nothing":"لا شئ"
+  "nothing":"لا شئ",
+  "add_new_overtime": "إضافة عمل إضافي جديد",
+"add_overtime": "إضافة عمل إضافي",
+"show_overtime": "عرض العمل الإضافي",
+"overtime_details": "تفاصيل العمل الإضافي",
+"edit_overtime": "تعديل العمل الإضافي"
 
 
 

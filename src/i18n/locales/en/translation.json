@@ -369,7 +369,12 @@
   "disciplinary_actions":"Disciplinary Actions",
   "show_disciplinary_action":"Show Disciplinary Action",
   "edit_disciplinary_action":"Edit Disciplinary Action",
-  "nothing":"Nothing"
+  "nothing":"Nothing",
+  "add_new_overtime":"Add New Overtime",
+  "add_overtime":"Add Overtime",
+  "show_overtime":"Show Overtime",
+  "overtime_details":"Overtime Details",
+  "edit_overtime":"Edit Overtime"
 
 
 }

@@ -45,14 +45,43 @@ const Overtime = () => {
  
 
 
+const statusOptions = {
+  pending: t("pending"),
+  rejected: t("rejected"),
+  accepted: t("approved"),
+};
+
+const statusChipClass = {
+  pending: "bg-yellow-100 text-yellow-800",
+  rejected: "bg-red-100 text-red-800",
+  accepted: "bg-green-100 text-green-800",
+};
+
+// ✅ Correct – use overtimes as the source
+const items = overtimes.map((item) => ({
+  ...item,
+  status_chip: (
+    <span
+      className={`px-2 py-1 rounded-full text-xs font-medium ${
+        statusChipClass[item.status] || "bg-gray-100 text-gray-700"
+      }`}
+    >
+      {statusOptions[item.status] || "-"}
+    </span>
+  ),
+}));
+
+
+// Table headers
 const headers = [
   { key: "employee_name", label: t("employee") },
   { key: "duration_in_hours", label: t("duration_in_hours") },
   { key: "amount", label: t("amount") },
-  { key: "status", label: t("status") },
-  { key: "reason", label: t("reason") },
+  { key: "status_chip", label: t("status") }, // use chip-rendered version
+  // { key: "reason", label: t("reason") },
   { key: "approved_date", label: t("approved_at") },
 ];
+
 
 
   return (
@@ -74,7 +103,7 @@ const headers = [
         ) : (
           <ProductTable
             headers={headers}
-            data={overtimes}
+            data={items}
             baseRoute="/app/overtime"
             pagination={pagination}
             onPageChange={(newPage) => setPage(Number(newPage))}
