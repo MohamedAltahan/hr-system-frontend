@@ -42,7 +42,7 @@ const iconMap = {
   my_documents: Documents,
   my_attendance: Attendance,
   my_assignments: Order,
-  disciplinary_actions: Others,
+  // disciplinary_actions: Others,
   my_requests: Order,
   my_evaluation: Reports,
   my_salary: Salary,

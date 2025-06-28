@@ -354,6 +354,22 @@
   "not_found": "No data found",
   "are_you_sure_you_want_to_delete_this_attendance_department":"Are you sure you want to delete this attendance department?",
   "attendance_departure":"Attendance Departure",
-  "edit_attendance_record":"Edit Attendance Record"
+  "edit_attendance_record":"Edit Attendance Record",
+  "add_disciplinary_action": "Add Disciplinary Action",
+ 
+  "execution_date": "Execution Date",
+  "action_type": "Action Type",
+  "choose_action_type": "Choose action type",
+ 
+  "save": "Save",
+
+  "deduction": "Deduction",
+  "warning": "Warning",
+  "are_you_sure_you_want_to_delete_this_disciplinary_action":"Are you sure you want to delete this disciplinary action?",
+  "disciplinary_actions":"Disciplinary Actions",
+  "show_disciplinary_action":"Show Disciplinary Action",
+  "edit_disciplinary_action":"Edit Disciplinary Action",
+  "nothing":"Nothing"
+
 
 }

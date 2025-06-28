@@ -145,9 +145,10 @@ import AttendanceDeparture from './pages/AttendanceDepartment/AttendanceDepartmn
 import ShowAttendanceDeparture from './pages/AttendanceDepartment/[id]';
 import EditAttendanceDeparture from './pages/AttendanceDepartment/edit/[id]';
 
-
-
-
+import DisciplinaryActions from './pages/DisciplinaryActions/DisciplinaryActions';
+import ShowDisciplinaryAction from './pages/DisciplinaryActions/[id]';
+import AddDisciplinaryAction from './pages/DisciplinaryActions/add';
+import EditDisciplinaryAction from './pages/DisciplinaryActions/edit/[id]';
 const App = () => {
   return (
     
@@ -616,6 +617,45 @@ const App = () => {
     }
     />
 </Route>
+
+
+<Route path='disciplinary-actions'>
+  <Route
+    index
+    element={
+      <AuthGuard>
+        <DisciplinaryActions />
+      </AuthGuard>
+    } 
+    />
+      <Route
+    path="add"
+    element={
+      <AuthGuard>
+        <AddDisciplinaryAction />
+      </AuthGuard>
+    }
+    />
+  
+        <Route
+    path="edit/:id"
+    element={
+      <AuthGuard>
+        <EditDisciplinaryAction />
+      </AuthGuard>
+    }
+    />
+  <Route
+    path=":id"
+    element={
+      <AuthGuard>
+        <ShowDisciplinaryAction />
+      </AuthGuard>
+    }
+    />
+</Route>
+
+
 
 <Route path='hiring-applications'>
   <Route

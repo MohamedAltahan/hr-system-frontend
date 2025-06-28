@@ -351,7 +351,19 @@
   "not_found": "لا توجد بيانات",
   "edit_attendance_record":"تعديل سجل الحضور والانصراف",
   "are_you_sure_you_want_to_delete_this_attendance_department":"هل أنت متأكد أنك تريد الحذف ؟",
-  "attendance_departure":"سجل الحضور والانصراف"
+  "attendance_departure":"سجل الحضور والانصراف",
+   "execution_date": "تاريخ التنفيذ",
+  "action_type": "نوع الإجراء",
+  "choose_action_type": "اختر نوع الإجراء",
+  "save": "حفظ",
+  "deduction": "خصم",
+  "warning": "تحذير",
+    "are_you_sure_you_want_to_delete_this_disciplinary_action": "هل أنت متأكد أنك تريد حذف هذا الإجراء التأديبي؟",
+  "disciplinary_actions": "الإجراءات التأديبية",
+  "show_disciplinary_action": "عرض الإجراء التأديبي",
+  "add_disciplinary_action":"إضافة إجراء التأديبي",
+  "edit_disciplinary_action":"تعديل إجراء التأديبي",
+  "nothing":"لا شئ"
 
 
 
