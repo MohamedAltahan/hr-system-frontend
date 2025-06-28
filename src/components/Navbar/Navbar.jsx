@@ -32,7 +32,7 @@ const getCurrentPageTitle = (menu, currentPath,t) => {
     }
   }
 
-  return t('title');
+  return ' ';
 };
 
 
@@ -48,7 +48,7 @@ const pathname = location.pathname.replace(/^\/app\//, '');
 
  const currentTitle = !isLoading && sidebarData
 ? getCurrentPageTitle(sidebarData.body, pathname, t)
-  : t('title');
+  : ' ';
 
 
 
