@@ -376,7 +376,10 @@
   "overtime_details":"Overtime Details",
   "edit_overtime":"Edit Overtime",
     "time": "Time",
-  "please_select_time": "Please select a time"
+  "please_select_time": "Please select a time",
+  "attendance_department_request":"Attendance Department Request",
+  "attendance_department_requests":"Attendance Department Requests",
+  "reviewed_at":"Reviewed At"
 
 
 }

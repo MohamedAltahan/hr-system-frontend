@@ -370,7 +370,10 @@
 "overtime_details": "تفاصيل العمل الإضافي",
 "edit_overtime": "تعديل العمل الإضافي",
   "time": "الوقت",
-  "please_select_time": "يرجى اختيار الوقت"
+  "please_select_time": "يرجى اختيار الوقت",
+  "attendance_department_request":"طلب سجل الحضور والانصراف",
+  "attendance_department_requests":"طلبات سجل الحضور والانصراف",
+  "reviewed_at":"تاريخ المراجعه"
 
 
 

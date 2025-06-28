@@ -31,6 +31,7 @@ import overtimeApi from '../api/overtimeApi';
 import leaveTypesApi from '../api/leaveTypesApi';
 import AttendanceDepartmentApi from '../api/AttendanceDepartmentApi';
 import disciplinaryActionsApi from '../api/disciplinaryActionsApi';
+import attendanceDepartmentRequestsApi from '../api/AttendanceDepartmentRequestsApi';
 
 const rootReducer = combineReducers({
     [authApi.reducerPath]: authApi.reducer,
@@ -65,6 +66,7 @@ const rootReducer = combineReducers({
     [leaveTypesApi.reducerPath]: leaveTypesApi.reducer,
     [AttendanceDepartmentApi.reducerPath]: AttendanceDepartmentApi.reducer,
     [disciplinaryActionsApi.reducerPath]: disciplinaryActionsApi.reducer,
+    [attendanceDepartmentRequestsApi.reducerPath]: attendanceDepartmentRequestsApi.reducer,
 
 
 
@@ -106,6 +108,7 @@ export default configureStore({
             leaveTypesApi.middleware,
             AttendanceDepartmentApi.middleware,
             disciplinaryActionsApi.middleware,
+            attendanceDepartmentRequestsApi.middleware,
 
         ),
 });

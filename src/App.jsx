@@ -149,6 +149,10 @@ import DisciplinaryActions from './pages/DisciplinaryActions/DisciplinaryActions
 import ShowDisciplinaryAction from './pages/DisciplinaryActions/[id]';
 import AddDisciplinaryAction from './pages/DisciplinaryActions/add';
 import EditDisciplinaryAction from './pages/DisciplinaryActions/edit/[id]';
+
+
+import AttendanceDepartmentRequests from './pages/AttendanceDepartmentRequests/AttendanceDepartmentRequests';
+import ShowAttendanceDepartureRequests from './pages/AttendanceDepartmentRequests/[id]';
 const App = () => {
   return (
     
@@ -613,6 +617,29 @@ const App = () => {
     element={
       <AuthGuard>
         <ShowAttendanceDeparture />
+      </AuthGuard>
+    }
+    />
+</Route>
+
+
+
+<Route path='attendance-departure-requests'>
+  <Route
+    index
+    element={
+      <AuthGuard>
+        <AttendanceDepartmentRequests />
+      </AuthGuard>
+    } 
+    />
+  
+     
+  <Route
+    path=":id"
+    element={
+      <AuthGuard>
+        <ShowAttendanceDepartureRequests />
       </AuthGuard>
     }
     />
