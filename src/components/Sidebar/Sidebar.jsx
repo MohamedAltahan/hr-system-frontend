@@ -86,14 +86,16 @@ const toggleMenu = (id) => {
     navigate("/login");
   };
 
- const renderSidebarItems = (items) =>
+  const renderSidebarItems = (items) =>
   [...items]
-    .filter((item) => item.is_active === 1)
-    .sort((a, b) => (a.order ?? 0) - (b.order ?? 0))
+    .filter((item) => item.is_active === 1 && iconMap[item.icon]) // active items with valid icons
+    .sort((a, b) => (a.order ?? 0) - (b.order ?? 0)) // sort by order
     .map((item, index) => {
-      const Icon = iconMap[item.icon] || DefaultIcon;
+      const Icon = iconMap[item.icon];
       const hasChildren = Array.isArray(item.children) && item.children.length > 0;
       const isOpen = openMenus[item.id];
+
+      if (!Icon || item.is_active !== 1) return null;
 
       return (
         <li key={index}>
@@ -112,16 +114,43 @@ const toggleMenu = (id) => {
               <Icon className="w-5 h-5" />
               <span className="text-[16px] font-normal title-lg-2">{item.name}</span>
             </div>
-            {hasChildren && (
-              <span className="text-sm">{isOpen ? <FiChevronUp /> : <FiChevronDown />}</span>
-            )}
+            {hasChildren && <span className="text-sm">{isOpen ? <FiChevronUp /> : <FiChevronDown />}</span>}
           </div>
 
-          {/* ...child menu... */}
+        {hasChildren && isOpen && (
+  <ul className="pl-6 space-y-1 mt-1">
+    {[...item.children]
+      .filter((child) => child.is_active === 1)
+      .sort((a, b) => (a.order ?? 0) - (b.order ?? 0))
+      .map((child, idx) => {
+        const ChildIcon = iconMap[child.icon] || DefaultIcon;
+        const childRoute = child.route || child.slug || "#";
+
+        return (
+          <li key={idx}>
+            <NavLink
+              to={`/app/${childRoute}`}
+              className={({ isActive }) =>
+                `flex items-center p-2 transition duration-200 gap-3 ${
+                  isActive
+                    ? "!font-semibold text-[#055393]"
+                    : "hover:!font-semibold hover:text-[#055393]"
+                } title-sm`
+              }
+              style={{ height: "42px", borderRadius: "8px", backgroundColor: "transparent" }}
+            >
+              <ChildIcon className="w-4 h-4" />
+              <span>{child.name}</span>
+            </NavLink>
+          </li>
+        );
+      })}
+  </ul>
+)}
+
         </li>
       );
     });
-
 
   return (
     <aside
