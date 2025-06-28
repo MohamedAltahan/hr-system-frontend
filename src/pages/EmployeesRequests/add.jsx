@@ -5,6 +5,7 @@ import AddingButton from "../../components/ui/buttons/AddingBtn";
 import CancelButton from "../../components/ui/buttons/CancelBtn";
 import Select from "react-select";
 import DateInput from "../../components/reusable_components/DateInput";
+import TextInput from "../../components/reusable_components/TextInput";
 import TextAreaInput from "../../components/reusable_components/TextAreaInput"; // or use a normal textarea
 import { useGetAllEmployeeQuery } from "../../api/Employee";
 import { useCreateEmployeeRequestMutation ,useGetEmployeeRequestTypesQuery} from "../../api/EmployeeRequestsApi";
@@ -23,6 +24,8 @@ const [leaveType, setLeaveType] = useState(null);
   const [fromDate, setFromDate] = useState('');
   const [toDate, setToDate] = useState('');
   const [reason, setReason] = useState('');
+  const [time, setTime] = useState('');
+
 
   const { data: employeesData } = useGetAllEmployeeQuery({ id: 0 });
   const { data: requestTypesData, isLoading: loadingTypes } = useGetEmployeeRequestTypesQuery();
@@ -69,6 +72,14 @@ if (type?.value === 'leave' && !leaveType) {
   toast.error(t("choose_leave_type"));
   return;
 }
+if (
+  ['late_arrival', 'early_departure'].includes(type?.value) &&
+  !time
+) {
+  toast.error(t("please_select_time") || "الرجاء تحديد الوقت");
+  return;
+}
+
     try {
       const payload = {
     employee_id: employeeId.value,
@@ -79,6 +90,8 @@ if (type?.value === 'leave' && !leaveType) {
   ...(type.value === 'leave' && {
     leave_type: leaveType.value,
   }),
+    ...(["late_arrival", "early_departure"].includes(type.value) && { time }),
+
 };
       const res = await createEmployeeRequest(payload).unwrap();
       toast.success(res?.message || t("created_successfully"));
@@ -127,6 +140,19 @@ if (type?.value === 'leave' && !leaveType) {
       placeholder={t("choose_leave_type")}
       isLoading={loadingLeaveTypes}
     />
+  </div>
+)}
+{/* Time Input - only for late_arrival or early_departure */}
+{['late_arrival', 'early_departure'].includes(type?.value) && (
+  <div>
+  
+    
+              <TextInput
+                label={t("time")}
+                value={time}
+                onChange={(e) => setTime(e.target.value)}
+                type="time"
+              />
   </div>
 )}
 

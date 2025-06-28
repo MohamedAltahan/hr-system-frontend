@@ -38,8 +38,9 @@ const employeeRequestsApi = createApi({
       type: string; // e.g., 'leave', 'vacation'
       from_date: string; // format: YYYY-MM-DD
       to_date: string;   // format: YYYY-MM-DD
+      time: string;
     }>({
-      query: ({ employee_id, reason, type, from_date, to_date,leave_type }) => ({
+      query: ({ employee_id, reason, type, from_date, to_date,leave_type ,time}) => ({
         url: `/employee-requests`,
         method: 'POST',
         body: {
@@ -49,6 +50,7 @@ const employeeRequestsApi = createApi({
           from_date,
           to_date,
           leave_type,
+          time
         },
       }),
       invalidatesTags: ['employeeRequest'],
@@ -63,7 +65,8 @@ const employeeRequestsApi = createApi({
         type: string;
         from_date: string;
         to_date: string;
-        leave_type:string
+        leave_type:string;
+        time: string;
       };
     }>({
       query: ({ id, body }) => ({

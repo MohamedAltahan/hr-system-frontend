@@ -374,7 +374,9 @@
   "add_overtime":"Add Overtime",
   "show_overtime":"Show Overtime",
   "overtime_details":"Overtime Details",
-  "edit_overtime":"Edit Overtime"
+  "edit_overtime":"Edit Overtime",
+    "time": "Time",
+  "please_select_time": "Please select a time"
 
 
 }

@@ -368,7 +368,9 @@
 "add_overtime": "إضافة عمل إضافي",
 "show_overtime": "عرض العمل الإضافي",
 "overtime_details": "تفاصيل العمل الإضافي",
-"edit_overtime": "تعديل العمل الإضافي"
+"edit_overtime": "تعديل العمل الإضافي",
+  "time": "الوقت",
+  "please_select_time": "يرجى اختيار الوقت"
 
 
 

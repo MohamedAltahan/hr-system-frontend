@@ -4,6 +4,7 @@ import SectionBox from "../../../components/ui/containers/SectionBox";
 import AddingButton from "../../../components/ui/buttons/AddingBtn";
 import CancelButton from "../../../components/ui/buttons/CancelBtn";
 import Select from "react-select";
+import TextInput from "../../../components/reusable_components/TextInput";
 import DateInput from "../../../components/reusable_components/DateInput";
 import TextAreaInput from "../../../components/reusable_components/TextAreaInput";
 import { useGetAllEmployeeQuery } from "../../../api/Employee";
@@ -36,6 +37,7 @@ const [leaveType, setLeaveType] = useState(null);
   const [fromDate, setFromDate] = useState('');
   const [toDate, setToDate] = useState('');
   const [reason, setReason] = useState('');
+  const [time, setTime] = useState('');
 
   const employeeOptions = employeesData?.body?.data?.map(e => ({
     value: e.id,
@@ -88,6 +90,11 @@ useEffect(() => {
     setFromDate(req.from_date?.date || '');
     setToDate(req.to_date?.date || '');
     setReason(req.reason || '');
+        // Set time (if exists)
+    if (req.time?.time_24hr) {
+      setTime(req.time.time_24hr); // Format: "18:14"
+    }
+
   }
 }, [requestData]);
 
@@ -115,6 +122,8 @@ useEffect(() => {
       ...(type.value === 'leave' && {
         leave_type: leaveType.value,
       }),
+      ...(['late_arrival', 'early_departure'].includes(type.value) && { time }),
+
     };
 
     const res = await updateRequest({ id, body: payload }).unwrap(); // ✅ FIXED
@@ -168,6 +177,21 @@ useEffect(() => {
     />
   </div>
 )}
+
+{/* Time Input - only for late_arrival or early_departure */}
+{['late_arrival', 'early_departure'].includes(type?.value) && (
+  <div>
+  
+    
+              <TextInput
+                label={t("time")}
+                value={time}
+                onChange={(e) => setTime(e.target.value)}
+                type="time"
+              />
+  </div>
+)}
+
 
           <DateInput
             label={t("from_date")}

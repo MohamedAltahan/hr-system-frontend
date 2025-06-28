@@ -46,10 +46,11 @@ const ShowEmployeeRequest = () => {
             <p className="text-gray-900">{request?.employee?.name || '-'}</p>
           </div>
 
-          <div className="flex items-center px-4 py-2">
-            <span className="font-semibold text-gray-600 w-28">{t('request_type')}:</span>
-            <p className="text-gray-900">{Object.values(request?.type || {})[0] || '-'}</p>
-          </div>
+       <div className="flex items-center px-4 py-2">
+  <span className="font-semibold text-gray-600 w-28">{t('request_type')}:</span>
+  <p className="text-gray-900">{Object.values(request?.type || {})[0] || '-'}</p>
+</div>
+
 {Object.keys(request?.type || {})[0] === 'leave' && (
   <div className="flex items-center px-4 py-2">
     <span className="font-semibold text-gray-600 w-28">{t('leave_type')}:</span>
@@ -58,6 +59,14 @@ const ShowEmployeeRequest = () => {
     </p>
   </div>
 )}
+
+{['late_arrival', 'early_departure'].includes(Object.keys(request?.type || {})[0]) && (
+  <div className="flex items-center px-4 py-2">
+    <span className="font-semibold text-gray-600 w-28">{t('time')}:</span>
+    <p className="text-gray-900">{request?.time?.time_12hr || request?.time?.time_24hr || '-'}</p>
+  </div>
+)}
+
 
 
           <div className="flex items-center px-4 py-2">
