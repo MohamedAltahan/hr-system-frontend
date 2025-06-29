@@ -59,7 +59,7 @@ const EditCarriedForwardLeave = () => {
     try {
       const res = await updateLeave({ id, payload }).unwrap();
       toast.success(res?.message || t("updated_successfully"));
-      navigate("/app/carried_forward_leaves");
+      navigate("/app/carried-forward-leaves");
     } catch (err) {
       toast.error(err?.data?.message || t("something_went_wrong"));
     }
@@ -111,7 +111,7 @@ const EditCarriedForwardLeave = () => {
             <AddingButton type="submit" disabled={isLoading}>
               {isLoading ? t("loading") : t("update")}
             </AddingButton>
-            <CancelButton onClick={() => navigate("/app/carried_forward_leaves")} type="button">
+            <CancelButton onClick={() => navigate("/app/carried-forward-leaves")} type="button">
               {t("cancel")}
             </CancelButton>
           </div>

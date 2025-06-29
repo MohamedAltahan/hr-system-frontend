@@ -680,7 +680,7 @@ const App = () => {
 
 
 
-<Route path='carried_forward_leaves'>
+<Route path='carried-forward-leaves'>
   <Route
     index
     element={

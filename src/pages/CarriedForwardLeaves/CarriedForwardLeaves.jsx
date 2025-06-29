@@ -62,9 +62,9 @@ const CarriedForwardLeaves = () => {
   return (
     <SectionBox className="space-y-4">
       <div className="grid grid-cols-2 items-center gap-4">
-        <div className="containerTitle">{t("carried_forward_leaves")}</div>
+        <div className="containerTitle">{t("carried-forward-leaves")}</div>
         <div className="flex justify-end">
-          <a href="/app/carried_forward_leaves/add">
+          <a href="/app/carried-forward-leaves/add">
             <AddingButton variant="main">{t("add_leave")}</AddingButton>
           </a>
         </div>
@@ -79,14 +79,14 @@ const CarriedForwardLeaves = () => {
           <ProductTable
             headers={headers}
             data={leaves}
-            baseRoute="/app/carried_forward_leaves"
+            baseRoute="/app/carried-forward-leaves"
             pagination={pagination}
             onPageChange={(newPage) => setPage(Number(newPage))}
             rowKey="id"
             renderActions={(item) => (
               <div className="flex gap-2 items-center">
                 <a
-                  href={`/app/carried_forward_leaves/edit/${item.id}`}
+                  href={`/app/carried-forward-leaves/edit/${item.id}`}
                   className="text-blue-600 hover:underline editIcon"
                 >
                   <MdEdit />

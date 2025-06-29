@@ -45,7 +45,7 @@ const ShowCarriedForwardLeave = () => {
         <div className="flex items-center justify-between px-4 py-4 border-b border-gray-200">
           <h2 className="text-base font-bold">{t("carried_forward_leave")}</h2>
           <button className="EditPermissionBtn">
-            <CancelButton onClick={() => navigate(`/app/carried_forward_leaves/edit/${id}`)} type="button">
+            <CancelButton onClick={() => navigate(`/app/carried-forward-leaves/edit/${id}`)} type="button">
             <LuPencil /> {t("edit")}
           </CancelButton>
       </button>
@@ -80,7 +80,7 @@ const ShowCarriedForwardLeave = () => {
       </div>
 
       <div className="flex justify-end mt-6">
-        <CancelButton onClick={() => navigate("/app/carried_forward_leaves")}>
+        <CancelButton onClick={() => navigate("/app/carried-forward-leaves")}>
           {t("back")}
         </CancelButton>
       </div>
