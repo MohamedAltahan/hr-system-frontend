@@ -113,6 +113,9 @@ const ShowHiringApplication = () => {
             </div>
           ))}
         </div>
+        </div>
+              <div className="bg-white border border-gray-200 rounded-xl overflow-hidden">
+
 
         {/* Job Data */}
         <div className="px-4 pt-4 text-black-700 font-semibold mb-4">{t('job_data')}</div>
