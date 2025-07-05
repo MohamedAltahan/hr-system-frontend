@@ -19,7 +19,7 @@ const HiringApplications = () => {
   const { t } = useTranslation();
 
   const openingPositionId = searchParams.get("opening_position_id");
-  const status = searchParams.get("status"); // may be null initially
+const status = searchParams.get("status") || "pending"; // <- default to pending
 
   const { data: applicationsData } = useGetAllHiringApplicationsQuery({
     opening_position_id: openingPositionId ? Number(openingPositionId) : undefined,

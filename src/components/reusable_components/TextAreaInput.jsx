@@ -37,7 +37,7 @@ const TextAreaInput = ({
         placeholder={placeholder}
         required={required}
         rows={rows}
-        className={`textArea w-full border bg-transparent placeholder:text-[#13131340] 
+        className={`shadow-textArea textArea w-full border bg-transparent placeholder:text-[#13131340] 
         text-[#0C0A34] border-gray-300 rounded-md py-2.5 px-3 focus:outline-none focus:ring-0 ${className}`}
       />
     </div>
