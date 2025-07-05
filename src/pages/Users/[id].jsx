@@ -82,8 +82,8 @@ const ShowEmployee = () => {
           {renderField(t('address'), employee?.translations?.address?.ar)}
           {renderField(t('national_number') , employee?.national_id)}
           {renderField(t('date_of_birth'), employee?.birthday)}
-          {renderField(t('gender'), genderOptions[employee?.gender])}
-          {renderField(t('social_status'), socialStatusOptions[employee?.social_status])}
+          {renderField(t('gender'), t(employee?.gender))}
+          {renderField(t('social_status'), t(employee?.social_status))}
 <hr className="col-span-full border-t border-gray-300 my-4" />
 
           {/* Work Info */}
@@ -95,7 +95,11 @@ const ShowEmployee = () => {
           {renderField(t('department'), employee?.department_name?.name)}
           {renderField(t('job_position'), employee?.position?.name)}
           {renderField(t('job_title'), employee?.job_title?.name)}
-          {renderField(t('status'), statusOptions[employee?.is_active])}
+          {renderField(t('attendance_rule'), employee?.attendance_rule?.name)}
+          {renderField(t('salary'), employee?.salary)}
+          {renderField(t('contract_start_date'), employee?.contract_start_date)}
+          {renderField(t('contract_end_date'), employee?.contract_end_date)}
+          {renderField(t('status'), employee?.is_active ? t('active') : t('inactive'))}
         </div>
       </div>
 

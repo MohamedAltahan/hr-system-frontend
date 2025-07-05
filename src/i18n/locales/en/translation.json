@@ -245,7 +245,6 @@
   "approved": "Approved",
   "rejected": "Rejected",
    "add_contract": "Add Contract",
-  "employee_contracts": "Employee Contracts",
   "contract_period": "Contract Period",
   "salary": "Salary",
   "are_you_sure_you_want_to_delete_this_contract": "Are you sure you want to delete this contract?",
@@ -393,7 +392,21 @@
   "add_carried_forward_leave":"Add Carried Forward Leave",
   "edit_carried_forward_leave":"Edit Carried Forward Leave",
   "enter_year":"Enter Year",
-  "enter_days_balance":"Enter Days Balance"
+  "enter_days_balance":"Enter Days Balance",
+  "Show_new_applications":"Show New Applications",
+  "show_all_applications":"Show All Applications",
+  "accept": "Accept",
+  "reject": "Reject",
+  "confirm_reject": "Confirm Reject",
+  "reason_optional": "Reason (Optional)",
+  "reject_application": "Reject Application",
+  "pending_applications": "Pending Applications",
+  "rejected_applications": "Rejected Applications",
+  "all_applications": "All Applications",
+  "employee_interviews": "Employee Interviews",
+  "employee_contracts": "Employee Contracts",
+    "contract_start_date": "Contract Start Date",
+  "contract_end_date": "Contract End Date"
 
 
 }

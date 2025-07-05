@@ -241,7 +241,6 @@
   "approved": "مقبول",
   "rejected": "مرفوض",
  "add_contract": "إضافة عقد",
-  "employee_contracts": "عقود الموظفين",
   "contract_period": "مدة العقد",
   "salary": "الراتب",
   "are_you_sure_you_want_to_delete_this_contract": "هل أنت متأكد أنك تريد حذف هذا العقد؟",
@@ -387,7 +386,22 @@
   "add_carried_forward_leave": "إضافة إجازة مرحلة",
   "edit_carried_forward_leave": "تعديل إجازة مرحلة",
    "enter_year": "أدخل السنة",
-  "enter_days_balance": "أدخل رصيد الأيام"
+  "enter_days_balance": "أدخل رصيد الأيام",
+  "Show_new_applications": "عرض الطلبات الجديدة",
+  "show_all_applications": "عرض كل الطلبات",
+  "accept": "قبول",
+  "reject": "رفض",
+  "confirm_reject": "تأكيد الرفض",
+  "reason_optional": "السبب (اختياري)",
+  "reject_application": "رفض الطلب",
+  "pending_applications": "طلبات قيد الانتظار",
+  "rejected_applications": "طلبات مرفوضة",
+   "all_applications": "طلبات التقديم",
+  "employee_interviews": "المقابلات للموظفين",
+  "employee_contracts": "العقود و تسجل الموظفين",
+  "contract_start_date": "تاريخ بدء العقد",
+  "contract_end_date": "تاريخ انتهاء العقد"
+  
 
 
 

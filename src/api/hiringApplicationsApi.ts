@@ -12,18 +12,24 @@ const hiringApplicationsApi = createApi({
   }),
   endpoints: (builder) => ({
     // GET all hiring applications (with optional filters)
-    getAllHiringApplications: builder.query<any, { opening_position_id?: number; page?: number }>({
-      query: ({ opening_position_id, page }) => {
-        const params = new URLSearchParams();
-        if (opening_position_id) params.append('opening_position_id', opening_position_id.toString());
-        if (page) params.append('page', page.toString());
-        return {
-          url: `/hiring-applications?${params.toString()}`,
-          method: 'GET',
-        };
-      },
-      providesTags: ['hiringApplication'],
-    }),
+   getAllHiringApplications: builder.query<
+  any,
+  { opening_position_id?: number; page?: number; status?: string }
+>({
+  query: ({ opening_position_id, page, status }) => {
+    const params = new URLSearchParams();
+    if (opening_position_id) params.append('opening_position_id', opening_position_id.toString());
+    if (page) params.append('page', page.toString());
+    if (status) params.append('status', status);
+
+    return {
+      url: `/hiring-applications?${params.toString()}`,
+      method: 'GET',
+    };
+  },
+  providesTags: ['hiringApplication'],
+}),
+
 
     // GET one hiring application
     getHiringApplicationById: builder.query<any, number>({

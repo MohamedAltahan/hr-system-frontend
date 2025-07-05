@@ -3,7 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import SectionBox from "../../../components/ui/containers/SectionBox";
 import TextInput from '../../../components/reusable_components/TextInput';
 import EmailInput from '../../../components/reusable_components/EmailInput';
-import PhoneInput from "../../../components/reusable_components/PhoneInput";
+import NewPhoneInput from "../../../components/reusable_components/NewPhoneInput";
 import AddingButton from "../../../components/ui/buttons/AddingBtn";
 import CancelButton from '../../../components/ui/buttons/CancelBtn';
 import { toast } from 'react-toastify';
@@ -14,6 +14,7 @@ import {
   useGetAllEmployeeQuery
 } from '../../../api/Employee';
 import { useGetAllRolesQuery } from '../../../api/rolesApi';
+import { useGetAllAttendanceRulesQuery } from '../../../api/AttendanceRulesApi';
 
 import { useGetAllbranchesQuery } from '../../../api/Branches';
 import { useGetAllDepartmentsQuery } from '../../../api/DepartmentsApi';
@@ -59,7 +60,11 @@ const statusOptions = [
     is_active: 1,
     direct_manager_id: '',
     avatar: null,
+      salary: '',
+  start_date: '',
+  end_date: '',
   });
+const [selectedAttendanceRule, setSelectedAttendanceRule] = useState(null);
 
   const { data: branchsData } = useGetAllbranchesQuery({ id: 0 });
   const { data: managerData } = useGetAllEmployeeQuery({ id: 0 });
@@ -75,6 +80,19 @@ const roleOptions = rolesData?.body?.map(role => ({
   value: role.id,
   label: role.title || role.name, // use translated title if needed
 })) || [];
+
+
+const { data: attendanceRulesData } = useGetAllAttendanceRulesQuery({ id: 0 });
+
+const attendanceRuleOptions = useMemo(
+  () => attendanceRulesData?.body?.data?.map(rule => ({
+    value: rule.id,
+    label: rule.name,
+  })) || [],
+  [attendanceRulesData]
+);
+
+
 
 // This assumes the employee's current roles come in a field like `employee.role_ids` or `employee.roles`
 const [selectedRoles, setSelectedRoles] = useState([]);
@@ -142,6 +160,9 @@ useEffect(() => {
       is_active: employee.is_active,
       direct_manager_id: employee.direct_manager?.id || '',
       avatar: null,
+        salary: employee.salary || '',
+  start_date: employee.contract_start_date || '',
+  end_date: employee.contract_end_date || '',
     });
 
     setSelectedGender(genderOptions.find(g => g.value === employee.gender));
@@ -152,6 +173,8 @@ useEffect(() => {
     setSelectedDepartment(departmentOptions.find(d => d.value === employee.department_name?.id));
     setSelectedPosition(positionOptions.find(p => p.value === employee.position?.id));
     setSelectedJobTitle(jobTitleOptions.find(j => j.value === employee.job_title?.id));
+    setSelectedAttendanceRule(attendanceRuleOptions.find(rule => rule.value === employee.attendance_rule?.id));
+
   }
 }, [data, managerOptions, branchOptions, departmentOptions, positionOptions, jobTitleOptions]);
 useEffect(() => {
@@ -193,6 +216,12 @@ useEffect(() => {
     form.append('social_status', selectedSocialStatus?.value || '');
     form.append('is_active', String(selectedStatus?.value));
     form.append('direct_manager_id', selectedManager.value || '');
+    form.append('salary', formData.salary);
+form.append('start_date', formData.start_date);
+form.append('end_date', formData.end_date);
+if (selectedAttendanceRule) {
+  form.append('attendance_rule_id', selectedAttendanceRule.value);
+}
     if (formData.avatar) form.append('avatar', formData.avatar);
     if (selectedBranch) form.append('branch_id', selectedBranch.value);
     if (selectedDepartment) form.append('department_id', selectedDepartment.value);
@@ -266,7 +295,7 @@ useEffect(() => {
                   <EmailInput name="email" value={formData.email} onChange={handleChange} label={t('email')} />
                   <div>
                     <label className="block text-sm mb-1"> {t('phone')}</label>
-        <PhoneInput
+        <NewPhoneInput
           value={formData.phone}
           onChange={(value) => setFormData({ ...formData, phone: value })}
         />
@@ -337,6 +366,46 @@ useEffect(() => {
     placeholder={t('select_roles')} 
   />
 </div>
+<TextInput
+  label={t('salary')}
+  name="salary"
+  type="number"
+  value={formData.salary}
+  onChange={handleChange}
+/>
+
+<div>
+  <label className="block mb-3 label-md">{t('contract_start_date')}</label>
+  <input
+    type="date"
+    name="start_date"
+    value={formData.start_date}
+    onChange={handleChange}
+    className="w-full border p-2 rounded shadow-input"
+/>
+</div>
+
+<div>
+  <label className="block mb-3 label-md">{t('contract_end_date')}</label>
+  <input
+    type="date"
+    name="end_date"
+    value={formData.end_date}
+    onChange={handleChange}
+    className="w-full border p-2 rounded shadow-input"
+/>
+</div>
+
+<div>
+  <label className="block mb-3 label-md">{t('attendance_rule')}</label>
+  <Select
+    value={selectedAttendanceRule}
+    onChange={setSelectedAttendanceRule}
+    options={attendanceRuleOptions}
+    placeholder={t('choose_attendance_rule')}
+/>
+</div>
+
 
                 </div>
               </div>

@@ -6,6 +6,7 @@ import EmailInput from '../../components/reusable_components/EmailInput';
 import PhoneInput from "../../components/reusable_components/PhoneInput";
 import AddingButton from "../../components/ui/buttons/AddingBtn";
 import CancelButton from '../../components/ui/buttons/CancelBtn';
+
 import { toast } from 'react-toastify';
 import { useTranslation } from 'react-i18next';
 
@@ -13,6 +14,7 @@ import Select from 'react-select';
 import { useCreateEmployeeMutation } from '../../api/Employee'; // 👈 Import the mutation
 
 import { useGetAllRolesQuery } from '../../api/rolesApi';
+import { useGetAllAttendanceRulesQuery } from '../../api/AttendanceRulesApi';
 
 import { useGetAllbranchesQuery } from '../../api/Branches';
 import { useGetAllDepartmentsQuery } from '../../api/DepartmentsApi';
@@ -58,13 +60,26 @@ const statusOptions = [
     is_active: 1,
     direct_manager_id: '',
     avatar: null,
+      salary: '',
+  start_date: '',
+  end_date: '',
   });
+  const [selectedAttendanceRule, setSelectedAttendanceRule] = useState(null);
+
 
   const { data: branchsData } = useGetAllbranchesQuery({ id: 0 });
     const { data: managerData } = useGetAllEmployeeQuery({ id: 0 });
   const { data: departmentData } = useGetAllDepartmentsQuery({ id: 0 });
   const { data: positionsData } = useGetAllPositionsQuery({ id: 0 });
   const { data: jobTitlesData } = useGetAllJobTitlesQuery({ id: 0 });
+  const { data: attendanceRulesData } = useGetAllAttendanceRulesQuery({ id: 0 });
+
+const attendanceRuleOptions =
+  attendanceRulesData?.body?.data?.map((r) => ({
+    value: r.id,
+    label: r.name,
+  })) || [];
+
 
 
   const { data: rolesData } = useGetAllRolesQuery({ id: 0 }); // or appropriate params
@@ -129,6 +144,12 @@ const handleChange = (e) => {
   form.append('social_status', selectedSocialStatus?.value || '');
   form.append('is_active', String(selectedStatus?.value));
   form.append('direct_manager_id', selectedManagerId?.value || '');
+  form.append('salary', formData.salary);
+form.append('start_date', formData.start_date);
+form.append('end_date', formData.end_date);
+if (selectedAttendanceRule) {
+  form.append('attendance_rule_id', selectedAttendanceRule.value);
+}
   if (formData.avatar) form.append('avatar', formData.avatar);
   if (selectedBranch) form.append('branch_id', selectedBranch.value);
   if (selectedDepartment) form.append('department_id', selectedDepartment.value);
@@ -274,6 +295,46 @@ try {
               placeholder={t('select_role')}
             />
           </div>
+          <TextInput
+  label={t('salary')}
+  name="salary"
+  type="number"
+  value={formData.salary}
+  onChange={handleChange}
+/>
+
+<div>
+  <label className="block mb-3 label-md">{t('contract_start_date')}</label>
+  <input
+    type="date"
+    name="start_date"
+    value={formData.start_date}
+    onChange={handleChange}
+    className="w-full border p-2 rounded shadow-input"
+/>
+</div>
+
+<div>
+  <label className="block mb-3 label-md">{t('contract_end_date')}</label>
+  <input
+    type="date"
+    name="end_date"
+    value={formData.end_date}
+    onChange={handleChange}
+    className="w-full border p-2 rounded shadow-input"
+/>
+</div>
+
+<div className="mb-3">
+  <label className="block mb-3 label-md">{t('attendance_rule')}</label>
+  <Select
+    value={selectedAttendanceRule}
+    onChange={setSelectedAttendanceRule}
+    options={attendanceRuleOptions}
+    placeholder={t('choose_attendance_rule')}
+/>
+</div>
+
 
         </div>
       </div>
