@@ -95,7 +95,7 @@ const ShowEmployee = () => {
           {renderField(t('department'), employee?.department_name?.name)}
           {renderField(t('job_position'), employee?.position?.name)}
           {renderField(t('job_title'), employee?.job_title?.name)}
-          {renderField(t('attendance_rule'), employee?.attendance_rule?.name)}
+          {renderField(t('work_type'), employee?.attendance_rule?.name)}
           {renderField(t('salary'), employee?.salary)}
           {renderField(t('contract_start_date'), employee?.contract_start_date)}
           {renderField(t('contract_end_date'), employee?.contract_end_date)}

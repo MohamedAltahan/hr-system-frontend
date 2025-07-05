@@ -397,12 +397,12 @@ if (selectedAttendanceRule) {
 </div>
 
 <div>
-  <label className="block mb-3 label-md">{t('attendance_rule')}</label>
+  <label className="block mb-3 label-md">{t('work_type')}</label>
   <Select
     value={selectedAttendanceRule}
     onChange={setSelectedAttendanceRule}
     options={attendanceRuleOptions}
-    placeholder={t('choose_attendance_rule')}
+    placeholder={t('choose_work_type')}
 />
 </div>
 

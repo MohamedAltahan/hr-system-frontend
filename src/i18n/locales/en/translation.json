@@ -406,7 +406,9 @@
   "employee_interviews": "Employee Interviews",
   "employee_contracts": "Employee Contracts",
     "contract_start_date": "Contract Start Date",
-  "contract_end_date": "Contract End Date"
+  "contract_end_date": "Contract End Date",
+  "applies":"Applies",
+  "all_applies_num":"All Applies Num"
 
 
 }

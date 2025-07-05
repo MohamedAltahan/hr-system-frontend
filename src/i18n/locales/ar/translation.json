@@ -138,7 +138,7 @@
         "single": "أعزب",
         "married": "متزوج",
         "username": "اسم المستخدم",
-        "national_number": "الرقم القومي",
+        "national_number": " رقم الهويه",
         "select_direct_manager": "اختر مديرًا مباشرًا",
         "date_of_birth": "تاريخ الميلاد",
         "gender": "الجنس",
@@ -280,11 +280,11 @@
   "grace_period_minutes": "فترة السماح (بالدقائق)",
   "break_time": "وقت الاستراحة",
   "shift_time": "وقت الدوام",
-  "work_type": "نوع العمل",
+  "work_type": "نوع الدوام",
   "weekly_days_count": "عدد أيام العمل أسبوعيًا",
 "weekly_days_count_hint": "أدخل رقمًا من 1 إلى 7"
 ,"choose_shift_time": "اختر وقت المناوبة",
-"choose_work_type": "اختر نوع العمل",
+"choose_work_type": "اختر نوع الدوام",
 "morning": "صباحي",
 "evening": "مسائي",
 "night": "ليلي",
@@ -400,7 +400,10 @@
   "employee_interviews": "المقابلات للموظفين",
   "employee_contracts": "العقود و تسجل الموظفين",
   "contract_start_date": "تاريخ بدء العقد",
-  "contract_end_date": "تاريخ انتهاء العقد"
+  "contract_end_date": "تاريخ انتهاء العقد",
+  "applies":"التقديمات",
+  "all_applies_num":"عدد التقديمات الكلي"
+  
   
 
 

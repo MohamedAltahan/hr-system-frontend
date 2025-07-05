@@ -117,24 +117,24 @@ const JobCard = ({ data, onTogglePublish, onDelete }) => {
           </p>
         </div>
         <div style={{ border: '1px solid #E9EAF0', borderRadius: '8px', height: '36px' }}>
-          <p className="text-xs text-[#131313]" style={{ fontSize: '10px', fontWeight: '400', lineHeight: '24px' }}>
-            {number_of_all_applications} {t('applications')}
+          <p className="text-xs text-[#131313]" style={{ fontSize: '10px', fontWeight: '400', lineHeight: '11px' }}>
+            {number_of_all_applications} {t('all_applies_num')}
           </p>
         </div>
             <div
-  onClick={() => navigate(`/app/hiring-applications?opening_position_id=${id}`)}
   style={{ border: '1px solid #E9EAF0', borderRadius: '8px', height: '36px' }}
 
 >
-     <p className="text-xs text-[#131313]" style={{cursor:"pointer", fontSize: '10px', fontWeight: '400', lineHeight: '24px' }}>
-   {t('show_all_applications')}
+     <p className="text-xs text-[#131313]" style={{padding:"2px 0", fontSize: '10px', fontWeight: '400', lineHeight: '11px' }}>
+    {number_of_new_applications} {t('new_applications')}
+
           </p>
 </div>
 
       </div>
 
       {/* New requests */}
-    {/* <div
+    <div
   onClick={() => navigate(`/app/hiring-applications?opening_position_id=${id}`)}
   className="text-center py-1 text-xs m-4 hover:bg-[#0553932A]"
   style={{
@@ -149,8 +149,9 @@ const JobCard = ({ data, onTogglePublish, onDelete }) => {
     transition: 'background 0.2s ease',
   }}
 >
-  {number_of_new_applications} {t('new_applications')}
-</div> */}
+  
+{t('show_all_applications')}
+</div>
 
 
       <div style={{ height: '1px', background: '#E9EAF0' }}></div>
