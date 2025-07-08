@@ -125,7 +125,7 @@
         "employess_managment": "إدارة الموظفين",
         "add_employee": "إضافة موظف",
         "employee_name": "اسم الموظف",
-        "employee_code": "كود الموظف",
+        "employee_code": "الرقم الوظيفي",
         "branch": "الفرع",
         "department": "القسم",
         "job_position": "المنصب الوظيفي",
@@ -138,7 +138,7 @@
         "single": "أعزب",
         "married": "متزوج",
         "username": "اسم المستخدم",
-        "national_number": " رقم الهويه",
+        "national_number": " رقم الهوية / الاقامة",
         "select_direct_manager": "اختر مديرًا مباشرًا",
         "date_of_birth": "تاريخ الميلاد",
         "gender": "الجنس",
@@ -402,7 +402,9 @@
   "contract_start_date": "تاريخ بدء العقد",
   "contract_end_date": "تاريخ انتهاء العقد",
   "applies":"التقديمات",
-  "all_applies_num":"عدد التقديمات الكلي"
+  "all_applies_num":"عدد التقديمات الكلي",
+  "should start with 1 or 2 and be 10 digits": "يجب أن يبدأ برقم 1 أو 2  ",
+  "should be 10 digits": "يجب أن يكون مكونًا من 10 أرقام"
   
   
 

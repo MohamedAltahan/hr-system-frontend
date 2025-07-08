@@ -21,6 +21,7 @@ import { useGetAllDepartmentsQuery } from '../../../api/DepartmentsApi';
 import { useGetAllPositionsQuery } from '../../../api/positionsApi';
 import { useGetAllJobTitlesQuery } from '../../../api/jobTitlesApi';
 import { useTranslation } from 'react-i18next';
+import NationalNumberInput from '../../../components/reusable_components/NationalNumberInput';
 
 
 
@@ -302,7 +303,7 @@ if (selectedAttendanceRule) {
         
                   </div>
                   <TextInput label={t('address')} name="address_ar" value={formData.address_ar} onChange={handleChange} />
-                  <TextInput label={t('national_number')}  maxLength={14}
+                  <NationalNumberInput label={t('national_number')}  maxLength={14}
           inputMode="numeric" name="national_id" value={formData.national_id} onChange={handleChange} />
                  
       

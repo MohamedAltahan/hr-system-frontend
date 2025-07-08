@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import SectionBox from "../../components/ui/containers/SectionBox";
 import TextInput from '../../components/reusable_components/TextInput';
 import EmailInput from '../../components/reusable_components/EmailInput';
+import NationalNumberInput from '../../components/reusable_components/NationalNumberInput';
 import PhoneInput from "../../components/reusable_components/PhoneInput";
 import AddingButton from "../../components/ui/buttons/AddingBtn";
 import CancelButton from '../../components/ui/buttons/CancelBtn';
@@ -231,7 +232,7 @@ try {
 
           </div>
           <TextInput label={t('address')} name="address_ar" value={formData.address_ar} onChange={handleChange} />
-          <TextInput label={t('national_number')}  maxLength={14}
+          <NationalNumberInput label={t('national_number')} 
   inputMode="numeric" name="national_id" value={formData.national_id} onChange={handleChange} />
          
 <div className='mb-3'>

@@ -129,7 +129,7 @@
 "employess_managment":"Employees Management",
 "add_employee":"Add Employee",
 "employee_name":"Employee Name",
-"employee_code":"Employee Code",
+"employee_code":"Employee number",
 "branch":"Branch",
 "department":"Department",
 "job_position":"Job Position",
@@ -408,7 +408,9 @@
     "contract_start_date": "Contract Start Date",
   "contract_end_date": "Contract End Date",
   "applies":"Applies",
-  "all_applies_num":"All Applies Num"
+  "all_applies_num":"All Applies Num",
+  "should start with 1 or 2 and be 10 digits": "The national number should start with 1 or 2",
+  "should be 10 digits": "The national number should be 10 digits long"
 
 
 }
