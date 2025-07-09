@@ -34,7 +34,8 @@ import disciplinaryActionsApi from '../api/disciplinaryActionsApi';
 import attendanceDepartmentRequestsApi from '../api/AttendanceDepartmentRequestsApi';
 import leavesApi from '../api/LeavesManagmentApi';
 import carriedForwardLeavesApi from '../api/CarriedForwardLeavesApi';
-
+import financialTransactionsApi from '../api/financialTransactionsApi';
+import flightTicketsApi from '../api/flightTicketsApi';
 const rootReducer = combineReducers({
     [authApi.reducerPath]: authApi.reducer,
     [Self_ServicesApi.reducerPath]: Self_ServicesApi.reducer,
@@ -71,6 +72,8 @@ const rootReducer = combineReducers({
     [attendanceDepartmentRequestsApi.reducerPath]: attendanceDepartmentRequestsApi.reducer,
     [leavesApi.reducerPath]: leavesApi.reducer,
     [carriedForwardLeavesApi.reducerPath]: carriedForwardLeavesApi.reducer,
+    [financialTransactionsApi.reducerPath]: financialTransactionsApi.reducer,
+    [flightTicketsApi.reducerPath]: flightTicketsApi.reducer,
 
 
 
@@ -115,6 +118,8 @@ export default configureStore({
             attendanceDepartmentRequestsApi.middleware,
             leavesApi.middleware,
             carriedForwardLeavesApi.middleware,
+            financialTransactionsApi.middleware,
+            flightTicketsApi.middleware
 
         ),
 });

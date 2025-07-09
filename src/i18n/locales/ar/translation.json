@@ -404,7 +404,22 @@
   "applies":"التقديمات",
   "all_applies_num":"عدد التقديمات الكلي",
   "should start with 1 or 2 and be 10 digits": "يجب أن يبدأ برقم 1 أو 2  ",
-  "should be 10 digits": "يجب أن يكون مكونًا من 10 أرقام"
+  "should be 10 digits": "يجب أن يكون مكونًا من 10 أرقام",
+  "financial_transactions": "المعاملات المالية",
+  "add_financial_transaction": "إضافة معاملة مالية",
+  "edit_financial_transaction": "تعديل معاملة مالية",
+  "show_financial_transaction": "عرض المعاملة المالية",
+  "transaction_type": "نوع المعاملة",
+  "transaction_date": "تاريخ المعاملة",
+  "amount_in_currency": "المبلغ بالعملة",
+  "outside_salary": "خارج الراتب",  
+  "transaction_name": "اسم المعاملة",
+  "increment": "زيادة",
+  "decrement": "نقص",
+  "salary_type": "نوع الراتب",
+  "are_you_sure_you_want_to_delete_this_transaction": "هل أنت متأكد أنك تريد حذف هذه المعاملة؟",
+  "add_transaction": "إضافة معاملة",
+  "transaction_details": "تفاصيل المعاملة"
   
   
 
