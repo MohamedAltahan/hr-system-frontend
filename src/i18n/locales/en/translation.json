@@ -424,6 +424,21 @@
   "inside_salary": "Inside Salary",
   "outside_salary": "Outside Salary",
   "are_you_sure_you_want_to_delete_this_transaction": "Are you sure you want to delete this transaction?",
-  "add_transaction": "Add Transaction"
+  "add_transaction": "Add Transaction",
+  "flight_tickets": "Flight Tickets",
+  "add_flight_ticket": "Add Flight Ticket",
+  "edit_flight_ticket": "Edit Flight Ticket",
+  "show_flight_ticket": "Show Flight Ticket",
+  "responsible_person_name": "Responsible Person Name",
+  "ticket_type": "Ticket Type",
+  "ticket_price":" Ticket Price",
+  "flight_date": "Flight Date",
+  "ticket_details": "Ticket Details",
+  "one_way": "One Way",
+  "round_trip": "Round Trip",
+  "reyurn_only": "Return Only",
+  "choose_ticket_type": "Choose Ticket Type",
+  "are_you_sure_you_want_to_delete_this_flight_ticket": "Are you sure you want to delete this flight ticket?",
+  "choose_salary_type": "Choose Salary Type"
 
 }

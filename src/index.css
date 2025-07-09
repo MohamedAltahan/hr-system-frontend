@@ -2,14 +2,24 @@
 @tailwind components;
 @tailwind utilities;
 @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@200..1000&display=swap');
+
 :root {
   --primary-color: #055393;
   --secondary-color: #B0B0B0;
 }
-body {
+
+
+html, body {
   direction: rtl;
   letter-spacing: 0.065em;
   font-family:"Cairo";
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+  box-sizing: border-box;
+}
+* {
+  box-sizing: border-box;
 }
 @font-face {
   font-family: Cairo;
@@ -218,8 +228,8 @@ color: #3D3D3D;
 }
 
 .sidebar-scrollbar::-webkit-scrollbar {
-  width: 8px;       /* Vertical scrollbar width */
-  height: 4px;      /* Horizontal scrollbar height (if ever needed) */
+  width: 8px;       
+  height: 4px;      
 }
 
 .sidebar-scrollbar::-webkit-scrollbar-track {
@@ -238,16 +248,14 @@ color: #3D3D3D;
 
 
 .custom-scrollbar::-webkit-scrollbar {
-  width: 6px;
+  width: 0.5rem;
 }
-
 .custom-scrollbar::-webkit-scrollbar-thumb {
-  background-color:#055393;
-  border-radius: 4px;
+  background: #055393;
+  border-radius: 0.25rem;
 }
-
 .custom-scrollbar::-webkit-scrollbar-track {
-  background-color: transparent;
+  background: #f1f1f1;
 }
 .addingBtn{
       min-width: 101px;
@@ -277,13 +285,13 @@ color: #3D3D3D;
 .shadow-custom{
   box-shadow: 0px 1px 6px 0px #E5E9F2;
   border-radius: 16px;
-  margin: 20px 28px 20px ;
+  margin: 15px 15px 15px ;
 }
 
 .containerTitle{
   font-family: Cairo;
 font-weight: 600;
-font-size: 18px;
+font-size: 16px;
 line-height: 100%;
 letter-spacing: 0%;
 /* text-align: center; */
@@ -512,3 +520,26 @@ width: 50% !important;
 
 
 
+/* src/components/layout/AppLayout.css */
+@media (max-width: 768px) {
+  .sidebar {
+    width: 25vw;
+    min-width: 10rem;
+  }
+  .main-content {
+    margin-left: calc(25vw + 0.5rem); /* LTR */
+    margin-right: calc(25vw + 0.5rem); /* RTL */
+    max-width: calc(100vw - 25vw - 0.5rem);
+  }
+}
+@media (max-width: 480px) {
+  .sidebar {
+    width: 30vw;
+    min-width: 8rem;
+  }
+  .main-content {
+    margin-left: calc(30vw + 0.5rem); /* LTR */
+    margin-right: calc(30vw + 0.5rem); /* RTL */
+    max-width: calc(100vw - 30vw - 0.5rem);
+  }
+}

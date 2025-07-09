@@ -66,10 +66,13 @@ const Login = () => {
       style={{ backgroundImage: `url(${mainImage})`, backgroundSize: 'cover' }}
     >
       <div
-        className="flex w-full items-center justify-center py-10"
+        className="flex h-full w-full items-center justify-center py-10"
         style={{ backgroundColor: '#13131399' }}
       >
-        <div className="bg-white px-4 py-5 rounded-3xl shadow-lg flex flex-col items-center justify-center my-5 w-[30%] h-[100%] relative">
+        <div
+        style={{height: "90%",
+    padding:" 50px 0 !important"}}
+         className="bg-white px-4 py-5 rounded-3xl shadow-lg flex flex-col items-center justify-center my-5 w-[30%] h-[100%] relative">
           <div className="w-[90%] mx-auto">
             <h2 className="title-lg mb-5">مرحبًا بك مرة أخرى 👋</h2>
             <span

@@ -1,0 +1,23 @@
+/* src/components/layout/AppLayout.css */
+@media (max-width: 768px) {
+  .sidebar {
+    width: 25vw;
+    min-width: 10rem;
+  }
+  .main-content {
+    margin-left: calc(25vw + 0.5rem); /* LTR */
+    margin-right: calc(25vw + 0.5rem); /* RTL */
+    max-width: calc(100vw - 25vw - 0.5rem);
+  }
+}
+@media (max-width: 480px) {
+  .sidebar {
+    width: 30vw;
+    min-width: 8rem;
+  }
+  .main-content {
+    margin-left: calc(30vw + 0.5rem); /* LTR */
+    margin-right: calc(30vw + 0.5rem); /* RTL */
+    max-width: calc(100vw - 30vw - 0.5rem);
+  }
+}

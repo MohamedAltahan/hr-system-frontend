@@ -419,7 +419,23 @@
   "salary_type": "نوع الراتب",
   "are_you_sure_you_want_to_delete_this_transaction": "هل أنت متأكد أنك تريد حذف هذه المعاملة؟",
   "add_transaction": "إضافة معاملة",
-  "transaction_details": "تفاصيل المعاملة"
+  "transaction_details": "تفاصيل المعاملة",
+  "flight_tickets": "تذاكر الطيران",
+  "add_flight_ticket": "إضافة تذكرة طيران",
+  "edit_flight_ticket": "تعديل تذكرة طيران",
+  "show_flight_ticket": "عرض تذكرة الطيران",
+  "responsible_person_name": "اسم الشخص المسؤول",
+  "ticket_type": "نوع التذكرة",
+  "ticket_price": "سعر التذكرة",
+  "flight_date": "تاريخ الرحلة",
+  "ticket_details": "تفاصيل التذكرة",
+"are_you_sure_you_want_to_delete_this_flight_ticket":"هل أنت متأكد أنك تريد حذف تذكرة الطيران هذه؟",
+"choose_ticket_type": "اختر نوع التذكرة",
+"one_way": "ذهاب فقط",
+"round_trip": "ذهاب وإياب",
+"return_only": "عودة فقط",
+"choose_salary_type": "اختر نوع الراتب",
+"inside_salary": "داخل الراتب"
   
   
 

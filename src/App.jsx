@@ -1,4 +1,6 @@
 import { Route, Routes } from 'react-router-dom';
+import { Suspense, lazy } from 'react';
+
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import AppLayout from './components/layout/AppLayout';
@@ -163,10 +165,27 @@ import CarriedForwardLeaves from './pages/CarriedForwardLeaves/CarriedForwardLea
 import AddCarriedForwardLeave from './pages/CarriedForwardLeaves/add';
 import ShowCarriedForwardLeave from './pages/CarriedForwardLeaves/[id]';
 import EditCarriedForwardLeave from './pages/CarriedForwardLeaves/edit/[id]';
+
+
+import FinancialTransactions from './pages/FinancialTransactions/FinancialTransactions';
+import AddFinancialTransaction from './pages/FinancialTransactions/add';
+import EditFinancialTransaction from './pages/FinancialTransactions/edit/[id]';
+import ShowFinancialTransaction from './pages/FinancialTransactions/[id]';
+
+
+import FlightTickets from './pages/FlightTickets/FlightTickets';
+import AddFlightTicket from './pages/FlightTickets/add';
+import EditFlightTicket from './pages/FlightTickets/edit/[id]';
+import ShowFlightTicket from './pages/FlightTickets/[id]';
+
+
+
 const App = () => {
   return (
     
     <>
+          <Suspense fallback={<div>Loading...</div>}>
+
       <Routes >
         {/* Landing Page */}
         <Route path="/" element={<Landing />} />
@@ -784,6 +803,88 @@ const App = () => {
 </Route>
 
 
+<Route path='financial-transactions'>
+  <Route
+    index
+    element={
+      <AuthGuard>
+        <FinancialTransactions />
+      </AuthGuard>
+    } 
+    />
+
+       <Route
+    path=":id"    element={
+      <AuthGuard>
+        <ShowFinancialTransaction />
+      </AuthGuard>
+    }
+    />
+        <Route
+    path="add"
+    element={
+      <AuthGuard>
+        <AddFinancialTransaction />
+      </AuthGuard>
+    }
+    />
+
+        <Route
+    path="edit/:id"
+    element={
+      <AuthGuard>
+        <EditFinancialTransaction />
+      </AuthGuard>
+    }
+    />
+ 
+
+
+
+</Route>
+
+
+<Route path='flight-tickets'>
+  <Route
+    index
+    element={
+      <AuthGuard>
+        <FlightTickets />
+      </AuthGuard>
+    } 
+    />
+
+       <Route
+    path=":id"    element={
+      <AuthGuard>
+        <ShowFlightTicket />
+      </AuthGuard>
+    }
+    />
+        <Route
+    path="add"
+    element={
+      <AuthGuard>
+        <AddFlightTicket />
+      </AuthGuard>
+    }
+    />
+
+        <Route
+    path="edit/:id"
+    element={
+      <AuthGuard>
+        <EditFlightTicket />
+      </AuthGuard>
+    }
+    />
+ 
+
+
+
+</Route>
+
+
 
 <Route path='position'>
   <Route
@@ -1232,6 +1333,8 @@ const App = () => {
         </Route>
 
       </Routes>
+            </Suspense>
+
     </>
 
 
